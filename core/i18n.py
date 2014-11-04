@@ -29,17 +29,18 @@ import os.path as OP
 from . import path
 from . import tools
 
+
 # current translations directory init
-__translations_dir="^/locale"
+__translations_dir = "^/locale"
 
 # current translations language init
-__translations_lang=tools.choose_str(locale.getdefaultlocale()[0])
+__translations_lang = tools.choose_str(locale.getdefaultlocale()[0])
 
 # current translations table init
-__translations_table=dict()
+__translations_table = dict()
 
 # i18n support switcher
-__switch_off=False
+__switch_off = False
 
 
 def _ (text):
@@ -53,8 +54,9 @@ def _ (text):
     return tools.choose_str(__translations_table.get(text), text)
 # end def
 
+
 # set overall scope function
-__builtins__["_"]=_
+__builtins__["_"] = _
 
 
 def get_translations_dir ():
