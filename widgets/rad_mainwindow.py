@@ -31,10 +31,11 @@ from . import rad_statusbar as SB
 from ..xml import rad_xml_menu as XM
 from ..core import tools
 
+
 class RADMainWindow (RW.RADWidgetBase, TK.Tk):
     r"""
-        Lightweight MainWindow class for people not using tkinter
-        XML widget building on a mainframe;
+        Lightweight MainWindow class for people not using tkinter XML
+        widget building on a mainframe;
         supports all RADWidgetBase app-wide services by default;
         supports on-board self.statusbar widget by default;
         supports on-board self.mainframe widget container by default;
@@ -81,7 +82,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             this could be overridden in subclass;
             no return value (void);
         """
-        # main inits
+        # hook methods
         self._init_wm_protocols(**kw)
         self._init_members(**kw)
         self._init_options(**kw)
@@ -177,16 +178,12 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         """
         # widget inits   ---   automagic gridding /!\
         _frame = TK.Label(
-            self,
-            text = _("Put here your own Frame() widget.")
+            self, text=_("Put here your own Frame() widget.")
         )
-        self.mainframe=tools.choose(
-            kw.get("mainframe"),
-            _frame,
-        )
-        self.tk_owner=self.mainframe
-        self.tk_children=self.mainframe.winfo_children
-        self.mainframe.quit_app=self._slot_quit_app
+        self.mainframe = kw.get("mainframe") or _frame
+        self.tk_owner = self.mainframe
+        self.tk_children = self.mainframe.winfo_children
+        self.mainframe.quit_app = self._slot_quit_app
     # end def
 
 
@@ -197,13 +194,13 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             no return value (void);
         """
         # member inits
-        self.STATE={
+        self.STATE = {
             "hidden": self.hide,
             "minimized": self.minimize,
             "maximized": self.maximize,
             "normal": self.show,
         }
-        self.__pending_task=False
+        self.__pending_task = False
     # end def
 
 
@@ -220,9 +217,9 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             **tools.choose(
                 kw.get("rc_defaults"),
                 dict(
-                    maximized = "0",
-                    mainwindow = "640x480+20+20",
-                    mainwindow_state = "normal",
+                    maximized="0",
+                    mainwindow="640x480+20+20",
+                    mainwindow_state="normal",
                 ),
             )
         )
@@ -238,10 +235,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             no return value (void);
         """
         # widget inits
-        self.statusbar=tools.choose(
-            kw.get("statusbar"),
-            SB.RADStatusBar(self),
-        )
+        self.statusbar = kw.get("statusbar") or SB.RADStatusBar(self)
     # end def
 
 
@@ -274,16 +268,10 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             no return value (void);
         """
         # widget inits
-        self.topmenu=tools.choose(
-            kw.get("topmenu"),
-            XM.RADXMLMenu(self),
-        )
+        self.topmenu = kw.get("topmenu") or XM.RADXMLMenu(self)
         if isinstance(self.topmenu, XM.RADXMLMenu):
             self.topmenu.set_xml_filename(
-                tools.choose_str(
-                    kw.get("topmenu_xml_filename"),
-                    "topmenu",
-                )
+                kw.get("topmenu_xml_filename") or "topmenu"
             )
         # end if
     # end def
@@ -318,9 +306,9 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             state = "normal"
         # end if
         # member inits
-        self.__window_state=state
+        self.__window_state = state
         # update rc options
-        self.options["geometry"]["mainwindow_state"]=str(state)
+        self.options["geometry"]["mainwindow_state"] = str(state)
     # end def
 
 
@@ -329,7 +317,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             slot method for event signal "PendingTaskOff";
             no return value (void);
         """
-        self.__pending_task=False
+        self.__pending_task = False
         self.statusbar.notify(
             tools.choose_str(
                 kw.get("message"),
@@ -345,7 +333,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             slot method for event signal "PendingTaskOn";
             no return value (void);
         """
-        self.__pending_task=True
+        self.__pending_task = True
         self.statusbar.notify(
             tools.choose_str(
                 kw.get("message"),
@@ -376,7 +364,9 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             _("Quit app?"),
             _("Are you sure you want to quit this application?")
         ):
-            self.options.save()
+            # hook method
+            self.on_quit_app(*args, **kw)
+            # really quit app
             self.quit()
         # end if
     # end def
@@ -404,8 +394,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             self._set_state("maximized")
         else:
             self._set_state("normal")
-            self.options["geometry"]\
-                ["mainwindow"]=str(self.geometry())
+            self.options["geometry"]["mainwindow"] = str(self.geometry())
         # end if
     # end def
 
@@ -430,7 +419,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             if not _cvar:
                 _cvar = TK.StringVar()
             # end if
-            self.statusbar.toggle_var=_cvar
+            self.statusbar.toggle_var = _cvar
             self.statusbar.toggle()
         else:
             raise TypeError(
@@ -440,8 +429,8 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
                     "current statusbar type {obj} is *NOT SUPPORTED*"
                 )
                 .format(
-                    cvar = str(stringvarname),
-                    obj = repr(self.statusbar),
+                    cvar=str(stringvarname),
+                    obj=repr(self.statusbar),
                 )
             )
         # end if
@@ -474,15 +463,16 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         self._set_state("hidden")
     # end def
 
+
     @property
     def mainframe (self):
         """
             @property handler for the mainframe widget container;
-            developers may set their own widget building
-            into a TK.Frame widget container and then set mainframe
-            to that container e.g. self.mainframe=TK.Frame(self);
-            RADMainWindow already comes with a preloaded widget
-            for example giving;
+            developers may set their own widget building into a
+            TK.Frame widget container and then set mainframe to that
+            container e.g. self.mainframe=TK.Frame(self);
+            RADMainWindow already comes with a preloaded widget for
+            example giving;
             this can be overridden in subclasses by redefining
             self._init_mainframe() protected virtual method;
         """
@@ -492,9 +482,9 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
     @mainframe.setter
     def mainframe (self, widget):
         if self.cast_widget(widget):
-            self.__mainframe=widget
+            self.__mainframe = widget
             widget.grid(
-                in_ = self, row=0, column=0, **self.GRID_OPTIONS
+                in_=self, row=0, column=0, **self.GRID_OPTIONS
             )
         # end if
     # end def
@@ -532,6 +522,15 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         """
         self.iconify()
         self._set_state("minimized")
+    # end def
+
+
+    def on_quit_app (self, *args, **kw):
+        """
+            hook method to be reimplemented in subclass;
+        """
+        # put your own code here
+        self.options.save()
     # end def
 
 
@@ -577,6 +576,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         self._set_state("normal")
     # end def
 
+
     @property
     def statusbar (self):
         r"""
@@ -595,9 +595,9 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
     @statusbar.setter
     def statusbar (self, widget):
         if self.cast_widget(widget):
-            self.__statusbar=widget
+            self.__statusbar = widget
             widget.grid(
-                in_ = self, row=1, column=0, **self.GRID_OPTIONS
+                in_=self, row=1, column=0, **self.GRID_OPTIONS
             )
         # end if
     # end def
@@ -606,6 +606,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
     def statusbar (self):
         del self.__statusbar
     # end def
+
 
     @property
     def topmenu (self):
@@ -626,7 +627,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
     @topmenu.setter
     def topmenu (self, widget):
         if isinstance(widget, (TK.Menu, XM.RADXMLMenu)):
-            self.__topmenu=widget
+            self.__topmenu = widget
         else:
             raise TypeError(
                 _(

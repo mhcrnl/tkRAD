@@ -16,7 +16,13 @@
 
 ### $ 2014-11-04 RS $
 
-* ;
+* in `RADMainWindow`:
+
+    * added hook method `on_quit_app()`;
+
+* in `RADMainWindow._slot_quit_app()`:
+
+    * added hook method just before really quitting app;
 
 * fixed some minor bugs;
 
