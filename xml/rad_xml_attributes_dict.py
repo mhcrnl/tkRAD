@@ -26,6 +26,7 @@
 from ..core import struct_dict as SD
 from . import rad_xml_attribute as XA
 
+
 class RADXMLAttributesDict (SD.StructDict):
     r"""
         StructDict subclass for commodity;
@@ -40,9 +41,9 @@ class RADXMLAttributesDict (SD.StructDict):
         # super class inits
         super().__init__(*args, **kw)
         # member inits
-        self.item_type=XA.RADXMLAttribute
-        self.item_value_getter="get_value"
-        self.item_value_setter="set_value"
+        self.item_type = XA.RADXMLAttribute
+        self.item_value_getter = "get_value"
+        self.item_value_setter = "set_value"
     # end def
 
 # end class RADXMLAttributesDict
