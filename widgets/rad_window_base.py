@@ -25,7 +25,7 @@
 # lib imports
 import traceback
 import tkinter as TK
-from tkinter import messagebox as MB
+import tkinter.messagebox as MB
 from . import rad_widget_base as RW
 from . import rad_statusbar as SB
 from ..xml import rad_xml_menu as XM
@@ -34,8 +34,8 @@ from ..core import tools
 
 class RADWindowBase (RW.RADWidgetBase):
     r"""
-        Base class for use in subclasses such as RADWindow and
-        RADMainWindow;
+        Base window class for use in subclasses such as RADWindow
+        (Toplevel) and RADMainWindow (Tk);
         supports all RADWidgetBase app-wide services by default;
         supports on-board self.statusbar widget by default;
         supports on-board self.mainframe widget container by default;
@@ -50,17 +50,25 @@ class RADWindowBase (RW.RADWidgetBase):
         exceptions during inits;
     """
 
+    # class constant defs
+    WINDOW_ID = "mainwindow"
+    WINDOW_ID_STATE = format("{}_state", WINDOW_ID)
+
+
     def __init__ (self, tk_owner=None, slot_owner=None, **kw):
         r"""
             class constructor - main inits
             no return value (void);
         """
-        # super inits
+        # super class inits
         try:
-            kw.update(subclassed=True)
-            RW.RADWidgetBase.__init__(
-                self, tk_owner=tk_owner, slot_owner=slot_owner, **kw
+            # override keyword arguments
+            kw.update(
+                tk_owner=tk_owner,
+                slot_owner=slot_owner,
+                subclassed=True
             )
+            RW.RADWidgetBase.__init__(self, **kw)
             self._init__main(**kw)
             self.init_widget(**kw)
             self.statusbar.notify(_("All inits done. OK."))
@@ -142,7 +150,7 @@ class RADWindowBase (RW.RADWidgetBase):
         self.geometry(
             tools.choose_str(
                 kw.get("geometry"),
-                self.options["geometry"].get("mainwindow"),
+                self.options["geometry"].get(self.WINDOW_ID),
                 "100x100",
             )
         )
@@ -150,7 +158,7 @@ class RADWindowBase (RW.RADWidgetBase):
         self.set_window_state(
             tools.choose_str(
                 kw.get("window_state"),
-                self.options["geometry"].get("mainwindow_state"),
+                self.options["geometry"].get(self.WINDOW_ID_STATE),
                 "normal",
             )
         )
@@ -216,11 +224,11 @@ class RADWindowBase (RW.RADWidgetBase):
         self.options.set_defaults(
             **tools.choose(
                 kw.get("rc_defaults"),
-                dict(
-                    maximized="0",
-                    mainwindow="640x480+20+20",
-                    mainwindow_state="normal",
-                ),
+                {
+                    "maximized": "0",
+                    self.WINDOW_ID: "640x480+20+20",
+                    self.WINDOW_ID_STATE: "normal",
+                },
             )
         )
         # load options
