@@ -16,6 +16,29 @@
 
 ### $ 2014-11-04 RS $
 
+* a simple `import tkRAD` statement now includes:
+
+    * historical old classes: `RADApplication`, `RADMainWindow`,
+    `RADXMLMainWindow` and `RADXMLFrame`;
+
+    * new classes: `RADWindow` and `RADXMLWindow`;
+
+* added new `RADWindowBase`, `RADWindow` and `RADXMLWindow` classes:
+
+    * `RADWindowBase` is now the main ancestor for all RAD window
+    subclasses;
+
+    * this includes `RADMainWindow`, `RADXMLMainWindow`, `RADWindow`
+    and `RADXMLWindow`;
+
+    * `RADWindow` and `RADXMLWindow` are **TK.Toplevel()** instances
+    while `RADMainWindow` and `RADXMLMainWindow` are still **TK.Tk()**
+    instances;
+
+    * these new classes allow easy building of multiple document
+    interfaces, as you may now easily duplicate same window templates
+    e.g. for views and forms;
+
 * in `RADXMLWidgetBase._tkRAD_font_support()`:
 
     * fixed font's long family name to tkinter standard notation e.g.

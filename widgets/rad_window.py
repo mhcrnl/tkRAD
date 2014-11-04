@@ -49,7 +49,7 @@ class RADWindow (WB.RADWindowBase, TK.Toplevel):
 
     # class constant defs
     CONFIG = {
-        # for subclass widget pre-configuration
+        # for subclasses pre-configuration
     } # end of CONFIG
 
     WINDOW_ID = "window"
