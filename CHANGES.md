@@ -14,6 +14,13 @@
 ## CHANGELOG
 
 
+### $ 2014-11-04 RS $
+
+* in ``:
+
+* trying to comply with PEP8 everywhere in project;
+
+
 ### $ 2014-03-31 RS $
 
 * tagged and released **tkRAD v1.5 - Sugar Extra**;
