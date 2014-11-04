@@ -1511,7 +1511,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                 _sticky = self.STICKY_ALL
             # end if
             # parsed attribute inits
-            attribute.value=_sticky
+            attribute.value = _sticky
             kw.update(tk_child_config=True)
             self._tk_config(attribute, **kw)
         # end if
@@ -1547,8 +1547,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         # parsed attribute inits
         kw.update(
-            default = "dotbox",
-            values = ("underline", "none"),
+            default="dotbox",
+            values=("underline", "none"),
         )
         self._fix_values(attribute, **kw)
     # end def
@@ -1569,7 +1569,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             _add = ""
         # end if
         # parsed attribute inits
-        attribute.value=_add
+        attribute.value = _add
         # caution: *NO* self._tk_config() by here /!\
     # end def
 
@@ -1611,7 +1611,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                 _anchor = TK.CENTER
             # end if
             # parsed attribute inits
-            attribute.value=_anchor
+            attribute.value = _anchor
             self._tk_config(attribute, **kw)
         # end if
     # end def
@@ -1625,9 +1625,9 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # param controls
         if self._is_new(attribute):
             # parsed attribute inits
-            attribute.value=re.sub(r"[^\w\.]+", r"", attribute.value)
+            attribute.value = re.sub(r"[^\w\.]+", r"", attribute.value)
             # caution: *NO* self._tk_config() by here /!\
-            attribute.parsed=True
+            attribute.parsed = True
         # end if
     # end def
 
@@ -1657,7 +1657,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             _args = ""
         # end if
         # parsed attribute inits
-        attribute.value=_args
+        attribute.value = _args
         # caution: *NO* self._tk_config() by here /!\
     # end def
 
@@ -1669,7 +1669,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             no return value (void);
         """
         # parsed attribute inits
-        attribute.value=tools.normalize_id(attribute.value)
+        attribute.value = tools.normalize_id(attribute.value)
         # caution: *NO* self._tk_config() by here /!\
     # end def
 
@@ -1712,10 +1712,10 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         # parsed attribute inits
         kw.update(
-            default = "bind",
-            values = ("bind_class", "bind_all"),
+            default="bind",
+            values=("bind_class", "bind_all"),
             # caution: *NO* self._tk_config() by here /!\
-            no_tk_config = True,
+            no_tk_config=True,
         )
         self._fix_values(attribute, **kw)
     # end def
@@ -1776,7 +1776,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # param controls
         if self._is_new(attribute):
             # parsed attribute inits
-            attribute.value=list(
+            attribute.value = list(
                 map(
                     str,
                     eval(
@@ -1785,7 +1785,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                 )
             )
             # caution: *NO* self._tk_config() by here /!\
-            attribute.parsed=True
+            attribute.parsed = True
         # end if
     # end def
 
@@ -1805,9 +1805,9 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                 "Frame",
             )
             # parsed attribute inits
-            attribute.value=_class
+            attribute.value = _class
             # caution: *NO* self._tk_config() by here /!\
-            attribute.parsed=True
+            attribute.parsed = True
         # end if
     # end def
 
@@ -1892,8 +1892,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         # parsed attribute inits
         kw.update(
-            default = "below",
-            values = ("above", "flush", "left", "right"),
+            default="below",
+            values=("above", "flush", "left", "right"),
         )
         self._fix_values(attribute, **kw)
     # end def
@@ -1957,7 +1957,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                 )
             # end if
             # parsed attribute inits
-            attribute.value=_fmt
+            attribute.value = _fmt
             self._tk_config(attribute, **kw)
         # end if
     # end def
@@ -1972,10 +1972,10 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # param controls - forces value clean-ups
         if self._is_unparsed(attribute):
             # parsed attribute inits
-            attribute.value=\
+            attribute.value = \
                 tools.normalize_relative_module(attribute.value)
             # caution: *NO* self._tk_config() by here /!\
-            attribute.parsed=True
+            attribute.parsed = True
         # end if
     # end def
 
@@ -2066,9 +2066,9 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # param controls - forces value clean-ups
         if self._is_unparsed(attribute):
             # parsed attribute inits
-            attribute.value=tools.normalize_import(attribute.value)
+            attribute.value = tools.normalize_import(attribute.value)
             # caution: *NO* self._tk_config() by here /!\
-            attribute.parsed=True
+            attribute.parsed = True
         # end if
     # end def
 
@@ -2192,8 +2192,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         # parsed attribute inits
         kw.update(
-            default = "center",
-            values = ("left", "right"),
+            default="center",
+            values=("left", "right"),
         )
         self._fix_values(attribute, **kw)
     # end def
@@ -2237,10 +2237,10 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         # parsed attribute inits
         kw.update(
-            default = "none",
-            values = ("pack", "grid", "place"),
+            default="none",
+            values=("pack", "grid", "place"),
             # caution: *NO* self._tk_config() by here /!\
-            no_tk_config = True,
+            no_tk_config=True,
         )
         self._fix_values(attribute, **kw)
     # end def
@@ -2265,9 +2265,9 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                 _lopts = dict()
             # end if
             # parsed attribute inits
-            attribute.value=_lopts
+            attribute.value = _lopts
             # caution: *NO* self._tk_config() by here /!\
-            attribute.parsed=True
+            attribute.parsed = True
         # end if
     # end def
 
@@ -2374,8 +2374,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         # parsed attribute inits
         kw.update(
-            default = "determinate",
-            values = ("indeterminate", ),
+            default="determinate",
+            values=("indeterminate", ),
         )
         self._fix_values(attribute, **kw)
     # end def
@@ -2424,9 +2424,9 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                 # end if
             # end if
             # parsed attribute inits
-            attribute.value=_name.lstrip(".")
+            attribute.value = _name.lstrip(".")
             # caution: *NO* self._tk_config() by here /!\
-            attribute.parsed=True
+            attribute.parsed = True
         # end if
     # end def
 
@@ -2459,8 +2459,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         # parsed attribute inits
         kw.update(
-            default = "vertical",
-            values = ("horizontal", ),
+            default="vertical",
+            values=("horizontal", ),
         )
         self._fix_values(attribute, **kw)
         # $ 2014-02-27 RS $
@@ -2555,10 +2555,10 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         # parsed attribute inits
         kw.update(
-            default = "no",
-            values = ("yes", "width", "height"),
+            default="no",
+            values=("yes", "width", "height"),
             # caution: *NO* self._tk_config() by here /!\
-            no_tk_config = True,
+            no_tk_config=True,
         )
         self._fix_values(attribute, **kw)
     # end def
@@ -2613,7 +2613,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # param controls
         if self._is_new(attribute):
             # parsed attribute inits
-            attribute.value=tuple(
+            attribute.value = tuple(
                 map(
                     tools.ensure_int,
                     eval(
@@ -2669,13 +2669,13 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # the same point of view!
         if xml_tag == "ttktreeview":
             kw.update(
-                default = "extended",
-                values = ("none", "browse"),
+                default="extended",
+                values=("none", "browse"),
             )
         else:
             kw.update(
-                default = "browse",
-                values = ("single", "multiple", "extended"),
+                default="browse",
+                values=("single", "multiple", "extended"),
             )
         # end if
         self._fix_values(attribute, **kw)
@@ -2694,9 +2694,9 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             _seq = attribute.value.replace("<", "", 1)
             _seq = _seq.replace(">", "", 1)
             # parsed attribute inits
-            attribute.value="<" + _seq + ">"
+            attribute.value = "<" + _seq + ">"
             # CAUTION: *NO* self.tk_config() by here /!\
-            attribute.parsed=True
+            attribute.parsed = True
         # end if
     # end def
 
@@ -2714,8 +2714,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # the same point of view!
         if xml_tag == "ttktreeview":
             kw.update(
-                default = "headings",
-                values = ("tree", ),
+                default="headings",
+                values=("tree", ),
             )
             self._fix_values(attribute, **kw)
         else:
@@ -2823,9 +2823,9 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # param controls
         if self._is_new(attribute):
             # parsed attribute inits
-            attribute.value=path.normalize(attribute.value)
+            attribute.value = path.normalize(attribute.value)
             # caution: *NO* self._tk_config() by here /!\
-            attribute.parsed=True
+            attribute.parsed = True
         # end if
     # end def
 
@@ -2852,9 +2852,9 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                 _start = re.sub(r"\\([@'])", r"\1", _start)
             # end if
             # parsed attribute inits
-            attribute.value=_start
+            attribute.value = _start
             # caution: *NO* self._tk_config() by here /!\
-            attribute.parsed=True
+            attribute.parsed = True
         # end if
     # end def
 
@@ -2904,7 +2904,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                 _style = self.get_object_by_id(_style, _style)
             # end if
             # parsed attribute inits
-            attribute.value=_style
+            attribute.value = _style
             self._tk_config(attribute)
         # end if
     # end def
@@ -3021,8 +3021,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         # parsed attribute inits
         kw.update(
-            default = "default",
-            values = ttk.Style().theme_names(),
+            default="default",
+            values=ttk.Style().theme_names(),
         )
         self._fix_values(attribute, **kw)
     # end def
@@ -3037,8 +3037,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         # parsed attribute inits
         kw.update(
-            default = "none",
-            values = ("focus", "focusin", "focusout", "key", "all"),
+            default="none",
+            values=("focus", "focusin", "focusout", "key", "all"),
         )
         self._fix_values(attribute, **kw)
     # end def
@@ -3088,9 +3088,9 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         # parsed attribute inits
         kw.update(
-            no_tk_config = True,
-            default = "normal",
-            values = ("maximized", "minimized", "hidden"),
+            no_tk_config=True,
+            default="normal",
+            values=("maximized", "minimized", "hidden"),
         )
         self._fix_values(attribute, **kw)
     # end def
@@ -3133,8 +3133,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         if xml_tag == "text":
             kw.update(
-                default = "none",
-                values = ("char", "word"),
+                default="none",
+                values=("char", "word"),
             )
             self._fix_values(attribute, **kw)
         else:
@@ -3160,8 +3160,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         # parsed attribute inits
         kw.update(
-            no_tk_config = True,
-            default = self.XML_RC.get("dir")
+            no_tk_config=True,
+            default=self.XML_RC.get("dir")
         )
         self._ensure_string_value(attribute, **kw)
     # end def
@@ -3174,8 +3174,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         # parsed attribute inits
         kw.update(
-            no_tk_config = True,
-            default = self.XML_RC.get("file_ext")
+            no_tk_config=True,
+            default=self.XML_RC.get("file_ext")
         )
         self._ensure_string_value(attribute, **kw)
     # end def
