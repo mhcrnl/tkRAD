@@ -28,6 +28,7 @@ from tkinter import ttk
 from ..core import tools
 from . import rad_frame as RF
 
+
 class RADStatusBar (RF.RADFrame):
     r"""
         generic status bar for rapid application development (RAD);
@@ -39,8 +40,10 @@ class RADStatusBar (RF.RADFrame):
         e.g. self.delay=5.2  # in seconds;
     """
 
-    NOTIFICATION_DELAY = 5 # seconds
-    MINIMUM_CONSISTENT_DELAY = 0.5 # seconds
+    # class constant defs
+    NOTIFICATION_DELAY = 5          # seconds
+    MINIMUM_CONSISTENT_DELAY = 0.5  # seconds
+
 
     def _get_bit (self, value):
         r"""
@@ -61,8 +64,9 @@ class RADStatusBar (RF.RADFrame):
         # stop any pending notification
         self.after_cancel(self.__notify_pid)
         # reset process id
-        self.__notify_pid=0
+        self.__notify_pid = 0
     # end def
+
 
     @property
     def delay (self):
@@ -74,7 +78,7 @@ class RADStatusBar (RF.RADFrame):
 
     @delay.setter
     def delay (self, value):
-        self.__delay=max(
+        self.__delay = max(
             self.MINIMUM_CONSISTENT_DELAY,
             tools.ensure_float(value),
         )
@@ -96,8 +100,7 @@ class RADStatusBar (RF.RADFrame):
             tools.choose_num(
                 lambda x: x > 0,
                 delay,
-                self.options["gui"]
-                    .get("statusbar_notification_delay"),
+                self.options["gui"].get("statusbar_notification_delay"),
                 self.delay,
                 self.NOTIFICATION_DELAY,
                 5 # last but not least
@@ -125,7 +128,7 @@ class RADStatusBar (RF.RADFrame):
         # stop any pending notification
         self._stop_notification()
         # default text inits
-        self.__static_text=tools.choose_str(
+        self.__static_text = tools.choose_str(
             text,
             self.__static_text,
             _("Ready."),
@@ -145,25 +148,24 @@ class RADStatusBar (RF.RADFrame):
             no return value (void);
         """
         # member inits
-        self.__notify_pid=0
-        self.__static_text=None
-        self._previous_value=0
-        self.toggle_var=TK.StringVar()
-        self.delay=self.NOTIFICATION_DELAY
-        self.MINIMUM_CONSISTENT_DELAY=\
-            abs(self.MINIMUM_CONSISTENT_DELAY)
+        self.__notify_pid = 0
+        self.__static_text = None
+        self._previous_value = 0
+        self.toggle_var = TK.StringVar()
+        self.delay = self.NOTIFICATION_DELAY
+        self.MINIMUM_CONSISTENT_DELAY = abs(self.MINIMUM_CONSISTENT_DELAY)
         # rc options inits
         self.options.set_sections("gui")
         self.options.load()
         # widget inits
         ttk.Sizegrip(self).pack(padx=2, pady=2, side=TK.RIGHT)
-        self.message=TK.StringVar()
-        self.label=ttk.Label(
+        self.message = TK.StringVar()
+        self.label = ttk.Label(
             self,
-            textvariable = self.message,
-            anchor = TK.W,
-            justify = TK.LEFT,
-            relief = TK.SUNKEN,
+            textvariable=self.message,
+            anchor=TK.W,
+            justify=TK.LEFT,
+            relief=TK.SUNKEN,
         )
         self.label.pack(padx=2, pady=2, **self.PACK_OPTIONS)
         self.info()
@@ -190,7 +192,7 @@ class RADStatusBar (RF.RADFrame):
             delay = self.get_correct_delay(delay)
             # restore static text after @delay (in seconds)
             # notice: @delay param can be of 'int' or 'float' type /!\
-            self.__notify_pid=self.after(
+            self.__notify_pid = self.after(
                 tools.ensure_int(delay * 1000.0),
                 self.info
             )
@@ -231,7 +233,7 @@ class RADStatusBar (RF.RADFrame):
                 return self.toggle_var_set(1 - _value)
             # end if
             # update config options
-            self.options["gui"]["show_statusbar"]=str(_value)
+            self.options["gui"]["show_statusbar"] = str(_value)
             # show status bar
             if _value:
                 self.grid()
@@ -242,11 +244,12 @@ class RADStatusBar (RF.RADFrame):
                 self.events.raise_event("StatusbarHide", widget=self)
             # end if
             # update previous value
-            self._previous_value=_value
+            self._previous_value = _value
         else:
             print("[WARNING] toggle_var is *NOT* set up.")
         # end if
     # end def
+
 
     @property
     def toggle_var (self):
@@ -261,7 +264,7 @@ class RADStatusBar (RF.RADFrame):
     def toggle_var (self, arg):
         # param control
         if isinstance(arg, TK.StringVar):
-            self.__toggle_var=arg
+            self.__toggle_var = arg
         else:
             raise TypeError(
                 _(
@@ -270,13 +273,13 @@ class RADStatusBar (RF.RADFrame):
                 ).format(obj_type=repr(TK.StringVar))
             )
             # set a rescue var nevertheless
-            self.__toggle_var=TK.StringVar()
+            self.__toggle_var = TK.StringVar()
         # end if
         # config options inits
         _value = self._get_bit(
-            self.options["gui"].get("show_statusbar", "1")
+            self.options["gui"].get("show_statusbar") or 1
         )
-        self._previous_value=1 - _value
+        self._previous_value = 1 - _value
         self.__toggle_var.set(_value)
     # end def
 
