@@ -2471,7 +2471,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             # because 'orient' is *READ-ONLY* in configure()
             _args = tools.choose_str(attrs["args"]).split(",")
             _args.append("orient='{}'".format(attribute.value))
-            attrs["args"]=",".join(filter(None, _args))
+            attrs["args"] = ",".join(filter(None, _args))
             self.TK_CONFIG.pop("orient", None)
         # end if
     # end def
@@ -3297,7 +3297,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                 _sticky = {
                     "width": TK.E + TK.W,
                     "height": TK.N + TK.S,
-                    "yes": TK.N + TK.S + TK.E + TK.W,
+                    "yes": TK.NW + TK.SE,
                 }.get(attrs.get("resizable"))
                 self.TK_CHILD_CONFIG.setdefault("sticky", _sticky)
                 # add child instead of laying it out
@@ -3322,14 +3322,11 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             no return value (void);
         """
         # param inits
-        _resizable = tools.choose_str(
-            attrs.get("resizable"),
-            "no",
-        ).lower()
+        _resizable = (attrs.get("resizable") or "no").lower()
         # layout method init
         _layout = attrs.get("layout")
         # layout options init
-        _lopts = attrs.get("layout_options", dict())
+        _lopts = attrs.get("layout_options") or dict()
         # param controls
         if _layout and _resizable in ("yes", "width", "height"):
             # pack() method
@@ -3345,7 +3342,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             # grid() method
             elif _layout == "grid":
                 # option inits
-                _lopts["sticky"]={
+                _lopts["sticky"] = {
                     "width": TK.W + TK.E,
                     "height": TK.N + TK.S,
                 }.get(_resizable, self.STICKY_ALL)
@@ -3354,7 +3351,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                     # make parent's column resizable
                     tk_parent.columnconfigure(
                         tools.ensure_int(_lopts.get("column", 0)),
-                        weight = 1
+                        weight=1
                     )
                 # end if
                 # row configure
@@ -3362,7 +3359,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                     # make parent's row resizable
                     tk_parent.rowconfigure(
                         tools.ensure_int(_lopts.get("row", 0)),
-                        weight = 1
+                        weight=1
                     )
                 # end if
             # place() method
@@ -3378,7 +3375,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             # end if
         # end if
         # update layout options
-        attrs["layout_options"]=_lopts
+        attrs["layout_options"] = _lopts
     # end def
 
 
