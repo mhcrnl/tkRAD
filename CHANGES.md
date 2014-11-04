@@ -16,6 +16,13 @@
 
 ### $ 2014-11-04 RS $
 
+* waiting for some good tests before considering **tkRAD v1.6 - PEPs
+and OPs** public release;
+
+* still wondering if I should embed `async.py` module to tkRAD lib?
+this module is already done as `tkGAME.lib.tkgame_animations`; just
+have to rename it/document it, in fact;
+
 * a simple `import tkRAD` statement now includes:
 
     * historical old classes: `RADApplication`, `RADMainWindow`,
