@@ -27,6 +27,7 @@ from ..core import tools
 from ..widgets import rad_mainwindow as MW
 from . import rad_xml_frame as XF
 
+
 class RADXMLMainWindow (MW.RADMainWindow):
     r"""
         general purpose tkRAD MainWindow class implementing
@@ -38,21 +39,15 @@ class RADXMLMainWindow (MW.RADMainWindow):
             inherited from RADMainWindow class;
         """
         # widget inits
-        self.mainframe=tools.choose(
-            kw.get("mainframe"),
-            XF.RADXMLFrame(self, **kw),
-        )
+        self.mainframe = kw.get("mainframe") or XF.RADXMLFrame(self, **kw)
         if hasattr(self.mainframe, "set_xml_filename"):
             self.mainframe.set_xml_filename(
-                tools.choose_str(
-                    kw.get("xml_filename"),
-                    "mainwindow",
-                )
+                kw.get("xml_filename") or "mainwindow"
             )
         # end if
         # shortcut inits
-        self.tk_children=self.mainframe.winfo_children
-        self.mainframe.quit_app=self._slot_quit_app
+        self.tk_children = self.mainframe.winfo_children
+        self.mainframe.quit_app = self._slot_quit_app
     # end def
 
 # end class RADXMLMainWindow
