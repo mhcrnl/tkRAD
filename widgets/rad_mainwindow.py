@@ -74,6 +74,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         # end try
     # end def
 
+
     def _init__main (self, **kw):
         r"""
             protected method def;
@@ -92,6 +93,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         self._init_layout(**kw)
         self._init_events(**kw)
     # end def
+
 
     def _init_events (self, **kw):
         r"""
@@ -113,6 +115,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             }
         )
     # end def
+
 
     def _init_geometry (self, **kw):
         r"""
@@ -152,6 +155,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         )
     # end def
 
+
     def _init_layout (self, **kw):
         r"""
             protected method def;
@@ -163,6 +167,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         self.rowconfigure(1, weight=0)
         self.columnconfigure(0, weight=1)
     # end def
+
 
     def _init_mainframe (self, **kw):
         r"""
@@ -184,6 +189,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         self.mainframe.quit_app=self._slot_quit_app
     # end def
 
+
     def _init_members (self, **kw):
         r"""
             protected method def;
@@ -199,6 +205,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         }
         self.__pending_task=False
     # end def
+
 
     def _init_options (self, **kw):
         r"""
@@ -223,6 +230,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         self.options.load()
     # end def
 
+
     def _init_statusbar (self, **kw):
         r"""
             protected method def;
@@ -235,6 +243,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             SB.RADStatusBar(self),
         )
     # end def
+
 
     def _init_title (self, **kw):
         r"""
@@ -257,6 +266,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         )
     # end def
 
+
     def _init_topmenu (self, **kw):
         r"""
             protected method def;
@@ -278,6 +288,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         # end if
     # end def
 
+
     def _init_wm_protocols (self, **kw):
         r"""
             protected method def;
@@ -287,6 +298,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         # capture window manager's events handling
         self.protocol("WM_DELETE_WINDOW", self._slot_quit_app)
     # end def
+
 
     def _set_state (self, state):
         r"""
@@ -311,6 +323,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         self.options["geometry"]["mainwindow_state"]=str(state)
     # end def
 
+
     def _slot_pending_task_off (self, *args, **kw):
         r"""
             slot method for event signal "PendingTaskOff";
@@ -326,6 +339,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         )
     # end def
 
+
     def _slot_pending_task_on (self, *args, **kw):
         r"""
             slot method for event signal "PendingTaskOn";
@@ -340,6 +354,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             )
         )
     # end def
+
 
     def _slot_quit_app (self, *args, **kw):
         """
@@ -365,6 +380,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             self.quit()
         # end if
     # end def
+
 
     def _slot_root_changed (self, tk_event=None, *args, **kw):
         r"""
@@ -392,6 +408,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
                 ["mainwindow"]=str(self.geometry())
         # end if
     # end def
+
 
     def connect_statusbar (self, stringvarname):
         r"""
@@ -430,12 +447,14 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         # end if
     # end def
 
+
     def get_pending_task (self):
         r"""
             returns current "pending task" flag value;
         """
         return self.__pending_task
     # end def
+
 
     def get_window_state (self):
         r"""
@@ -444,6 +463,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         """
         return self.__window_state
     # end def
+
 
     def hide (self, *args, **kw):
         r"""
@@ -484,6 +504,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         del self.__mainframe
     # end def
 
+
     def maximize (self, *args, **kw):
         r"""
             maximizes this main window;
@@ -503,6 +524,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         # end if
     # end def
 
+
     def minimize (self, *args, **kw):
         r"""
             minimizes (iconifies) this main window;
@@ -511,6 +533,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         self.iconify()
         self._set_state("minimized")
     # end def
+
 
     def run (self):
         r"""
@@ -521,6 +544,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
         self.mainloop()
         self.destroy()
     # end def
+
 
     def set_window_state (self, state):
         r"""
@@ -542,6 +566,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
             )
         # end if
     # end def
+
 
     def show (self, *args, **kw):
         r"""
@@ -616,6 +641,7 @@ class RADMainWindow (RW.RADWidgetBase, TK.Tk):
     def topmenu (self):
         del self.__topmenu
     # end def
+
 
     def xml_build (self, filename=None, silent_mode=False):
         r"""

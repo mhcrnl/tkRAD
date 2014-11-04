@@ -46,6 +46,7 @@ class StructDict (dict):
         # end if
     # end def
 
+
     def __init__ (self, *args, **kw):
         r"""
             class constructor;
@@ -66,6 +67,7 @@ class StructDict (dict):
         self.item_value_setter="set_value"
     # end def
 
+
     def __setitem__ (self, key, value):
         r"""
             item value setter;
@@ -80,6 +82,7 @@ class StructDict (dict):
             super().__setitem__(key, value)
         # end if
     # end def
+
 
     def flatten (self):
         r"""
@@ -98,6 +101,7 @@ class StructDict (dict):
         return _dict
     # end def
 
+
     def get (self, key, default=None):
         r"""
             item value getter;
@@ -113,6 +117,7 @@ class StructDict (dict):
         # end if
     # end def
 
+
     def get_item (self, key, default=None):
         r"""
             returns dict item along @key no matter what it is like;
@@ -121,6 +126,7 @@ class StructDict (dict):
         """
         return super().get(key, default)
     # end def
+
 
     def get_value (self, key, default=None):
         r"""
@@ -182,6 +188,7 @@ class StructDict (dict):
         del self.__item_value_setter
     # end def
 
+
     def set (self, key, value):
         r"""
             'item value' setter;
@@ -192,6 +199,7 @@ class StructDict (dict):
         self.__setitem__(key, value)
     # end def
 
+
     def set_item (self, key, value):
         r"""
             real dict item setter;
@@ -199,6 +207,7 @@ class StructDict (dict):
         """
         super().__setitem__(key, value)
     # end def
+
 
     def set_value (self, key, value):
         r"""

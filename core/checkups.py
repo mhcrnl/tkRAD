@@ -85,21 +85,19 @@ def python_require (version, strict=False):
     # compare strict version
     if strict and (_req_version != _cur_version):
         raise SystemError(
-            (
-                "This program expects *STRICT* Python "
-                "version {vreq} while current version is {vcur}."
-            ).format(vreq=_req_version, vcur=_cur_version)
+            "This program expects *STRICT* Python "
+            "version {vreq} while current version is {vcur}."
+            .format(vreq=_req_version, vcur=_cur_version)
         )
         exit(1)
     # compare loose version
     elif parse_version(_req_version) > parse_version(_cur_version):
         raise SystemError(
-            (
-                "This program expects *AT LEAST* Python "
-                "version {vreq} while current version is {vcur}."
-            ).format(
-                vreq = parse_version(_req_version, get_string=True),
-                vcur = _cur_version
+            "This program expects *AT LEAST* Python "
+            "version {vreq} while current version is {vcur}."
+            .format(
+                vreq=parse_version(_req_version, get_string=True),
+                vcur=_cur_version
             )
         )
         exit(1)

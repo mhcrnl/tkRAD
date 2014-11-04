@@ -96,6 +96,7 @@ class EventManager:
         self.connections=dict()
     # end def
 
+
     def connect (self, signal, *slots):
         r"""
             connects signal name to multiple callback slots;
@@ -120,6 +121,7 @@ class EventManager:
         # operation failed
         return False
     # end def
+
 
     def connect_dict (self, events_dict):
         r"""
@@ -156,6 +158,7 @@ class EventManager:
         return False
     # end def
 
+
     def disconnect (self, signal, *slots):
         r"""
             disconnects list of callback slots from signal name;
@@ -181,6 +184,7 @@ class EventManager:
         return False
     # end def
 
+
     def disconnect_all (self, *signals):
         r"""
             disconnects all callback slots from each signal listed;
@@ -198,6 +202,7 @@ class EventManager:
             self.connections.pop(_signal, None)
         # end for
     # end def
+
 
     def raise_event (self, signal, *args, **kw):
         r"""

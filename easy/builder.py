@@ -229,6 +229,7 @@ class Builder (TK.Frame):
         # end for
     # end def
 
+
     def _get_correct_id (self, attr_id):
         r"""
             normalizes XML attribute @attr_id param;
@@ -245,6 +246,7 @@ class Builder (TK.Frame):
         # return normalized id
         return attr_id
     # end def
+
 
     def _get_unique_id (self, radix):
         r"""
@@ -267,6 +269,7 @@ class Builder (TK.Frame):
         # end if
         return None
     # end def
+
 
     def _init_xml_tree (self, arg):
         r"""
@@ -297,6 +300,7 @@ class Builder (TK.Frame):
         # end if
     # end def
 
+
     def _parse_attr_command (self, value, attrs, **kw):
         r"""
             parses XML attribute 'command';
@@ -306,6 +310,7 @@ class Builder (TK.Frame):
         # XML parsed attribute inits
         attrs["command"]=eval(value)
     # end def
+
 
     def _parse_attr_id (self, value, attrs, **kw):
         r"""
@@ -317,6 +322,7 @@ class Builder (TK.Frame):
         # XML parsed attribute inits
         attrs["id"]=self._get_correct_id(value)
     # end def
+
 
     def _parse_xml_attributes (self, xml_element, tk_parent):
         r"""
@@ -346,6 +352,7 @@ class Builder (TK.Frame):
             # end if
         # end for
     # end def
+
 
     def _register_object_by_id (self, built_object, attr_id):
         r"""
@@ -403,6 +410,7 @@ class Builder (TK.Frame):
         return None
     # end def
 
+
     def get_object_by_id (self, attr_id):
         r"""
             tries to retrieve the object created through its definition
@@ -413,6 +421,7 @@ class Builder (TK.Frame):
         """
         return self.objects.get(normalize_id(attr_id))
     # end def
+
 
     def hide_widgets (self):
         r"""
@@ -427,6 +436,7 @@ class Builder (TK.Frame):
             _widget.place_forget()
         # end for
     # end def
+
 
     def set_pack_options (self, **kw):
         r"""

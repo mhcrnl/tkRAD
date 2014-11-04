@@ -74,6 +74,7 @@ class OptionManager(CP.ConfigParser):
         self._reset_load()
     # end def
 
+
     def _get_path (self):
         r"""
             builds path along rc config dir and filename;
@@ -81,6 +82,7 @@ class OptionManager(CP.ConfigParser):
         """
         return OP.join(self.get_config_dir(), self.get_config_file())
     # end def
+
 
     def _reset_load (self):
         r"""
@@ -90,6 +92,7 @@ class OptionManager(CP.ConfigParser):
         self.__loaded=False
     # end def
 
+
     def get_config_dir (self):
         r"""
             configuration directory getter;
@@ -97,12 +100,14 @@ class OptionManager(CP.ConfigParser):
         return path.normalize(self.__rc_dir)
     # end def
 
+
     def get_config_file (self):
         r"""
             configuration file radix getter (filename w/out extension);
         """
         return self.__rc_file
     # end def
+
 
     def load (self):
         r"""
@@ -130,6 +135,7 @@ class OptionManager(CP.ConfigParser):
         return _success
     # end def
 
+
     def reload (self):
         r"""
             forces reload of rc file and resets internal options;
@@ -140,6 +146,7 @@ class OptionManager(CP.ConfigParser):
         self._reset_load()
         return self.load()
     # end def
+
 
     def save (self):
         r"""
@@ -166,6 +173,7 @@ class OptionManager(CP.ConfigParser):
         # end try
     # end def
 
+
     def set_config_dir (self, value):
         r"""
             configuration directory setter;
@@ -177,6 +185,7 @@ class OptionManager(CP.ConfigParser):
         )
         self._reset_load()
     # end def
+
 
     def set_config_file (self, value):
         r"""
@@ -191,6 +200,7 @@ class OptionManager(CP.ConfigParser):
         self._reset_load()
     # end def
 
+
     def set_defaults (self, **kw):
         r"""
             fills the 'DEFAULT' rc file section with default
@@ -199,6 +209,7 @@ class OptionManager(CP.ConfigParser):
         """
         self["DEFAULT"].update(kw)
     # end def
+
 
     def set_sections (self, *names):
         r"""

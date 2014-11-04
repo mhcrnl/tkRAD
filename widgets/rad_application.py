@@ -92,6 +92,7 @@ class RADApplication:
         self._check_dependencies(**kw)
     # end def
 
+
     def _check_dependencies (self, **kw):
         r"""
             protected method def;
@@ -141,6 +142,7 @@ class RADApplication:
         checkups.python_require(**_python)
     # end def
 
+
     def _init_i18n (self, **kw):
         r"""
             protected method def;
@@ -164,6 +166,7 @@ class RADApplication:
         )
     # end def
 
+
     def _init_members (self, **kw):
         r"""
             protected method def;
@@ -177,6 +180,7 @@ class RADApplication:
         self._set_run_mode(tools.choose_str(kw.get("run_mode"), "GUI"))
         self.__kw=kw
     # end def
+
 
     def _init_options (self, **kw):
         r"""
@@ -235,6 +239,7 @@ class RADApplication:
         )
     # end def
 
+
     def _init_root_dir (self, **kw):
         r"""
             protected method def;
@@ -256,6 +261,7 @@ class RADApplication:
         # free some useless memory right now /!\
         del inspect
     # end def
+
 
     def _init_service (self, **kw):
         r"""
@@ -282,6 +288,7 @@ class RADApplication:
             silent_mode = True,
         )
     # end def
+
 
     def _parse_sys_argv (self, **kw):
         r"""
@@ -331,6 +338,7 @@ class RADApplication:
         del AP
     # end def
 
+
     def _run_mode (self, **kw):
         r"""
             protected method def;
@@ -342,6 +350,7 @@ class RADApplication:
         # own code in subclasses /!\
         return self.__run_mode
     # end def
+
 
     def _set_run_mode (self, mode):
         r"""
@@ -359,6 +368,7 @@ class RADApplication:
         # end if
         self.__run_mode=mode
     # end def
+
 
     def _start_cli (self, **kw):
         r"""
@@ -379,6 +389,7 @@ class RADApplication:
             )
         )
     # end def
+
 
     def _start_gui (self, **kw):
         r"""
@@ -442,6 +453,7 @@ class RADApplication:
             # end if
         # end try
     # end def
+
 
     def run (self, **kw):
         r"""

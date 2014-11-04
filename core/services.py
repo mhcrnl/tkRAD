@@ -78,6 +78,7 @@ class ServiceManager:
         self.clear_all()
     # end def
 
+
     def clear_all (self):
         r"""
             resets service manager to a new dict() object;
@@ -85,6 +86,7 @@ class ServiceManager:
         """
         self.services=dict()
     # end def
+
 
     def delete_service (self, service_name):
         r"""
@@ -95,6 +97,7 @@ class ServiceManager:
         # delete service by name
         self.services.pop(str(service_name), None)
     # end def
+
 
     def get_service (self, service_name, **kw):
         r"""
@@ -117,6 +120,7 @@ class ServiceManager:
         # end if
         return None
     # end def
+
 
     def register_service (self, service_name, service_object, **kw):
         r"""
@@ -142,6 +146,7 @@ class ServiceManager:
         # end if
         return False
     # end def
+
 
     def replace_service (self, service_name, service_object, **kw):
         r"""

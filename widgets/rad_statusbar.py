@@ -50,6 +50,7 @@ class RADStatusBar (RF.RADFrame):
         return int(tools.ensure_int(value) != 0)
     # end def
 
+
     def _stop_notification (self):
         r"""
             protected method def;
@@ -84,6 +85,7 @@ class RADStatusBar (RF.RADFrame):
         del self.__delay
     # end def
 
+
     def get_correct_delay (self, delay=None):
         r"""
             tries to retrieve a correct delay value amongst many;
@@ -103,12 +105,14 @@ class RADStatusBar (RF.RADFrame):
         )
     # end def
 
+
     def hide (self, *args, **kw):
         r"""
             hides the statusbar;
         """
         self.toggle_var_set(0)
     # end def
+
 
     def info (self, text=None):
         r"""
@@ -132,6 +136,7 @@ class RADStatusBar (RF.RADFrame):
         # refresh display
         self.update_idletasks()
     # end def
+
 
     def init_widget (self, **kw):
         r"""
@@ -164,6 +169,7 @@ class RADStatusBar (RF.RADFrame):
         self.info()
     # end def
 
+
     def notify (self, text, delay=None):
         r"""
             sets a low priority-level message for a delayed bit of
@@ -191,12 +197,14 @@ class RADStatusBar (RF.RADFrame):
         # end if
     # end def
 
+
     def show (self, *args, **kw):
         r"""
             displays the statusbar;
         """
         self.toggle_var_set(1)
     # end def
+
 
     def toggle (self, *args, **kw):
         r"""
@@ -276,6 +284,7 @@ class RADStatusBar (RF.RADFrame):
     def toggle_var (self):
         del self.__toggle_var
     # end def
+
 
     def toggle_var_set (self, value):
         r"""

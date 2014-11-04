@@ -65,6 +65,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self.TK_CHILD_CONFIG=dict()
     # end def
 
+
     def _fix_values (self, attribute, default, values, **kw):
         r"""
             protected method def;
@@ -86,6 +87,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # end if
     # end def
 
+
     def _is_new (self, attribute):
         r"""
             protected method def;
@@ -96,6 +98,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         return attribute and not attribute.parsed and \
                                         tools.is_pstr(attribute.value)
     # end def
+
 
     def _is_unparsed (self, attribute):
         r"""
@@ -116,6 +119,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self._tkRAD_color_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_activeforeground (self, attribute, **kw):
         r"""
             color attribute;
@@ -124,6 +128,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # parsed attribute inits
         self._tkRAD_color_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_background (self, attribute, **kw):
         r"""
@@ -134,6 +139,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self._tkRAD_color_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_bd (self, attribute, **kw):
         r"""
             width attribute;
@@ -142,6 +148,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # parsed attribute inits
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_bg (self, attribute, **kw):
         r"""
@@ -152,6 +159,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self._tkRAD_color_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_bitmap (self, attribute, **kw):
         r"""
             bitmap attribute;
@@ -161,6 +169,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self._tkRAD_bitmap_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_borderwidth (self, attribute, **kw):
         r"""
             width attribute;
@@ -169,6 +178,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # parsed attribute inits
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_checked (self, attribute, **kw):
         r"""
@@ -180,6 +190,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_command (self, attribute, **kw):
         r"""
             command attribute;
@@ -188,6 +199,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # parsed attribute inits
         self._tkRAD_command_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_compound (self, attribute, xml_tag, **kw):
         r"""
@@ -208,6 +220,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self._fix_values(attribute, **kw)
     # end def
 
+
     def _parse_attr_cursor (self, attribute, **kw):
         r"""
             cursor attribute;
@@ -216,6 +229,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # parsed attribute inits
         self._tkRAD_cursor_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_disabledforeground (self, attribute, **kw):
         r"""
@@ -226,6 +240,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self._tkRAD_color_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_fg (self, attribute, **kw):
         r"""
             color attribute;
@@ -234,6 +249,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # parsed attribute inits
         self._tkRAD_color_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_font (self, attribute, **kw):
         r"""
@@ -244,6 +260,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self._tkRAD_font_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_foreground (self, attribute, **kw):
         r"""
             color attribute;
@@ -252,6 +269,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # parsed attribute inits
         self._tkRAD_color_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_id (self, attribute, **kw):
         r"""
@@ -272,6 +290,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # end if
     # end def
 
+
     def _parse_attr_image (self, attribute, **kw):
         r"""
             image attribute;
@@ -280,6 +299,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # parsed attribute inits
         self._tkRAD_image_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_menu (self, attribute, **kw):
         r"""
@@ -293,6 +313,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
             self._tk_config(attribute, **kw)
         # end if
     # end def
+
 
     def _parse_attr_name (self, attribute, **kw):
         r"""
@@ -314,6 +335,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # end if
     # end def
 
+
     def _parse_attr_offvalue (self, attribute, **kw):
         r"""
             value attribute;
@@ -322,6 +344,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # parsed attribute inits
         self._tkRAD_any_value_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_onvalue (self, attribute, **kw):
         r"""
@@ -332,6 +355,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self._tkRAD_any_value_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_relief (self, attribute, **kw):
         r"""
             relief attribute;
@@ -341,6 +365,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self._tkRAD_relief_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_selectcolor (self, attribute, **kw):
         r"""
             color attribute;
@@ -349,6 +374,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # parsed attribute inits
         self._tkRAD_color_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_selected (self, attribute, **kw):
         r"""
@@ -360,6 +386,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_selectimage (self, attribute, **kw):
         r"""
             image attribute;
@@ -368,6 +395,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # parsed attribute inits
         self._tkRAD_image_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_state (self, attribute, **kw):
         r"""
@@ -378,6 +406,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self._tkRAD_state_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_underline (self, attribute, **kw):
         r"""
             resets underline value to 0 if not an integer value;
@@ -386,6 +415,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # parsed attribute inits
         self._tkRAD_integer_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_value (self, attribute, **kw):
         r"""
@@ -396,6 +426,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self._tkRAD_any_value_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_variable (self, attribute, **kw):
         r"""
             control variable attribute;
@@ -404,6 +435,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # parsed attribute inits
         self._tkRAD_cvar_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_widget (self, attribute, **kw):
         r"""
@@ -414,6 +446,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         kw.update(no_tk_config=True)
         self._tkRAD_widget_support(attribute, **kw)
     # end def
+
 
     def _tkRAD_any_value_support (self, attribute, **kw):
         r"""
@@ -428,6 +461,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # end if
     # end def
 
+
     def _tkRAD_bitmap_support (self, attribute, **kw):
         r"""
             protected method def;
@@ -441,6 +475,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
             self._tk_config(attribute)
         # end if
     # end def
+
 
     def _tkRAD_boolean_support (self, attribute, **kw):
         r"""
@@ -461,6 +496,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # end if
     # end def
 
+
     def _tkRAD_color_support (self, attribute, **kw):
         r"""
             protected method def;
@@ -470,6 +506,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # FIXME: should implement something here?
         self._tkRAD_any_value_support(attribute, **kw)
     # end def
+
 
     def _tkRAD_command_support (self, attribute, **kw):
         r"""
@@ -492,6 +529,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         )
     # end def
 
+
     def _tkRAD_cursor_support (self, attribute, **kw):
         r"""
             protected method def;
@@ -501,6 +539,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # FIXME: should implement something here?
         self._tkRAD_any_value_support(attribute, **kw)
     # end def
+
 
     def _tkRAD_cvar_support (self, attribute, **kw):
         r"""
@@ -514,6 +553,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
             self._tk_config(attribute, **kw)
         # end if
     # end def
+
 
     def _tkRAD_deferred_command_support (self, attribute, *args, **kw):
         r"""
@@ -608,6 +648,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # end if
     # end def
 
+
     def _tkRAD_dimension_support (self, attribute, **kw):
         r"""
             protected method def;
@@ -617,6 +658,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # FIXME: should implement something here?
         self._tkRAD_any_value_support(attribute, **kw)
     # end def
+
 
     def _tkRAD_float_support (self, attribute, **kw):
         r"""
@@ -631,6 +673,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
             self._tk_config(attribute, **kw)
         # end if
     # end def
+
 
     def _tkRAD_font_support (self, attribute, **kw):
         r"""
@@ -665,6 +708,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # end if
     # end def
 
+
     def _tkRAD_image_support (self, attribute, **kw):
         r"""
             protected method def;
@@ -679,6 +723,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # end if
     # end def
 
+
     def _tkRAD_integer_support (self, attribute, **kw):
         r"""
             protected method def;
@@ -692,6 +737,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
             self._tk_config(attribute, **kw)
         # end if
     # end def
+
 
     def _tkRAD_label_support (self, attribute, attrs, **kw):
         r"""
@@ -728,6 +774,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # end if
     # end def
 
+
     def _tkRAD_relief_support (self, attribute, **kw):
         r"""
             must be one of 'flat', 'raised', 'sunken', 'groove',
@@ -743,6 +790,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         self._fix_values(attribute, **kw)
     # end def
 
+
     def _tkRAD_state_support (self, attribute, **kw):
         r"""
             must be one of 'normal' or 'disabled';
@@ -756,6 +804,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         )
         self._fix_values(attribute, **kw)
     # end def
+
 
     def _tkRAD_widget_support (self, attribute, **kw):
         r"""
@@ -795,6 +844,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
             # end if
         # end if
     # end def
+
 
     def _tk_config (self, attribute, **kw):
         r"""

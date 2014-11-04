@@ -72,6 +72,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         # end try
     # end def
 
+
     def _get_geometry_position (self, str_geometry):
         r"""
             protected method def;
@@ -85,6 +86,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         return _pos
     # end def
 
+
     def _hook_center_dialog (self, tk_event=None, *args, **kw):
         r"""
             protected method def;
@@ -94,6 +96,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         # put your own code in subclass
         self.center_dialog(tk_event, *args, **kw)
     # end def
+
 
     def _init__main (self, **kw):
         r"""
@@ -111,6 +114,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         self._init_events(**kw)
     # end def
 
+
     def _init_contents (self, **kw):
         r"""
             protected method def;
@@ -120,6 +124,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         # set widget inits (hook method from RADWidgetBase)
         self.init_widget(**kw)
     # end def
+
 
     def _init_events (self, **kw):
         r"""
@@ -136,6 +141,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
             }
         )
     # end def
+
 
     def _init_geometry (self, **kw):
         r"""
@@ -171,6 +177,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         self.hide()
     # end def
 
+
     def _init_members (self, **kw):
         r"""
             protected method def;
@@ -186,6 +193,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         self._slot_pending_task_off()
         self.set_modal(**kw)
     # end def
+
 
     def _init_options (self, **kw):
         r"""
@@ -208,6 +216,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         self.options.load()
     # end def
 
+
     def _init_title (self, **kw):
         r"""
             protected method def;
@@ -222,6 +231,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         # end if
     # end def
 
+
     def _init_wm_protocols (self, **kw):
         r"""
             protected method def;
@@ -231,6 +241,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         # capture window manager's events handling
         self.protocol("WM_DELETE_WINDOW", self._slot_quit_dialog)
     # end def
+
 
     def _set_state (self, state):
         r"""
@@ -255,6 +266,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         self.options["geometry"]["dialog_state"]=str(state)
     # end def
 
+
     def _slot_button_cancel (self, tk_event=None, *args, **kw):
         r"""
             protected method def;
@@ -270,6 +282,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         # end if
     # end def
 
+
     def _slot_dialog_changed (self, tk_event=None, *args, **kw):
         r"""
             protected method def;
@@ -280,6 +293,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
                             [self.classname()]=self.winfo_geometry()
     # end def
 
+
     def _slot_pending_task_off (self, tk_event=None, *args, **kw):
         r"""
             slot method for event signal "DialogPendingTaskOff";
@@ -288,6 +302,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         self.__pending_task=False
     # end def
 
+
     def _slot_pending_task_on (self, tk_event=None, *args, **kw):
         r"""
             slot method for event signal "DialogPendingTaskOn";
@@ -295,6 +310,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         """
         self.__pending_task=True
     # end def
+
 
     def _slot_quit_dialog (self, tk_event=None, *args, **kw):
         r"""
@@ -324,6 +340,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         # end if
     # end def
 
+
     def cancel_dialog (self, tk_event=None, *args, **kw):
         r"""
             user dialog cancellation method;
@@ -335,6 +352,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         # succeeded
         return True
     # end def
+
 
     def center_dialog (self, tk_event=None, *args, **kw):
         r"""
@@ -371,12 +389,14 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         self.geometry("+{x}+{y}".format(x=_left, y=_top))
     # end def
 
+
     def get_pending_task (self):
         r"""
             returns current "pending task" flag value;
         """
         return self.__pending_task
     # end def
+
 
     def get_window_state (self):
         r"""
@@ -385,6 +405,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         """
         return self.__window_state
     # end def
+
 
     def hide (self, tk_event=None, *args, **kw):
         r"""
@@ -395,6 +416,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         self.withdraw()
         self._set_state("hidden")
     # end def
+
 
     def init_widget (self, **kw):
         r"""
@@ -431,6 +453,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         self.set_contents(_contents, **kw)
     # end def
 
+
     def is_modal (self):
         r"""
             returns True if this dialog window is MODAL, False
@@ -438,6 +461,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         """
         return self.__modal
     # end def
+
 
     def minimize (self, tk_event=None, *args, **kw):
         r"""
@@ -448,6 +472,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         self.iconify()
         self._set_state("minimized")
     # end def
+
 
     def set_contents (self, contents, pad_x=7, pad_y=7, **kw):
         r"""
@@ -477,6 +502,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         # end if
     # end def
 
+
     def set_modal (self, value=None, **kw):
         r"""
             sets this dialog window in modal mode or not;
@@ -486,6 +512,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
             bool, value, kw.get("modal"), True
         )
     # end def
+
 
     def set_window_state (self, state):
         r"""
@@ -507,6 +534,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
             )
         # end if
     # end def
+
 
     def show (self, tk_event=None, *args, **kw):
         r"""
@@ -540,6 +568,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
             self.bind("<Configure>", self._slot_dialog_changed)
         # end if
     # end def
+
 
     def validate_dialog (self, tk_event=None, *args, **kw):
         r"""
@@ -590,6 +619,7 @@ class RADButtonsDialog (RADDialog):
         # end if
     # end def
 
+
     def _init_contents (self, **kw):
         r"""
             protected method def;
@@ -599,6 +629,7 @@ class RADButtonsDialog (RADDialog):
         # set widget inits (hook method from RADWidgetBase)
         self.init_widget(**kw)
     # end def
+
 
     def _init_events (self, **kw):
         r"""
@@ -615,6 +646,7 @@ class RADButtonsDialog (RADDialog):
         # end for
     # end def
 
+
     def _init_members (self, **kw):
         r"""
             protected method def;
@@ -626,6 +658,7 @@ class RADButtonsDialog (RADDialog):
         self.__buttons=None
     # end def
 
+
     def _slot_button_abandon (self, tk_event=None, *args, **kw):
         r"""
             dialog button slot method;
@@ -635,6 +668,7 @@ class RADButtonsDialog (RADDialog):
         # put your own code in subclass
         pass
     # end def
+
 
     def _slot_button_abort (self, tk_event=None, *args, **kw):
         r"""
@@ -646,6 +680,7 @@ class RADButtonsDialog (RADDialog):
         pass
     # end def
 
+
     def _slot_button_apply (self, tk_event=None, *args, **kw):
         r"""
             dialog button slot method;
@@ -655,6 +690,7 @@ class RADButtonsDialog (RADDialog):
         # put your own code in subclass
         pass
     # end def
+
 
     def _slot_button_delete (self, tk_event=None, *args, **kw):
         r"""
@@ -666,6 +702,7 @@ class RADButtonsDialog (RADDialog):
         pass
     # end def
 
+
     def _slot_button_ignore (self, tk_event=None, *args, **kw):
         r"""
             dialog button slot method;
@@ -676,6 +713,7 @@ class RADButtonsDialog (RADDialog):
         pass
     # end def
 
+
     def _slot_button_no (self, tk_event=None, *args, **kw):
         r"""
             dialog button slot method;
@@ -685,6 +723,7 @@ class RADButtonsDialog (RADDialog):
         # put your own code in subclass
         pass
     # end def
+
 
     def _slot_button_ok (self, tk_event=None, *args, **kw):
         r"""
@@ -701,6 +740,7 @@ class RADButtonsDialog (RADDialog):
         # end if
     # end def
 
+
     def _slot_button_rename (self, tk_event=None, *args, **kw):
         r"""
             dialog button slot method;
@@ -710,6 +750,7 @@ class RADButtonsDialog (RADDialog):
         # put your own code in subclass
         pass
     # end def
+
 
     def _slot_button_replace (self, tk_event=None, *args, **kw):
         r"""
@@ -721,6 +762,7 @@ class RADButtonsDialog (RADDialog):
         pass
     # end def
 
+
     def _slot_button_reply (self, tk_event=None, *args, **kw):
         r"""
             dialog button slot method;
@@ -730,6 +772,7 @@ class RADButtonsDialog (RADDialog):
         # put your own code in subclass
         pass
     # end def
+
 
     def _slot_button_reset (self, tk_event=None, *args, **kw):
         r"""
@@ -741,6 +784,7 @@ class RADButtonsDialog (RADDialog):
         pass
     # end def
 
+
     def _slot_button_retry (self, tk_event=None, *args, **kw):
         r"""
             dialog button slot method;
@@ -750,6 +794,7 @@ class RADButtonsDialog (RADDialog):
         # put your own code in subclass
         pass
     # end def
+
 
     def _slot_button_save (self, tk_event=None, *args, **kw):
         r"""
@@ -761,6 +806,7 @@ class RADButtonsDialog (RADDialog):
         pass
     # end def
 
+
     def _slot_button_saveas (self, tk_event=None, *args, **kw):
         r"""
             dialog button slot method;
@@ -770,6 +816,7 @@ class RADButtonsDialog (RADDialog):
         # put your own code in subclass
         pass
     # end def
+
 
     def _slot_button_send (self, tk_event=None, *args, **kw):
         r"""
@@ -781,6 +828,7 @@ class RADButtonsDialog (RADDialog):
         pass
     # end def
 
+
     def _slot_button_submit (self, tk_event=None, *args, **kw):
         r"""
             dialog button slot method;
@@ -790,6 +838,7 @@ class RADButtonsDialog (RADDialog):
         # put your own code in subclass
         pass
     # end def
+
 
     def _slot_button_validate (self, tk_event=None, *args, **kw):
         r"""
@@ -801,6 +850,7 @@ class RADButtonsDialog (RADDialog):
         pass
     # end def
 
+
     def _slot_button_verify (self, tk_event=None, *args, **kw):
         r"""
             dialog button slot method;
@@ -811,6 +861,7 @@ class RADButtonsDialog (RADDialog):
         pass
     # end def
 
+
     def _slot_button_yes (self, tk_event=None, *args, **kw):
         r"""
             dialog button slot method;
@@ -820,6 +871,7 @@ class RADButtonsDialog (RADDialog):
         # put your own code in subclass
         pass
     # end def
+
 
     def init_widget (self, **kw):
         r"""
@@ -851,6 +903,7 @@ class RADButtonsDialog (RADDialog):
         # set buttonbar
         self.set_buttons(*kw.get("buttons", list()), **kw)
     # end def
+
 
     def set_buttons (self, *args, pad_x=7, pad_y=7, **kw):
         r"""

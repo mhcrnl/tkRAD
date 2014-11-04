@@ -180,6 +180,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         return True
     # end def
 
+
     def _build_element_command (self, xml_tag, xml_element, tk_parent):
         r"""
             builds a menu item of type 'command' (action);
@@ -194,6 +195,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         tk_parent.add_command(**_coptions)
         return True
     # end def
+
 
     def _build_element_menu (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -238,6 +240,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         )
     # end def
 
+
     def _build_element_radiobutton (self, xml_tag, xml_element, tk_parent):
         r"""
             builds a menu item of type 'radiobutton' (options group
@@ -262,6 +265,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         return True
     # end def
 
+
     def _build_element_separator (self, xml_tag, xml_element, tk_parent):
         r"""
             builds a menu separator item;
@@ -273,6 +277,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         tk_parent.add_separator()
         return True
     # end def
+
 
     def _build_element_tkmenu (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -316,6 +321,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         )
     # end def
 
+
     def _init_checkables (self, xml_element, tk_parent):
         r"""
             protected method def;
@@ -338,6 +344,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
             # must flatten() at last
         ).flatten()
     # end def
+
 
     def _init_coptions (self, xml_element, tk_parent):
         r"""
@@ -376,6 +383,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         return _coptions
     # end def
 
+
     def _init_generics (self, xml_element, tk_parent):
         r"""
             protected method def;
@@ -407,6 +415,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         ).flatten()
         """
     # end def
+
 
     def _init_moptions (self, xml_element, tk_parent):
         r"""
@@ -473,6 +482,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_activeborderwidth (self, attribute, **kw):
         r"""
             width attribute;
@@ -480,6 +490,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         """
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_columnbreak (self, attribute, **kw):
         r"""
@@ -490,6 +501,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_hidemargin (self, attribute, **kw):
         r"""
             boolean attribute;
@@ -499,6 +511,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_label (self, attribute, **kw):
         r"""
             label attribute;
@@ -507,6 +520,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         self._tkRAD_label_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_postcommand (self, attribute, **kw):
         r"""
             command attribute;
@@ -514,6 +528,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         """
         self._tkRAD_command_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_tearoff (self, attribute, **kw):
         r"""
@@ -524,6 +539,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_tearoffcommand (self, attribute, **kw):
         r"""
             command attribute;
@@ -532,6 +548,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         self._tkRAD_command_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_title (self, attribute, **kw):
         r"""
             label attribute;
@@ -539,6 +556,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         """
         self._tkRAD_label_support(attribute, **kw)
     # end def
+
 
     def get_menu (self, attr_id):
         r"""
@@ -550,6 +568,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         return self.get_object_by_id(attr_id)
     # end def
 
+
     def is_menu (self, widget):
         r"""
             determines if object is a tkinter Menu() object;
@@ -557,6 +576,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         """
         return isinstance(widget, TK.Menu)
     # end def
+
 
     def is_menu_handler (self, widget):
         r"""
@@ -569,6 +589,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
             widget, (TK.Menu, TK.Menubutton, ttk.Menubutton, TK.Tk)
         )
     # end def
+
 
     def is_topmenu_handler (self, widget):
         r"""

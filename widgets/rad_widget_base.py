@@ -99,6 +99,7 @@ class RADWidgetBase:
         # end if
     # end def
 
+
     def _init_instance_members (self, **kw):
         r"""
             protected method def;
@@ -116,6 +117,7 @@ class RADWidgetBase:
             # end if
         # end for
     # end def
+
 
     def _only_tk (self, kw):
         r"""
@@ -138,6 +140,7 @@ class RADWidgetBase:
         return _dict
     # end def
 
+
     def cast_parent (self, widget):
         r"""
             casts @widget param to see if it is a real tkinter parent
@@ -159,6 +162,7 @@ class RADWidgetBase:
         # end if
     # end def
 
+
     def cast_widget (self, widget):
         r"""
             casts @widget param to see if it is a real tkinter.Widget;
@@ -178,12 +182,14 @@ class RADWidgetBase:
         # end if
     # end def
 
+
     def classname (self):
         r"""
             returns object's classname;
         """
         return str(self.__class__.__name__)
     # end def
+
 
     def init_widget (self, **kw):
         r"""
@@ -206,6 +212,7 @@ class RADWidgetBase:
         pass
     # end def
 
+
     def is_tk_parent (self, widget):
         r"""
             determines if @widget param is a real tkinter parent widget
@@ -214,6 +221,7 @@ class RADWidgetBase:
         """
         return isinstance(widget, (TK.Widget, TK.BaseWidget, TK.Tk))
     # end def
+
 
     def is_tk_widget (self, widget):
         r"""

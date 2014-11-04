@@ -26,13 +26,13 @@
 
 # unique instance pointer
 # module private var init
-__queue=None
+__queue = None
 
-# service getter
+
 def get_defer_queue ():
     r"""
-        gets a unique application-wide instance of the deferred
-        actions queue;
+        gets a unique application-wide instance of the deferred actions
+        queue;
         always return the queue unique instance pointer;
     """
     global __queue
@@ -42,7 +42,7 @@ def get_defer_queue ():
     return __queue
 # end def
 
-# class def
+
 class DeferQueue:
     r"""
         /!\ this module is *STANDALONE* /!\
@@ -54,8 +54,9 @@ class DeferQueue:
             class constructor inits;
         """
         # member inits
-        self.__queue=dict()
+        self.__queue = dict()
     # end def
+
 
     def clear (self, section=None):
         r"""
@@ -74,6 +75,7 @@ class DeferQueue:
         # end if
     # end def
 
+
     def defer (self, section, callback, *args, **kw):
         r"""
             registers a new callable @callback into @section with
@@ -87,6 +89,7 @@ class DeferQueue:
         # update section data
         self.__queue[section]=_buffer
     # end def
+
 
     def flush (self, section, *args, **kw):
         r"""
@@ -105,6 +108,7 @@ class DeferQueue:
         self.clear(section)
     # end def
 
+
     def flush_all (self, *args, **kw):
         r"""
             calls all callbacks stored into the queue with additional
@@ -120,6 +124,7 @@ class DeferQueue:
         self.clear()
     # end def
 
+
     def get_queue (self):
         r"""
             returns current deferred actions queue (shallow copy);
@@ -127,9 +132,10 @@ class DeferQueue:
         # shallow copy of current queue
         return self.__queue.copy()
     # end def
+
 # end class DeferQueue
 
-# class subcomponent def
+
 class QueueItem:
     r"""
         DeferQueue subcomponent class def;
@@ -144,6 +150,7 @@ class QueueItem:
         self.arguments=args
         self.keywords=kw
     # end def
+
 
     def call (self, *args, **kw):
         r"""

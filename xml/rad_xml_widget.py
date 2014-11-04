@@ -246,6 +246,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
 
+
     def _build_element_canvas (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter native widget building;
@@ -253,6 +254,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_checkbutton (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -267,6 +269,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
         return _ok
     # end def
+
 
     def _build_element_configure (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -292,6 +295,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return False
     # end def
 
+
     def _build_element_entry (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter native widget building;
@@ -299,6 +303,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_event (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -323,6 +328,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return False
     # end def
 
+
     def _build_element_frame (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter native widget building;
@@ -330,6 +336,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_include (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -370,6 +377,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return False
     # end def
 
+
     def _build_element_label (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter native widget building;
@@ -378,6 +386,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
 
+
     def _build_element_labelframe (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter native widget building;
@@ -385,6 +394,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_layout (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -408,6 +418,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # failed
         return False
     # end def
+
 
     def _build_element_listbox (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -485,6 +496,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _build_element_menu (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter native widget building;
@@ -492,6 +504,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_element_tkmenu(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_menubutton (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -501,6 +514,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
 
+
     def _build_element_message (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter native widget building;
@@ -508,6 +522,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_module (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -540,6 +555,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # failed
         return False
     # end def
+
 
     def _build_element_optionmenu (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -611,6 +627,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _build_element_panedwindow (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter native widget building;
@@ -618,6 +635,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_radiobutton (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -633,6 +651,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return _ok
     # end def
 
+
     def _build_element_scale (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter native widget building;
@@ -640,6 +659,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_scrollbar (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -679,6 +699,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return _ok
     # end def
 
+
     def _build_element_spinbox (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter native widget building;
@@ -686,6 +707,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_style (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -709,6 +731,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return False
     # end def
 
+
     def _build_element_text (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter native widget building;
@@ -716,6 +739,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_tkevent (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -757,6 +781,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # failed
         return False
     # end def
+
 
     def _build_element_tkmenu (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -806,6 +831,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return False
     # end def
 
+
     def _build_element_tkwidget (self, xml_tag, xml_element, tk_parent):
         r"""
             tries to integrate subelements directly in tk_parent
@@ -834,6 +860,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _build_element_toplevel (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter native widget building;
@@ -842,6 +869,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
 
+
     def _build_element_ttkbutton (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter ttk widget building;
@@ -849,6 +877,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_ttkcheckbutton (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -862,6 +891,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return _ok
     # end def
 
+
     def _build_element_ttkcombobox (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter ttk widget building;
@@ -869,6 +899,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_ttkentry (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -878,6 +909,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
 
+
     def _build_element_ttkframe (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter ttk widget building;
@@ -885,6 +917,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_ttklabel (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -894,6 +927,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
 
+
     def _build_element_ttklabelframe (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter ttk widget building;
@@ -901,6 +935,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_ttkmenubutton (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -910,6 +945,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
 
+
     def _build_element_ttknotebook (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter ttk widget building;
@@ -917,6 +953,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_ttkpanedwindow (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -926,6 +963,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
 
+
     def _build_element_ttkprogressbar (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter ttk widget building;
@@ -933,6 +971,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_ttkradiobutton (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -946,6 +985,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return _ok
     # end def
 
+
     def _build_element_ttkscale (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter ttk widget building;
@@ -953,6 +993,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_ttkscrollbar (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -962,6 +1003,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return self._build_element_scrollbar(xml_tag, xml_element, tk_parent)
     # end def
 
+
     def _build_element_ttkseparator (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter ttk widget building;
@@ -970,6 +1012,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
 
+
     def _build_element_ttksizegrip (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter ttk widget building;
@@ -977,6 +1020,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_ttkstyle (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -1081,6 +1125,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return False
     # end def
 
+
     def _build_element_ttktab (self, xml_tag, xml_element, tk_parent):
         r"""
             <ttktab> XML element is child of <ttknotebook>;
@@ -1088,6 +1133,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_ttktheme (self, xml_tag, xml_element, tk_parent):
         r"""
@@ -1107,6 +1153,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return False
     # end def
 
+
     def _build_element_ttktreeview (self, xml_tag, xml_element, tk_parent):
         r"""
             Tkinter ttk widget building;
@@ -1114,6 +1161,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         """
         return self._build_tk_native(xml_tag, xml_element, tk_parent)
     # end def
+
 
     def _build_element_widget (self, xml_tag, xml_element, tk_parent,
     **kw):
@@ -1198,6 +1246,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _build_tk_native (self, xml_tag, xml_element, tk_parent):
         r"""
             protected method def;
@@ -1233,6 +1282,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return False
     # end def
 
+
     def _ensure_string_value (self, attribute, **kw):
         r"""
             will set attr value at least an empty string of chars;
@@ -1248,6 +1298,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             self._tk_config(attribute, **kw)
         # end if
     # end def
+
 
     def _init_attributes (self, xml_tag, xml_element, tk_parent, **kw):
         r"""
@@ -1273,6 +1324,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         return _attributes.flatten()
     # end def
 
+
     def _init_attributes_flat (self, xml_tag, xml_element, tk_parent, **kw):
         r"""
             parses @xml_element param XML attributes along @xml_tag
@@ -1288,6 +1340,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # with tkRAD v1.4
         return self._init_attributes(xml_tag, xml_element, tk_parent, **kw)
     # end def
+
 
     def _init_deferred_attributes (self, xml_tag, xml_element, tk_parent, **kw):
         r"""
@@ -1323,6 +1376,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # return parsed XML attributes
         return self._parse_xml_attributes(xml_element, tk_parent, **kw)
     # end def
+
 
     def _layout_toplevel (self, widget, attrs, tk_parent):
         r"""
@@ -1377,6 +1431,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_widget_support(attribute, **kw)
     # end def
 
+
     def _parse_attr__before (self, attribute, **kw):
         r"""
             PanedWindow child configuration attr;
@@ -1386,6 +1441,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         kw.update(tk_child_config=True)
         self._tkRAD_widget_support(attribute, **kw)
     # end def
+
 
     def _parse_attr__height (self, attribute, **kw):
         r"""
@@ -1397,6 +1453,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
 
+
     def _parse_attr__minsize (self, attribute, **kw):
         r"""
             PanedWindow child configuration attr;
@@ -1406,6 +1463,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         kw.update(tk_child_config=True)
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
+
 
     def _parse_attr__padx (self, attribute, **kw):
         r"""
@@ -1417,6 +1475,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
 
+
     def _parse_attr__pady (self, attribute, **kw):
         r"""
             PanedWindow child configuration attr;
@@ -1426,6 +1485,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         kw.update(tk_child_config=True)
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
+
 
     def _parse_attr__sticky (self, attribute, **kw):
         r"""
@@ -1446,6 +1506,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr__width (self, attribute, **kw):
         r"""
             PanedWindow child configuration attr;
@@ -1456,6 +1517,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_activerelief (self, attribute, **kw):
         r"""
             relief attribute;
@@ -1464,6 +1526,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_relief_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_activestyle (self, attribute, **kw):
         r"""
@@ -1478,6 +1541,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         )
         self._fix_values(attribute, **kw)
     # end def
+
 
     def _parse_attr_add (self, attribute, **kw):
         r"""
@@ -1498,6 +1562,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # caution: *NO* self._tk_config() by here /!\
     # end def
 
+
     def _parse_attr_after (self, attribute, **kw):
         r"""
             PanedWindow child configuration attr;
@@ -1506,6 +1571,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._parse_attr__after(attribute, **kw)
     # end def
+
 
     def _parse_attr_anchor (self, attribute, **kw):
         r"""
@@ -1539,6 +1605,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_apply (self, attribute, **kw):
         r"""
             XML attr for '<ttkstyle apply="newName.oldName".../>';
@@ -1552,6 +1619,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             attribute.parsed=True
         # end if
     # end def
+
 
     def _parse_attr_args (self, attribute, **kw):
         r"""
@@ -1582,6 +1650,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # caution: *NO* self._tk_config() by here /!\
     # end def
 
+
     def _parse_attr_as (self, attribute, **kw):
         r"""
             conforms XML attr 'as' to language specs __identifier__;
@@ -1593,6 +1662,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # caution: *NO* self._tk_config() by here /!\
     # end def
 
+
     def _parse_attr_aspect (self, attribute, **kw):
         r"""
             attr 'aspect' ratio (integer);
@@ -1601,6 +1671,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_integer_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_autoseparators (self, attribute, **kw):
         r"""
@@ -1611,6 +1682,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_before (self, attribute, **kw):
         r"""
             PanedWindow child configuration attr;
@@ -1619,6 +1691,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._parse_attr__before(attribute, **kw)
     # end def
+
 
     def _parse_attr_bind (self, attribute, **kw):
         r"""
@@ -1636,6 +1709,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._fix_values(attribute, **kw)
     # end def
 
+
     def _parse_attr_buttonbackground (self, attribute, **kw):
         r"""
             color attribute;
@@ -1644,6 +1718,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_color_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_buttoncursor (self, attribute, **kw):
         r"""
@@ -1654,6 +1729,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_cursor_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_buttondownrelief (self, attribute, **kw):
         r"""
             relief attribute;
@@ -1663,6 +1739,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_relief_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_buttonup (self, attribute, **kw):
         r"""
             relief attribute;
@@ -1671,6 +1748,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_relief_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_choices (self, attribute, **kw):
         r"""
@@ -1700,6 +1778,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_class (self, attribute, **kw):
         r"""
             forces XML attr 'class' name to conform to __identifier__
@@ -1721,6 +1800,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_class_ (self, attribute, **kw):
         r"""
             fake classname for tkinter options database;
@@ -1729,6 +1809,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_any_value_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_closeenough (self, attribute, **kw):
         r"""
@@ -1739,6 +1820,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_float_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_columns (self, attribute, **kw):
         r"""
             values attribute;
@@ -1748,6 +1830,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._parse_attr_values(attribute, **kw)
     # end def
 
+
     def _parse_attr_confine (self, attribute, **kw):
         r"""
             boolean attribute;
@@ -1756,6 +1839,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_connect (self, attribute, **kw):
         r"""
@@ -1767,6 +1851,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_widget_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_default (self, attribute, **kw):
         r"""
             state attribute;
@@ -1776,6 +1861,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_state_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_digits (self, attribute, **kw):
         r"""
             integer attribute;
@@ -1784,6 +1870,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_integer_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_direction (self, attribute, **kw):
         r"""
@@ -1800,6 +1887,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._fix_values(attribute, **kw)
     # end def
 
+
     def _parse_attr_disabledbackground (self, attribute, **kw):
         r"""
             color attribute;
@@ -1808,6 +1896,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_color_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_displaycolumns (self, attribute, **kw):
         r"""
@@ -1818,6 +1907,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._parse_attr_values(attribute, **kw)
     # end def
 
+
     def _parse_attr_elementborderwidth (self, attribute, **kw):
         r"""
             dimension attribute;
@@ -1827,6 +1917,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_exportselection (self, attribute, **kw):
         r"""
             boolean attribute;
@@ -1835,6 +1926,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_format (self, attribute, **kw):
         r"""
@@ -1859,6 +1951,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_from (self, attribute, **kw):
         r"""
             from relative.module import ...;
@@ -1875,6 +1968,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_from_ (self, attribute, **kw):
         r"""
             starting point float attribute;
@@ -1883,6 +1977,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_float_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_handlepad (self, attribute, **kw):
         r"""
@@ -1893,6 +1988,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_handlesize (self, attribute, **kw):
         r"""
             dimension attribute;
@@ -1901,6 +1997,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_height (self, attribute, xml_tag, **kw):
         r"""
@@ -1918,6 +2015,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_highlightbackground (self, attribute, **kw):
         r"""
             color attribute;
@@ -1926,6 +2024,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_color_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_highlightcolor (self, attribute, **kw):
         r"""
@@ -1936,6 +2035,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_color_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_highlightthickness (self, attribute, **kw):
         r"""
             dimension attribute;
@@ -1944,6 +2044,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_import (self, attribute, **kw):
         r"""
@@ -1960,6 +2061,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_increment (self, attribute, **kw):
         r"""
             float attribute;
@@ -1968,6 +2070,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_float_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_indicatorcolor (self, attribute, **kw):
         r"""
@@ -1978,6 +2081,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_color_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_indicatoron (self, attribute, **kw):
         r"""
             boolean attribute;
@@ -1986,6 +2090,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_init (self, attribute, **kw):
         r"""
@@ -1997,6 +2102,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_command_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_insertbackground (self, attribute, **kw):
         r"""
             color attribute;
@@ -2005,6 +2111,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_color_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_insertborderwidth (self, attribute, **kw):
         r"""
@@ -2015,6 +2122,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_insertofftime (self, attribute, **kw):
         r"""
             integer attribute;
@@ -2023,6 +2131,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_integer_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_insertontime (self, attribute, **kw):
         r"""
@@ -2033,6 +2142,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_integer_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_insertwidth (self, attribute, **kw):
         r"""
             dimension attribute;
@@ -2041,6 +2151,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_invalidcommand (self, attribute, **kw):
         r"""
@@ -2051,6 +2162,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_command_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_jump (self, attribute, **kw):
         r"""
             boolean attribute;
@@ -2059,6 +2171,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_justify (self, attribute, **kw):
         r"""
@@ -2074,6 +2187,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._fix_values(attribute, **kw)
     # end def
 
+
     def _parse_attr_label (self, attribute, **kw):
         r"""
             label attribute;
@@ -2082,6 +2196,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_label_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_labelanchor (self, attribute, **kw):
         r"""
@@ -2092,6 +2207,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._parse_attr_anchor(attribute, **kw)
     # end def
 
+
     def _parse_attr_labelwidget (self, attribute, **kw):
         r"""
             widget attribute;
@@ -2100,6 +2216,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_widget_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_layout (self, attribute, **kw):
         r"""
@@ -2116,6 +2233,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         )
         self._fix_values(attribute, **kw)
     # end def
+
 
     def _parse_attr_layout_options (self, attribute, **kw):
         r"""
@@ -2142,6 +2260,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_length (self, attribute, **kw):
         r"""
             dimension attribute;
@@ -2151,6 +2270,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_listvariable (self, attribute, **kw):
         r"""
             control variable attribute;
@@ -2159,6 +2279,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_cvar_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_maxheight (self, attribute, **kw):
         r"""
@@ -2170,6 +2291,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_integer_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_maximum (self, attribute, **kw):
         r"""
             integer attribute;
@@ -2179,6 +2301,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_integer_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_maxundo (self, attribute, **kw):
         r"""
             integer attribute;
@@ -2187,6 +2310,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_integer_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_maxwidth (self, attribute, **kw):
         r"""
@@ -2198,6 +2322,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_integer_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_minheight (self, attribute, **kw):
         r"""
             integer attribute;
@@ -2208,6 +2333,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_integer_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_minsize (self, attribute, **kw):
         r"""
             PanedWindow child configuration attr;
@@ -2216,6 +2342,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._parse_attr__minsize(attribute, **kw)
     # end def
+
 
     def _parse_attr_minwidth (self, attribute, **kw):
         r"""
@@ -2226,6 +2353,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         kw.update(no_tk_config=True)
         self._tkRAD_integer_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_mode (self, attribute, **kw):
         r"""
@@ -2240,6 +2368,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         )
         self._fix_values(attribute, **kw)
     # end def
+
 
     def _parse_attr_module (self, attribute, **kw):
         r"""
@@ -2290,6 +2419,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_offrelief (self, attribute, **kw):
         r"""
             relief attribute;
@@ -2299,6 +2429,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_relief_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_opaqueresize (self, attribute, **kw):
         r"""
             boolean attribute;
@@ -2307,6 +2438,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_orient (self, attribute, attrs, xml_tag, **kw):
         r"""
@@ -2333,6 +2465,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_overrelief (self, attribute, **kw):
         r"""
             relief attribute;
@@ -2341,6 +2474,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_relief_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_padding (self, attribute, **kw):
         r"""
@@ -2351,6 +2485,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_padx (self, attribute, **kw):
         r"""
             dimension attribute;
@@ -2359,6 +2494,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_pady (self, attribute, **kw):
         r"""
@@ -2369,6 +2505,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_readonlybackground (self, attribute, **kw):
         r"""
             color attribute;
@@ -2377,6 +2514,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_color_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_repeatdelay (self, attribute, **kw):
         r"""
@@ -2387,6 +2525,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_integer_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_repeatinterval (self, attribute, **kw):
         r"""
             integer attribute;
@@ -2395,6 +2534,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_integer_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_resizable (self, attribute, **kw):
         r"""
@@ -2412,6 +2552,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._fix_values(attribute, **kw)
     # end def
 
+
     def _parse_attr_resolution (self, attribute, **kw):
         r"""
             float attribute;
@@ -2420,6 +2561,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_float_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_sashpad (self, attribute, **kw):
         r"""
@@ -2430,6 +2572,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_sashrelief (self, attribute, **kw):
         r"""
             relief attribute;
@@ -2439,6 +2582,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_relief_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_sashwidth (self, attribute, **kw):
         r"""
             dimension attribute
@@ -2447,6 +2591,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_scrollregion (self, attribute, **kw):
         r"""
@@ -2469,6 +2614,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_selectbackground (self, attribute, **kw):
         r"""
             color attribute;
@@ -2477,6 +2623,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_color_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_selectborderwidth (self, attribute, **kw):
         r"""
@@ -2487,6 +2634,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_selectforeground (self, attribute, **kw):
         r"""
             color attribute;
@@ -2495,6 +2643,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_color_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_selectmode (self, attribute, xml_tag, **kw):
         r"""
@@ -2521,6 +2670,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._fix_values(attribute, **kw)
     # end def
 
+
     def _parse_attr_seq (self, attribute, **kw):
         r"""
             admits simplified tkinter.Event sequence (no <>);
@@ -2538,6 +2688,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             attribute.parsed=True
         # end if
     # end def
+
 
     def _parse_attr_show (self, attribute, xml_tag, **kw):
         r"""
@@ -2561,6 +2712,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_showhandle (self, attribute, **kw):
         r"""
             boolean attribute;
@@ -2570,6 +2722,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_showvalue (self, attribute, **kw):
         r"""
             boolean attribute;
@@ -2578,6 +2731,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_signal (self, attribute, **kw):
         r"""
@@ -2589,6 +2743,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._ensure_string_value(attribute, **kw)
     # end def
 
+
     def _parse_attr_sliderlength (self, attribute, **kw):
         r"""
             dimension attribute;
@@ -2597,6 +2752,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_sliderrelief (self, attribute, **kw):
         r"""
@@ -2607,6 +2763,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_relief_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_slot (self, attribute, **kw):
         r"""
             command attribute;
@@ -2615,6 +2772,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_command_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_spacing1 (self, attribute, **kw):
         r"""
@@ -2625,6 +2783,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_spacing2 (self, attribute, **kw):
         r"""
             dimension attribute;
@@ -2634,6 +2793,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_spacing3 (self, attribute, **kw):
         r"""
             dimension attribute;
@@ -2642,6 +2802,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_src (self, attribute, **kw):
         r"""
@@ -2656,6 +2817,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             attribute.parsed=True
         # end if
     # end def
+
 
     def _parse_attr_start (self, attribute, **kw):
         r"""
@@ -2685,6 +2847,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_state (self, attribute, xml_tag, **kw):
         r"""
             must be one of 'normal' or 'disabled';
@@ -2706,6 +2869,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._fix_values(attribute, **kw)
     # end def
 
+
     def _parse_attr_sticky (self, attribute, **kw):
         r"""
             PanedWindow child configuration attr;
@@ -2714,6 +2878,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._parse_attr__sticky(attribute, **kw)
     # end def
+
 
     def _parse_attr_style (self, attribute, **kw):
         r"""
@@ -2733,6 +2898,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_tabs (self, attribute, **kw):
         r"""
             choices attribute;
@@ -2743,6 +2909,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tk_config(attribute, **kw)
     # end def
 
+
     def _parse_attr_takefocus (self, attribute, **kw):
         r"""
             boolean attribute;
@@ -2751,6 +2918,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_text (self, attribute, **kw):
         r"""
@@ -2761,6 +2929,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_label_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_textvariable (self, attribute, **kw):
         r"""
             control variable attribute;
@@ -2770,6 +2939,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_cvar_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_tickinterval (self, attribute, **kw):
         r"""
             float attribute;
@@ -2778,6 +2948,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_float_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_title (self, attribute, **kw):
         r"""
@@ -2789,6 +2960,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_label_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_to (self, attribute, **kw):
         r"""
             float attribute;
@@ -2797,6 +2969,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_float_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_transient (self, attribute, **kw):
         r"""
@@ -2808,6 +2981,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_widget_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_troughcolor (self, attribute, **kw):
         r"""
             color attribute;
@@ -2817,6 +2991,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_color_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_undo (self, attribute, **kw):
         r"""
             boolean attribute;
@@ -2825,6 +3000,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_boolean_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_use (self, attribute, **kw):
         r"""
@@ -2839,6 +3015,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         )
         self._fix_values(attribute, **kw)
     # end def
+
 
     def _parse_attr_validate (self, attribute, **kw):
         r"""
@@ -2855,6 +3032,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._fix_values(attribute, **kw)
     # end def
 
+
     def _parse_attr_validatecommand (self, attribute, **kw):
         r"""
             command attribute;
@@ -2863,6 +3041,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_command_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_value (self, attribute, xml_tag, **kw):
         r"""
@@ -2877,6 +3056,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_values (self, attribute, **kw):
         r"""
             choices attribute;
@@ -2886,6 +3066,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._parse_attr_choices(attribute, **kw)
         self._tk_config(attribute, **kw)
     # end def
+
 
     def _parse_attr_visibility (self, attribute, **kw):
         r"""
@@ -2903,6 +3084,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._fix_values(attribute, **kw)
     # end def
 
+
     def _parse_attr_weight (self, attribute, **kw):
         r"""
             ttk.PanedWindow child configuration attr;
@@ -2912,6 +3094,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         kw.update(tk_child_config=True)
         self._tkRAD_integer_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_width (self, attribute, xml_tag, **kw):
         r"""
@@ -2928,6 +3111,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             self._tkRAD_dimension_support(attribute, **kw)
         # end if
     # end def
+
 
     def _parse_attr_wrap (self, attribute, xml_tag, **kw):
         r"""
@@ -2947,6 +3131,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # end if
     # end def
 
+
     def _parse_attr_wraplength (self, attribute, **kw):
         r"""
             dimension attribute;
@@ -2955,6 +3140,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_xml_dir (self, attribute, **kw):
         r"""
@@ -2969,6 +3155,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._ensure_string_value(attribute, **kw)
     # end def
 
+
     def _parse_attr_xml_file_ext (self, attribute, **kw):
         r"""
             must be at least an empty string of chars;
@@ -2982,6 +3169,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._ensure_string_value(attribute, **kw)
     # end def
 
+
     def _parse_attr_xml_filename (self, attribute, **kw):
         r"""
             must be at least an empty string of chars;
@@ -2992,6 +3180,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._ensure_string_value(attribute, **kw)
     # end def
 
+
     def _parse_attr_xscrollcommand (self, attribute, **kw):
         r"""
             command attribute;
@@ -3000,6 +3189,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_command_support(attribute, **kw)
     # end def
+
 
     def _parse_attr_xscrollincrement (self, attribute, **kw):
         r"""
@@ -3010,6 +3200,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_yscrollcommand (self, attribute, **kw):
         r"""
             command attribute;
@@ -3019,6 +3210,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         self._tkRAD_command_support(attribute, **kw)
     # end def
 
+
     def _parse_attr_yscrollincrement (self, attribute, **kw):
         r"""
             dimension attribute;
@@ -3027,6 +3219,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # parsed attribute inits
         self._tkRAD_dimension_support(attribute, **kw)
     # end def
+
 
     def _replace_alias (self, str_value, attrs, **kw):
         r"""
@@ -3051,6 +3244,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # unsupported - empty string
         return ""
     # end def
+
 
     def _set_layout (self, widget, attrs, tk_parent):
         r"""
@@ -3106,6 +3300,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             exec("widget.{layout}(**{layout_options})".format(**attrs))
         # end if
     # end def
+
 
     def _set_resizable (self, widget, attrs, tk_parent):
         r"""
@@ -3174,6 +3369,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # update layout options
         attrs["layout_options"]=_lopts
     # end def
+
 
     def _set_widget_config (self, widget, config):
         r"""

@@ -166,6 +166,7 @@ class RADXMLAttribute:
         self.value=value
     # end def
 
+
     def update_xml_element (self, value=None):
         r"""
             updates inner XML element's attr name along @value param;

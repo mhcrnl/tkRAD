@@ -100,6 +100,7 @@ class RADXMLBase (RW.RADWidgetBase):
         RW.RADWidgetBase.__init__(self, tk_owner, **kw)
     # end def
 
+
     def _before_building_element(self, **kw):
         r"""
             virtual method to be overridden in subclass;
@@ -109,6 +110,7 @@ class RADXMLBase (RW.RADWidgetBase):
         pass
     # end def
 
+
     def _before_parsing_attribute(self, **kw):
         r"""
             virtual method to be overridden in subclass;
@@ -117,6 +119,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # make some inits - should be overridden in subclass
         pass
     # end def
+
 
     def _build_element (self, xml_element, tk_parent):
         r"""
@@ -166,6 +169,7 @@ class RADXMLBase (RW.RADWidgetBase):
         return False
     # end def
 
+
     def _cast_root_element (self, xml_element):
         r"""
             casts root element along self.DOCTYPE type;
@@ -186,6 +190,7 @@ class RADXMLBase (RW.RADWidgetBase):
         return False
     # end def
 
+
     def _get_object_id (self, built_object, attr_id=None):
         r"""
             protected method def;
@@ -203,6 +208,7 @@ class RADXMLBase (RW.RADWidgetBase):
         return attr_id.lower()
     # end def
 
+
     def _get_oi_count_str (self):
         r"""
             gets object instance (oi) counter as a string of chars;
@@ -216,6 +222,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # return string of __OI_COUNT
         return _str
     # end def
+
 
     def _get_unique_id (self, radix):
         r"""
@@ -237,6 +244,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # end if
         return None
     # end def
+
 
     def _loop_on_children (self, xml_element, tk_parent, accept=None):
         r"""
@@ -280,6 +288,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # failed (bad XML element)
         return False
     # end def
+
 
     def _parse_xml_attributes (self, xml_element, tk_parent, **kw):
         r"""
@@ -383,6 +392,7 @@ class RADXMLBase (RW.RADWidgetBase):
         return None
     # end def
 
+
     def _register_object_by_id (self, built_object, attr_id):
         r"""
             registers newly created or existing object with the  XML
@@ -402,6 +412,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # end if
     # end def
 
+
     def _reset_oi_count (self, value=1):
         r"""
             resets object instance (oi) counter to a given value;
@@ -411,6 +422,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # inits
         self.__OI_COUNT=max(1, tools.ensure_int(value))
     # end def
+
 
     def _set_class_member (self, name, widget):
         r"""
@@ -437,6 +449,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # end if
     # end def
 
+
     def cast_element (self, xml_element):
         r"""
             casts @xml_element param to see if it is a real
@@ -459,6 +472,7 @@ class RADXMLBase (RW.RADWidgetBase):
             return False
         # end if
     # end def
+
 
     def cast_tree (self, tree_object):
         r"""
@@ -483,6 +497,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # end if
     # end def
 
+
     def delete_dict_items (self, dict_object, *args):
         r"""
             @DEPRECATED: use tools.dict_delete_items() instead;
@@ -495,6 +510,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # kept for compatibility with tkRAD < v1.2
         return tools.dict_delete_items(dict_object, *args)
     # end def
+
 
     def element_get_id (self, xml_element):
         r"""
@@ -515,6 +531,7 @@ class RADXMLBase (RW.RADWidgetBase):
         return None
     # end def
 
+
     def get_bitmap_path (self, path):
         r"""
             tries to retrieve a bitmap path along @path;
@@ -533,6 +550,7 @@ class RADXMLBase (RW.RADWidgetBase):
         return path
     # end def
 
+
     def get_correct_id(self, value):
         r"""
             always provide a correct id name  whatever @value param
@@ -550,6 +568,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # return filtered value
         return value
     # end def
+
 
     def get_cvar (self, vartype, varname):
         r"""
@@ -575,6 +594,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # end if
     # end def
 
+
     def get_cvars (self):
         r"""
             returns dict() object of all created control vars;
@@ -582,6 +602,7 @@ class RADXMLBase (RW.RADWidgetBase):
         """
         return self.__tk_variables
     # end def
+
 
     def get_doublevar (self, varname):
         r"""
@@ -591,6 +612,7 @@ class RADXMLBase (RW.RADWidgetBase):
         return self.__tk_variables["doublevar"].get(varname, None)
     # end def
 
+
     def get_doublevars (self):
         r"""
             returns dict() object of all created DoubleVars;
@@ -598,6 +620,7 @@ class RADXMLBase (RW.RADWidgetBase):
         """
         return self.__tk_variables["doublevar"]
     # end def
+
 
     def get_element_by_id (self, attr_id, xml_tree=None):
         r"""
@@ -623,6 +646,7 @@ class RADXMLBase (RW.RADWidgetBase):
         return None
     # end def
 
+
     def get_image (self, path):
         r"""
             tries to retrieve an image from self.__images dict()
@@ -632,6 +656,7 @@ class RADXMLBase (RW.RADWidgetBase):
         return self.__images.get(P.normalize(path))
     # end def
 
+
     def get_intvar (self, varname):
         r"""
             tries to retrieve a tkinter.IntVar() named @varname;
@@ -640,6 +665,7 @@ class RADXMLBase (RW.RADWidgetBase):
         return self.__tk_variables["intvar"].get(varname, None)
     # end def
 
+
     def get_intvars (self):
         r"""
             returns dict() object of all created IntVars;
@@ -647,6 +673,7 @@ class RADXMLBase (RW.RADWidgetBase):
         """
         return self.__tk_variables["intvar"]
     # end def
+
 
     def get_object_by_id (self, attr_id, default=None):
         r"""
@@ -660,6 +687,7 @@ class RADXMLBase (RW.RADWidgetBase):
         )
     # end def
 
+
     def get_objects (self):
         r"""
             returns all the (id: object) pairs in a dict() object;
@@ -669,6 +697,7 @@ class RADXMLBase (RW.RADWidgetBase):
         return self.__objects.copy()
     # end def
 
+
     def get_stringvar (self, varname):
         r"""
             tries to retrieve a tkinter.StringVar() named @varname;
@@ -676,6 +705,7 @@ class RADXMLBase (RW.RADWidgetBase):
         """
         return self.__tk_variables["stringvar"].get(varname, None)
     # end def
+
 
     def get_stringvars (self):
         r"""
@@ -685,12 +715,14 @@ class RADXMLBase (RW.RADWidgetBase):
         return self.__tk_variables["stringvar"]
     # end def
 
+
     def get_xml_dir (self):
         r"""
             returns internal XML directory def;
         """
         return self.__xml_dir
     # end def
+
 
     def get_xml_file_ext (self):
         r"""
@@ -699,12 +731,14 @@ class RADXMLBase (RW.RADWidgetBase):
         return self.__xml_file_ext
     # end def
 
+
     def get_xml_filename (self):
         r"""
             returns internal XML filename radix def;
         """
         return self.__xml_filename
     # end def
+
 
     def get_xml_path (self, filename=None):
         r"""
@@ -768,12 +802,14 @@ class RADXMLBase (RW.RADWidgetBase):
         return OP.join(P.normalize(_dir), filename)
     # end def
 
+
     def get_xml_tree (self):
         r"""
             returns current internal XML tree data structure;
         """
         return self.__xml_tree
     # end def
+
 
     def is_element (self, xml_element):
         r"""
@@ -784,6 +820,7 @@ class RADXMLBase (RW.RADWidgetBase):
         return isinstance(xml_element, ET.Element)
     # end def
 
+
     def is_tree (self, tree_object):
         r"""
             determines if @tree_object param is a real
@@ -793,6 +830,7 @@ class RADXMLBase (RW.RADWidgetBase):
         return isinstance(tree_object, ET.ElementTree)
     # end def
 
+
     def is_xml (self, content):
         r"""
             tries to determine if content contains XML <markups>;
@@ -801,12 +839,14 @@ class RADXMLBase (RW.RADWidgetBase):
         return tools.is_pstr(content) and re.search(r"<.+?>", content)
     # end def
 
+
     def normalize_tag (self, xml_element):
         r"""
             returns a lowercased char string of @xml_element.tag;
         """
         return str(xml_element.tag).lower()
     # end def
+
 
     def set_cvar (self, vartype, varname):
         r"""
@@ -843,6 +883,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # end if
     # end def
 
+
     def set_doublevar (self, varname):
         r"""
             tries to create a tkinter.DoubleVar() named @varname;
@@ -851,6 +892,7 @@ class RADXMLBase (RW.RADWidgetBase):
         """
         return self.set_cvar("doublevar", varname)
     # end def
+
 
     def set_image (self, path):
         r"""
@@ -867,6 +909,7 @@ class RADXMLBase (RW.RADWidgetBase):
         return self.__images.get(path)
     # end def
 
+
     def set_intvar (self, varname):
         r"""
             tries to create a tkinter.IntVar() named @varname;
@@ -875,6 +918,7 @@ class RADXMLBase (RW.RADWidgetBase):
         """
         return self.set_cvar("intvar", varname)
     # end def
+
 
     def set_stringvar (self, varname):
         r"""
@@ -885,12 +929,14 @@ class RADXMLBase (RW.RADWidgetBase):
         return self.set_cvar("stringvar", varname)
     # end def
 
+
     def set_xml_dir (self, value):
         r"""
             sets internal XML directory def;
         """
         self.__xml_dir=value
     # end def
+
 
     def set_xml_file_ext (self, value):
         r"""
@@ -899,12 +945,14 @@ class RADXMLBase (RW.RADWidgetBase):
         self.__xml_file_ext=value
     # end def
 
+
     def set_xml_filename (self, value):
         r"""
             sets internal XML filename radix def;
         """
         self.__xml_filename=value
     # end def
+
 
     def set_xml_tree (self, **kw):
         r"""
@@ -916,6 +964,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # reset XML tree
         self.__xml_tree=ET.ElementTree(**kw)
     # end def
+
 
     def xml_build (self, filename=None, silent_mode=False):
         r"""
@@ -964,6 +1013,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # end try
     # end def
 
+
     def xml_load (self, arg=None):
         r"""
             loads and parses XML data;
@@ -989,6 +1039,7 @@ class RADXMLBase (RW.RADWidgetBase):
             exit(1)
         # end try
     # end def
+
 
     def xml_save (self, filename=None):
         r"""
