@@ -24,6 +24,7 @@
 
 # ========================= STANDALONE MODULE ==========================
 
+
 class StructDict (dict):
     r"""
         generic 'class structure' dictionary;
@@ -34,8 +35,8 @@ class StructDict (dict):
     def __getitem__ (self, key):
         r"""
             item value getter;
-            overrides to item.getter() if @key exists and is
-            of item type;
+            overrides to item.getter() if @key exists and is of item
+            type;
             behaves as dict() otherwise i.e. returns dict[@key];
         """
         _item = super().__getitem__(key)
@@ -62,17 +63,17 @@ class StructDict (dict):
         # super class inits
         super().__init__(*args, **kw)
         # member inits
-        self.item_type=None
-        self.item_value_getter="get_value"
-        self.item_value_setter="set_value"
+        self.item_type = None
+        self.item_value_getter = "get_value"
+        self.item_value_setter = "set_value"
     # end def
 
 
     def __setitem__ (self, key, value):
         r"""
             item value setter;
-            overrides to item.setter(@value) if @key exists and is
-            of 'item type' type;
+            overrides to item.setter(@value) if @key exists and is of
+            'item type' type;
             behaves as dict() otherwise i.e. dict[@key]=@value;
         """
         _item = super().get(key)
@@ -95,7 +96,7 @@ class StructDict (dict):
         # loop on items
         for _key in self.keys():
             # flattens item to its value
-            _dict[_key]=self.get(_key)
+            _dict[_key] = self.get(_key)
         # end for
         # return new dict() object
         return _dict
@@ -105,8 +106,8 @@ class StructDict (dict):
     def get (self, key, default=None):
         r"""
             item value getter;
-            overrides to item.getter() if @key exists and
-            is of 'item type' type;
+            overrides to item.getter() if @key exists and is of 'item
+            type' type;
             behaves as dict() otherwise i.e. dict.get(@key, @default);
         """
         _item = super().get(key, default)
@@ -136,6 +137,7 @@ class StructDict (dict):
         return self.get(key, default)
     # end def
 
+
     @property
     def item_value_getter (self):
         r"""
@@ -149,7 +151,7 @@ class StructDict (dict):
     @item_value_getter.setter
     def item_value_getter (self, getter):
         if getter and isinstance(getter, str):
-            self.__item_value_getter=getter
+            self.__item_value_getter = getter
         else:
             raise TypeError(
                 "item value getter must be of PLAIN char string type."
@@ -161,6 +163,7 @@ class StructDict (dict):
     def item_value_getter (self):
         del self.__item_value_getter
     # end def
+
 
     @property
     def item_value_setter (self):
@@ -175,7 +178,7 @@ class StructDict (dict):
     @item_value_setter.setter
     def item_value_setter (self, setter):
         if setter and isinstance(setter, str):
-            self.__item_value_setter=setter
+            self.__item_value_setter = setter
         else:
             raise TypeError(
                 "item value setter must be of PLAIN char string type."
@@ -192,8 +195,8 @@ class StructDict (dict):
     def set (self, key, value):
         r"""
             'item value' setter;
-            overrides to item.setter(@value) if @key exists and is
-            of 'item type' type;
+            overrides to item.setter(@value) if @key exists and is of
+            'item type' type;
             behaves as dict() otherwise i.e. dict[@key]=@value;
         """
         self.__setitem__(key, value)
