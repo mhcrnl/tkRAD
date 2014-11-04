@@ -26,6 +26,7 @@
 import tkinter as TK
 from . import rad_widget_base as RW
 
+
 class RADCanvas (RW.RADWidgetBase, TK.Canvas):
     r"""
         generic tkinter.Canvas + RADWidgetBase subclass;
@@ -33,15 +34,17 @@ class RADCanvas (RW.RADWidgetBase, TK.Canvas):
         acts as a tkinter.Canvas widget;
     """
 
+    # class constant defs
     CONFIG = {
         "borderwidth": 0,
         "highlightthickness": 0,
         "relief": TK.FLAT,
     } # end of CONFIG
 
+
     def __init__ (self, master=None, **kw):
         # default values
-        self.CONFIG=self.CONFIG.copy()
+        self.CONFIG = self.CONFIG.copy()
         self.CONFIG.update(kw)
         # super inits
         TK.Canvas.__init__(self, master)
