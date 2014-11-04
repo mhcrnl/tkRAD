@@ -36,6 +36,7 @@ from ..widgets import rad_widget_base as RW
 from . import rad_xml_attribute as XA
 from . import rad_xml_attributes_dict as XD
 
+
 class RADXMLBase (RW.RADWidgetBase):
     r"""
         base class for generic XML building processor;
@@ -73,16 +74,17 @@ class RADXMLBase (RW.RADWidgetBase):
     # Object instance counter
     __OI_COUNT = 1
 
+
     def __init__ (self, tk_owner=None, **kw):
         r"""
             class constructor;
         """
         # protected member inits
-        self._queue=defer.DeferQueue()     # private queue
+        self._queue = defer.DeferQueue()     # private queue
         # XML member inits
-        self.__xml_tree=None
-        self.__objects=dict()
-        self.__images=dict()
+        self.__xml_tree = None
+        self.__objects = dict()
+        self.__images = dict()
         self.set_xml_dir(kw.get("xml_dir"))
         self.set_xml_filename(kw.get("xml_filename"))
         self.set_xml_file_ext(kw.get("xml_file_ext"))
@@ -91,7 +93,7 @@ class RADXMLBase (RW.RADWidgetBase):
         self.XML_RC.setdefault("filename", _classname)
         self.RC_OPTIONS.setdefault("section", _classname)
         # tkinter member inits
-        self.__tk_variables={
+        self.__tk_variables = {
             "doublevar": dict(),
             "intvar": dict(),
             "stringvar": dict(),
@@ -151,9 +153,9 @@ class RADXMLBase (RW.RADWidgetBase):
             if callable(_elt_builder):
                 # element building inits
                 self._before_building_element(
-                    xml_tag = _tag,
-                    xml_element = xml_element,
-                    tk_parent = tk_parent,
+                    xml_tag=_tag,
+                    xml_element=xml_element,
+                    tk_parent=tk_parent,
                 )
                 # route element building
                 return _elt_builder(_tag, xml_element, tk_parent)
@@ -330,8 +332,8 @@ class RADXMLBase (RW.RADWidgetBase):
                 _parser = tools.normalize_id(
                     str(self.ATTRIBUTE_PARSER)
                     .format(
-                        xml_element = _tag,
-                        xml_attribute = _attr_name,
+                        xml_element=_tag,
+                        xml_attribute=_attr_name,
                     )
                 )
                 # optional parser
@@ -342,12 +344,12 @@ class RADXMLBase (RW.RADWidgetBase):
                     if callable(_parser):
                         # update keywords
                         kw.update(
-                            attribute = _attr_object,
-                            attrs = _attrs,
-                            tk_parent = tk_parent,
-                            xml_element = xml_element,
-                            xml_tag = _tag,
-                            xml_attr = _attr_name,
+                            attribute=_attr_object,
+                            attrs=_attrs,
+                            tk_parent=tk_parent,
+                            xml_element=xml_element,
+                            xml_tag=_tag,
+                            xml_attr=_attr_name,
                         )
                         # attribute parsing inits
                         self._before_parsing_attribute(**kw)
@@ -402,7 +404,7 @@ class RADXMLBase (RW.RADWidgetBase):
         """
         _id = self._get_object_id(built_object, attr_id)
         if _id not in self.__objects:
-            self.__objects[_id]=built_object
+            self.__objects[_id] = built_object
         else:
             raise KeyError(
                 _(
@@ -420,7 +422,7 @@ class RADXMLBase (RW.RADWidgetBase):
             no return value (void);
         """
         # inits
-        self.__OI_COUNT=max(1, tools.ensure_int(value))
+        self.__OI_COUNT = max(1, tools.ensure_int(value))
     # end def
 
 
@@ -439,8 +441,8 @@ class RADXMLBase (RW.RADWidgetBase):
                         "'{attr_name}': already exists in "
                         "tk_owner '{obj_type}'."
                     ).format(
-                        attr_name = name,
-                        obj_type = repr(self.tk_owner),
+                        attr_name=name,
+                        obj_type=repr(self.tk_owner),
                     )
                 )
             else:
@@ -465,8 +467,8 @@ class RADXMLBase (RW.RADWidgetBase):
                     "XML element must be of type "
                     "'{obj_type}' not '{cur_type}'."
                 ).format(
-                    obj_type = repr(ET.Element),
-                    cur_type = repr(xml_element)
+                    obj_type=repr(ET.Element),
+                    cur_type=repr(xml_element)
                 )
             )
             return False
@@ -489,8 +491,8 @@ class RADXMLBase (RW.RADWidgetBase):
                     "XML tree must be of type "
                     "'{obj_type}' not '{cur_type}'."
                 ).format(
-                    obj_type = repr(ET.ElementTree),
-                    cur_type = repr(tree_object)
+                    obj_type=repr(ET.ElementTree),
+                    cur_type=repr(tree_object)
                 )
             )
             return False
@@ -867,7 +869,7 @@ class RADXMLBase (RW.RADWidgetBase):
                     "intvar": TK.IntVar,
                     "stringvar": TK.StringVar,
                 }.get(vartype)
-                self.__tk_variables[vartype][varname]=_cvar()
+                self.__tk_variables[vartype][varname] = _cvar()
             # end if
             # return already existing or newly created cvar
             return self.__tk_variables[vartype].get(varname)
@@ -904,7 +906,7 @@ class RADXMLBase (RW.RADWidgetBase):
         path = P.normalize(path)
         # new image to register?
         if path and path not in self.__images:
-            self.__images[path]=TK.PhotoImage(file=path)
+            self.__images[path] = TK.PhotoImage(file=path)
         # end if
         return self.__images.get(path)
     # end def
@@ -934,7 +936,7 @@ class RADXMLBase (RW.RADWidgetBase):
         r"""
             sets internal XML directory def;
         """
-        self.__xml_dir=value
+        self.__xml_dir = value
     # end def
 
 
@@ -942,7 +944,7 @@ class RADXMLBase (RW.RADWidgetBase):
         r"""
             sets internal XML file extension def;
         """
-        self.__xml_file_ext=value
+        self.__xml_file_ext = value
     # end def
 
 
@@ -950,7 +952,7 @@ class RADXMLBase (RW.RADWidgetBase):
         r"""
             sets internal XML filename radix def;
         """
-        self.__xml_filename=value
+        self.__xml_filename = value
     # end def
 
 
@@ -962,7 +964,7 @@ class RADXMLBase (RW.RADWidgetBase):
             no return value (void);
         """
         # reset XML tree
-        self.__xml_tree=ET.ElementTree(**kw)
+        self.__xml_tree = ET.ElementTree(**kw)
     # end def
 
 
@@ -977,8 +979,7 @@ class RADXMLBase (RW.RADWidgetBase):
         # try to build widgets
         try:
             # verify XML tree before processing
-            if tools.is_pstr(filename) or \
-                                    not self.is_tree(self.__xml_tree):
+            if tools.is_pstr(filename) or not self.is_tree(self.__xml_tree):
                 # try to load once
                 self.xml_load(filename)
             # end if
@@ -1030,7 +1031,7 @@ class RADXMLBase (RW.RADWidgetBase):
             # should be a filename or path
             else:
                 # XML parse file path
-                self.__xml_tree=ET.parse(self.get_xml_path(arg))
+                self.__xml_tree = ET.parse(self.get_xml_path(arg))
             # end if
         except ET.ParseError:
             raise RuntimeError(
@@ -1052,9 +1053,9 @@ class RADXMLBase (RW.RADWidgetBase):
         if self.cast_tree(self.__xml_tree):
             self.__xml_tree.write(
                 self.get_xml_path(filename),
-                encoding = "UTF-8",
-                xml_declaration = True,
-                method = "xml"
+                encoding="UTF-8",
+                xml_declaration=True,
+                method="xml"
             )
         # end if
     # end def
