@@ -27,8 +27,9 @@
 # lib imports
 import os.path as OP
 
+
 # module private var init
-__app_root_dir="."
+__app_root_dir = "."
 
 
 def canonize (path, raise_error=False):
