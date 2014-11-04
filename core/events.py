@@ -26,9 +26,9 @@
 
 # unique instance pointer
 # module private var init
-__event_manager=None
+__event_manager = None
 
-# service getter
+
 def get_event_manager ():
     r"""
         gets a unique application-wide instance of the event manager;
@@ -40,6 +40,7 @@ def get_event_manager ():
     # end if
     return __event_manager
 # end def
+
 
 class EventManager:
     r"""
@@ -93,7 +94,7 @@ class EventManager:
         r"""
             class constructor - initializes connection hashtable;
         """
-        self.connections=dict()
+        self.connections = dict()
     # end def
 
 
@@ -114,7 +115,7 @@ class EventManager:
             # slots must be unique for each signal
             _slots.update(set(slots))
             # update signal set of slots
-            self.connections[signal]=set(filter(callable, _slots))
+            self.connections[signal] = set(filter(callable, _slots))
             # operation succeeded
             return True
         # end if
@@ -176,7 +177,7 @@ class EventManager:
             # remove eventual existing slots
             _slots.difference_update(set(slots))
             # update signal set of slots
-            self.connections[signal]=set(filter(callable, _slots))
+            self.connections[signal] = set(filter(callable, _slots))
             # operation succeeded
             return True
         # end if
