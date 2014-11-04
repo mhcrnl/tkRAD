@@ -41,9 +41,9 @@
 
 * in `RADXMLWidgetBase._tkRAD_font_support()`:
 
-    * fixed font's long family name to tkinter standard notation e.g.
-    font="'Times New Roman' 12 BoLd itAlIC" now becomes
-    font="{times new roman} 12 bold italic";
+    * fixed font's long family name to best comply with tkinter's
+    standard notation e.g. font="'Times New Roman' 12 BoLd itAlIC" now
+    becomes font="{times new roman} 12 bold italic";
 
 * in `RADMainWindow`:
 

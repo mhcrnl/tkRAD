@@ -262,7 +262,7 @@ class RADWindowBase (RW.RADWidgetBase):
                 kw.get("title"),
                 _app_title,
                 _(self.WINDOW_ID),
-                "Main Window",
+                "Window",
             )
         )
     # end def
