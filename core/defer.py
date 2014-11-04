@@ -49,6 +49,7 @@ class DeferQueue:
         you can pick it up *as is* and use it in your own project;
         Generic queue for deferred actions;
     """
+
     def __init__ (self):
         r"""
             class constructor inits;
@@ -87,7 +88,7 @@ class DeferQueue:
         # register new callable into buffer
         _buffer.append(QueueItem(callback, *args, **kw))
         # update section data
-        self.__queue[section]=_buffer
+        self.__queue[section] = _buffer
     # end def
 
 
@@ -141,14 +142,15 @@ class QueueItem:
         DeferQueue subcomponent class def;
         Stores callback with its additional *args and **kw;
     """
+
     def __init__ (self, callback, *args, **kw):
         r"""
             class constructor inits;
         """
         # member inits
-        self.callback=callback
-        self.arguments=args
-        self.keywords=kw
+        self.callback = callback
+        self.arguments = args
+        self.keywords = kw
     # end def
 
 
@@ -171,4 +173,5 @@ class QueueItem:
         # failed
         return None
     # end def
+
 # end class QueueItem
