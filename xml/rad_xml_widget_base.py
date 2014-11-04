@@ -28,6 +28,7 @@ import tkinter as TK
 from ..core import tools
 from . import rad_xml_base as RX
 
+
 class RADXMLWidgetBase (RX.RADXMLBase):
     r"""
         Base class for XML to tkinter widget building;
@@ -49,6 +50,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         },
     } # end of ATTRS
 
+
     # ------------------  XML elements building  -----------------------
 
     def _before_building_element (self, **kw):
@@ -58,11 +60,11 @@ class RADXMLWidgetBase (RX.RADXMLBase):
             XML element widget building;
         """
         # widget inits
-        self.WIDGET_CLASS="Frame"
-        self.WIDGET=None
-        self.TK_ACCEL=""
-        self.TK_CONFIG=dict()
-        self.TK_CHILD_CONFIG=dict()
+        self.WIDGET_CLASS = "Frame"
+        self.WIDGET = None
+        self.TK_ACCEL = ""
+        self.TK_CONFIG = dict()
+        self.TK_CHILD_CONFIG = dict()
     # end def
 
 
@@ -80,7 +82,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
                 _value = default
             # end if
             # parsed attribute inits
-            attribute.value=_value
+            attribute.value = _value
             # XML element must have the same attr value
             attribute.update_xml_element()
             self._tk_config(attribute, **kw)
@@ -107,6 +109,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         """
         return attribute and not attribute.parsed
     # end def
+
 
     # -----------------------  XML attributes parsing  -----------------
 
@@ -213,10 +216,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
             _values += ("image", "text")
         # end if
         # parsed attribute inits
-        kw.update(
-            default = "none",
-            values = _values,
-        )
+        kw.update(default="none", values=_values)
         self._fix_values(attribute, **kw)
     # end def
 
@@ -283,10 +283,8 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # caution: *NOT* the same as self._is_new(attribute) /!\
         if self._is_unparsed(attribute):
             # parsed attribute inits
-            attribute.value=(
-                self.element_get_id(attribute.xml_element)
-            )
-            attribute.parsed=True
+            attribute.value = self.element_get_id(attribute.xml_element)
+            attribute.parsed = True
         # end if
     # end def
 
@@ -309,7 +307,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # param controls
         if self._is_new(attribute):
             # parsed attribute inits
-            attribute.value=None
+            attribute.value = None
             self._tk_config(attribute, **kw)
         # end if
     # end def
@@ -330,8 +328,8 @@ class RADXMLWidgetBase (RX.RADXMLBase):
                 self.element_get_id(attribute.xml_element),
             )
             # parsed attribute inits
-            attribute.value=_name #.lower()
-            attribute.parsed=True
+            attribute.value = _name #.lower()
+            attribute.parsed = True
         # end if
     # end def
 
@@ -471,7 +469,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # param controls
         if self._is_new(attribute):
             # parsed attribute inits
-            attribute.value=self.get_bitmap_path(attribute.value)
+            attribute.value = self.get_bitmap_path(attribute.value)
             self._tk_config(attribute)
         # end if
     # end def
@@ -486,7 +484,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # param controls
         if self._is_new(attribute):
             # parsed attribute inits
-            attribute.value=bool(
+            attribute.value = bool(
                 attribute.value.lower()
                 in ("1", "yes", "true", attribute.name)
             )
@@ -549,7 +547,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # param controls
         if self._is_new(attribute):
             # parsed attribute inits
-            attribute.value=self.set_stringvar(attribute.value)
+            attribute.value = self.set_stringvar(attribute.value)
             self._tk_config(attribute, **kw)
         # end if
     # end def
@@ -584,8 +582,8 @@ class RADXMLWidgetBase (RX.RADXMLBase):
                     # e.g. "^quit" --> self.app.quit
                     _cmd = (
                         lambda  *args,
-                                _cb = getattr(self.app, _cmd),
-                                kw = kw:
+                                _cb=getattr(self.app, _cmd),
+                                kw=kw:
                             _cb(*args, **kw)
                     )
                 else:
@@ -597,9 +595,9 @@ class RADXMLWidgetBase (RX.RADXMLBase):
                             "- bad XML attribute "
                             "or incorrect self.app"
                         ).format(
-                            widget = repr(self),
-                            cmd = _cmd,
-                            app = repr(self.app),
+                            widget=repr(self),
+                            cmd=_cmd,
+                            app=repr(self.app),
                         )
                     )
                     # cancel command
@@ -613,8 +611,8 @@ class RADXMLWidgetBase (RX.RADXMLBase):
                     # e.g. ".quit" --> self.slot_owner.quit
                     _cmd = (
                         lambda  *args,
-                                _cb = getattr(self.slot_owner, _cmd),
-                                kw = kw:
+                                _cb=getattr(self.slot_owner, _cmd),
+                                kw=kw:
                             _cb(*args, **kw)
                     )
                 else:
@@ -626,9 +624,9 @@ class RADXMLWidgetBase (RX.RADXMLBase):
                             "- bad XML attribute "
                             "or incorrect owner"
                         ).format(
-                            widget = repr(self),
-                            cmd = _cmd,
-                            owner = repr(self.slot_owner),
+                            widget=repr(self),
+                            cmd=_cmd,
+                            owner=repr(self.slot_owner),
                         )
                     )
                     # cancel command
@@ -643,7 +641,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
                 )
             # end if
             # parsed attribute inits
-            attribute.value=_cmd
+            attribute.value = _cmd
             self._tk_config(attribute, **kw)
         # end if
     # end def
@@ -669,7 +667,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # param controls
         if self._is_new(attribute):
             # parsed attribute inits
-            attribute.value=tools.ensure_float(attribute.value)
+            attribute.value = tools.ensure_float(attribute.value)
             self._tk_config(attribute, **kw)
         # end if
     # end def
@@ -691,19 +689,13 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         if self._is_new(attribute):
             # inits
             _font = attribute.value
-            # catches 'quoted long names'
-            _sch = re.compile(r"'(.*?)'")
-            _family = _sch.search(_font)
-            # resets font family name to tkinter-compliant font name
-            # e.g. "'Times New Roman'" ---> "timesnewroman"
-            if _family:
-                _font = _sch.sub(
-                    tools.normalize_id(_family.group(1)).lower(),
-                    _font
-                )
-            # end if
+            # $ 2014/11/04 (RS) $
+            # since tkRAD v1.6
+            # replace 'Quoted Long Names' by {quoted long names}
+            # which is fully tkinter-compliant
+            _font = re.sub(r"'(.*?)'", r"{\1}", str(_font)).lower()
             # parsed attribute inits
-            attribute.value=_font
+            attribute.value = _font
             self._tk_config(attribute, **kw)
         # end if
     # end def
@@ -718,7 +710,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # param controls
         if self._is_new(attribute):
             # parsed attribute inits
-            attribute.value=self.set_image(attribute.value)
+            attribute.value = self.set_image(attribute.value)
             self._tk_config(attribute)
         # end if
     # end def
@@ -733,7 +725,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         # param controls
         if self._is_new(attribute):
             # parsed attribute inits
-            attribute.value=tools.ensure_int(attribute.value)
+            attribute.value = tools.ensure_int(attribute.value)
             self._tk_config(attribute, **kw)
         # end if
     # end def
@@ -757,11 +749,11 @@ class RADXMLWidgetBase (RX.RADXMLBase):
                 # from RADXMLAttributesDict
                 _attr_underline = attrs.get_item("underline")
                 # menu label underline support (e.g. "_File")
-                _attr_underline.value=-1
+                _attr_underline.value = -1
                 _pos = _label.find("_")
                 if _pos >= 0:
                     # set attribute value
-                    _attr_underline.value=_pos
+                    _attr_underline.value = _pos
                     # update label
                     _label = _label[:_pos] + _label[_pos+1:]
                 # end if
@@ -769,7 +761,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
                 self._tk_config(_attr_underline, **kw)
             # end if
             # parsed attribute inits
-            attribute.value=_label
+            attribute.value = _label
             self._tk_config(attribute, **kw)
         # end if
     # end def
@@ -784,8 +776,8 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         """
         # parsed attribute inits
         kw.update(
-            default = "flat",
-            values = ("raised", "sunken", "groove", "ridge", "solid"),
+            default="flat",
+            values=("raised", "sunken", "groove", "ridge", "solid"),
         )
         self._fix_values(attribute, **kw)
     # end def
@@ -799,8 +791,8 @@ class RADXMLWidgetBase (RX.RADXMLBase):
         """
         # parsed attribute inits
         kw.update(
-            default = "normal",
-            values = ("disabled", ),
+            default="normal",
+            values=("disabled", ),
         )
         self._fix_values(attribute, **kw)
     # end def
@@ -831,7 +823,7 @@ class RADXMLWidgetBase (RX.RADXMLBase):
             # end if
             if _widget:
                 # parsed attribute inits
-                attribute.value=_widget
+                attribute.value = _widget
                 self._tk_config(attribute, **kw)
             # not found
             else:
@@ -862,13 +854,13 @@ class RADXMLWidgetBase (RX.RADXMLBase):
             # child config asked?
             if kw.get("tk_child_config"):
                 # child inits
-                self.TK_CHILD_CONFIG[_name]=attribute.value
+                self.TK_CHILD_CONFIG[_name] = attribute.value
             else:
                 # widget inits
-                self.TK_CONFIG[_name]=attribute.value
+                self.TK_CONFIG[_name] = attribute.value
             # end if
         # end if
-        attribute.parsed=True
+        attribute.parsed = True
     # end def
 
 # end class RADXMLWidgetBase
