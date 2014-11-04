@@ -55,8 +55,7 @@ def reset_attributes (xml_attributes, xml_element=None):
         _attrs = xml_attributes.copy()
         for (_name, _value) in _attrs.items():
             if not isinstance(_value, RADXMLAttribute):
-                _attrs[_name]=\
-                            RADXMLAttribute(xml_element, _name, _value)
+                _attrs[_name] = RADXMLAttribute(xml_element, _name, _value)
             # end if
         # end for
         return _attrs
@@ -67,6 +66,7 @@ def reset_attributes (xml_attributes, xml_element=None):
         return None
     # end if
 # end def
+
 
 class RADXMLAttribute:
     r"""
@@ -82,16 +82,16 @@ class RADXMLAttribute:
             class constructor;
         """
         # parent XML element - SHOULD be an ET.Element object (optional)
-        self.xml_element=xml_element
+        self.xml_element = xml_element
         # attribute name - MUST be a plain string of chars
-        self.name=attr_name
+        self.name = attr_name
         # attribute value - can be anything
-        self.value=attr_value
+        self.value = attr_value
         # nb of times this attribute has been parsed
-        self.parsed=parsed
+        self.parsed = parsed
     # end def
 
-    # callable getter for e.g. tkRAD.core.StructDict /!\
+
     def get_value (self):
         r"""
             callable value getter for external dictionaries
@@ -99,6 +99,7 @@ class RADXMLAttribute:
         """
         return self.value
     # end def
+
 
     @property
     def name (self):
@@ -112,7 +113,7 @@ class RADXMLAttribute:
     @name.setter
     def name (self, value):
         if value and isinstance(value, str):
-            self.__attr_name=value
+            self.__attr_name = value
         else:
             raise TypeError(
                 "XML attribute name must be of PLAIN char string type."
@@ -124,6 +125,7 @@ class RADXMLAttribute:
     def name (self):
         del self.__attr_name
     # end def
+
 
     @property
     def parsed (self):
@@ -141,10 +143,10 @@ class RADXMLAttribute:
     def parsed (self, value):
         # param controls
         if not value:
-            self.__attr_parsed=0
+            self.__attr_parsed = 0
         elif isinstance(value, int):
             # reset to new value with minimum
-            self.__attr_parsed=min(1, value)
+            self.__attr_parsed = min(1, value)
         else:
             # increment current counter
             self.__attr_parsed += 1
@@ -156,14 +158,14 @@ class RADXMLAttribute:
         del self.__attr_parsed
     # end def
 
-    # callable setter for e.g. tkRAD.core.StructDict /!\
+
     def set_value (self, value):
         r"""
             callable value setter for external dictionaries
             implementing item value override e.g. tkRAD.core.StructDict;
             no return value (void);
         """
-        self.value=value
+        self.value = value
     # end def
 
 
@@ -186,8 +188,8 @@ class RADXMLAttribute:
                 "XML element must be of "
                 "type '{obj_type}', not '{cur_type}'."
                 .format(
-                    obj_type = repr(ET.Element),
-                    cur_type = repr(self.xml_element),
+                    obj_type=repr(ET.Element),
+                    cur_type=repr(self.xml_element),
                 )
             )
         # end if
