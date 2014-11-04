@@ -27,13 +27,14 @@ import re
 import os
 import os.path as OP
 import configparser as CP
-from . import path
+from . import path as P
 from . import tools
 
-# unique instance pointer
-__option_manager=None
 
-# service getter
+# unique instance pointer
+__option_manager = None
+
+
 def get_option_manager (**kw):
     r"""
         gets application-wide unique instance for rc option manager;
@@ -45,12 +46,13 @@ def get_option_manager (**kw):
     return __option_manager
 # end def
 
-# service class
-class OptionManager(CP.ConfigParser):
+
+class OptionManager (CP.ConfigParser):
     r"""
         generic rc configuration file internal options manager;
     """
 
+    # class constant defs
     CONFIG = {
         "dir": "~/.config/apps",
         "file": "options.rc",
@@ -59,6 +61,7 @@ class OptionManager(CP.ConfigParser):
     SECTIONS = (
         "dirs",  "files",  "geometry",  "gui",  "xml",
     ) # end of SECTIONS
+
 
     def __init__ (self, **kw):
         r"""
@@ -89,7 +92,7 @@ class OptionManager(CP.ConfigParser):
             resets loading op flag;
             no return value (void);
         """
-        self.__loaded=False
+        self.__loaded = False
     # end def
 
 
@@ -97,7 +100,7 @@ class OptionManager(CP.ConfigParser):
         r"""
             configuration directory getter;
         """
-        return path.normalize(self.__rc_dir)
+        return P.normalize(self.__rc_dir)
     # end def
 
 
@@ -125,12 +128,12 @@ class OptionManager(CP.ConfigParser):
                 tools.choose_str(
                     self._get_path(),
                     OP.join(
-                        path.normalize(self.CONFIG.get("dir")),
+                        P.normalize(self.CONFIG.get("dir")),
                         self.get_config_file()
                     ),
                 )
             )
-            self.__loaded=tools.is_plist(_success)
+            self.__loaded = tools.is_plist(_success)
         # end if
         return _success
     # end def
@@ -168,7 +171,8 @@ class OptionManager(CP.ConfigParser):
             print(
                 "[WARNING] could *NOT* save "
                 "options configuration file."
-                "\nGot the following error:\n" + str(e)
+                "\nGot the following error:\n{}"
+                .format(e)
             )
         # end try
     # end def
@@ -180,7 +184,7 @@ class OptionManager(CP.ConfigParser):
             no return value (void);
         """
         # private member inits
-        self.__rc_dir=path.normalize(
+        self.__rc_dir = P.normalize(
             tools.choose_str(value, self.CONFIG.get("dir"))
         )
         self._reset_load()
@@ -193,8 +197,9 @@ class OptionManager(CP.ConfigParser):
             no return value (void);
         """
         # private member inits
-        self.__rc_file=re.sub(
-            r"[^\w.]+",  r"-",
+        self.__rc_file = re.sub(
+            r"[^\w.]+",
+            r"-",
             tools.choose_str(value, self.CONFIG.get("file"))
         )
         self._reset_load()
