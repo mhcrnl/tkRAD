@@ -27,6 +27,7 @@ from tkinter import ttk
 from ..core import tools
 from . import rad_xml_widget as XW
 
+
 class RADXMLFrame (XW.RADXMLWidget, ttk.Frame):
     r"""
         general purpose widget builder and container;
@@ -35,22 +36,24 @@ class RADXMLFrame (XW.RADXMLWidget, ttk.Frame):
         into its own ttk.Frame container;
     """
 
+    # class constant defs
     CONFIG = {
         # for subclass widget pre-configuration
     } # end of CONFIG
 
+
     def __init__ (self, master=None, slot_owner=None, **kw):
         # default values
-        self.CONFIG=self.CONFIG.copy()
+        self.CONFIG = self.CONFIG.copy()
         self.CONFIG.update(kw)
         # super inits
         ttk.Frame.__init__(self, master)
         self.configure(**self._only_tk(self.CONFIG))
-        self.tk_parent=master
+        self.tk_parent = master
         XW.RADXMLWidget.__init__(
             self,
-            tk_owner = self,
-            slot_owner = tools.choose(slot_owner, master),
+            tk_owner=self,
+            slot_owner=slot_owner or master,
             **self.CONFIG
         )
     # end def
