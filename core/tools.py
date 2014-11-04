@@ -155,7 +155,7 @@ def dict_only_keys (dict_object, *args):
         args = set(args).intersection(set(dict_object.keys()))
         # loop on args
         for _key in args:
-            _dict[_key]=dict_object[_key]
+            _dict[_key] = dict_object[_key]
         # end for
     # end if
     return _dict
