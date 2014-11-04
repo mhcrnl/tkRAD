@@ -24,11 +24,12 @@
 
 # ========================= STANDALONE MODULE ==========================
 
+
 # unique instance pointer
 # module private var init
-__service_manager=None
+__service_manager = None
 
-# named service getter
+
 def ask_for (service_name, **kw):
     r"""
         returns service object along service name if exists;
@@ -40,7 +41,7 @@ def ask_for (service_name, **kw):
     return get_service_manager().get_service(service_name, **kw)
 # end def
 
-# service manager getter
+
 def get_service_manager ():
     r"""
         returns application-wide unique instance for service manager;
@@ -64,6 +65,7 @@ def register_service (service_name, service_object, **kw):
         .register_service(service_name, service_object, **kw)
 # end def
 
+
 class ServiceManager:
     r"""
         /!\ this module is *STANDALONE* /!\
@@ -84,7 +86,7 @@ class ServiceManager:
             resets service manager to a new dict() object;
             no return value (void);
         """
-        self.services=dict()
+        self.services = dict()
     # end def
 
 
@@ -133,15 +135,14 @@ class ServiceManager:
         service_name = str(service_name)
         # service should not be overridden /!\
         if service_name not in self.services:
-            self.services[service_name]=service_object
+            self.services[service_name] = service_object
             return True
         elif not kw.get("silent_mode"):
             # service already exists /!\
             raise KeyError(
-                (
-                    "Service '{name}' already registered."
-                    "Should not be overridden in any way."
-                ).format(name=service_name)
+                "Service '{name}' already registered."
+                "Should not be overridden in any way."
+                .format(name=service_name)
             )
         # end if
         return False
@@ -159,15 +160,14 @@ class ServiceManager:
         service_name = str(service_name)
         # service has to be overridden
         if service_name in self.services:
-            self.services[service_name]=service_object
+            self.services[service_name] = service_object
             return True
         elif not kw.get("silent_mode"):
             # service *NOT* already exists
             raise KeyError(
-                (
-                    "Service '{name}' is *NOT* already registered."
-                    "Must first exist before being replaced."
-                ).format(name=service_name)
+                "Service '{name}' is *NOT* already registered."
+                "Must first exist before being replaced."
+                .format(name=service_name)
             )
         # end if
         return False
