@@ -764,8 +764,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
 
     def _build_element_tkevent (self, xml_tag, xml_element, tk_parent):
         r"""
-            XML <tkevent> element implements tkinter event bindings
-            for a given tkinter widget;
+            XML <tkevent> element implements tkinter event bindings for
+            a given tkinter widget;
             event binding level can be one of 'bind', 'bind_class' or
             'bind_all';
             returns True on build success, False otherwise;
@@ -819,11 +819,10 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                 xml_tag, xml_element, tk_parent
             )
             # reset element tag
-            xml_element.tag="tkmenu"
+            xml_element.tag = "tkmenu"
             # widget inits
             _widget = XM.RADXMLMenu(
-                tk_owner = tk_parent,
-                slot_owner = self.slot_owner,
+                tk_owner=tk_parent, slot_owner=self.slot_owner
             )
             # $ 2014-03-10 RS $
             # since v1.4: deferred tasks
@@ -1077,15 +1076,12 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                 # i.e. elements {**attrs} elements {**attrs} ...
                 _cdata = list(
                     filter(
-                        None,
-                        set(
-                            re.split(r"(.*?\{.*?\})", _cdata)
-                        )
+                        None, set(re.split(r"(.*?\{.*?\})", _cdata))
                     )
                 )
                 for _def in _cdata:
                     # def chunks init i.e. elements { **attrs }
-                    _elements, _attrs=_def.split("{")
+                    _elements, _attrs = _def.split("{")
                     # filter elements
                     # i.e. element:state:!state, element, ...
                     # element:state, new.old:state, ...
@@ -1097,7 +1093,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                     _attrs = self._parse_xml_attributes(
                         xml_element,
                         tk_parent,
-                        xml_attrs = eval(
+                        xml_attrs=eval(
                             "{{{}}}"
                             .format(
                                 re.sub(
@@ -1125,7 +1121,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                                     _map.insert(
                                         0, tuple(_states + [_value])
                                     )
-                                    _mattrs[_key]=_map
+                                    _mattrs[_key] = _map
                                 # end for
                                 _style.map(_element, **_mattrs)
                             # got configuring
@@ -1202,7 +1198,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             )
             # widget class inits
             _class = eval("{module}{class}".format(**_attributes))
-            _args = _attributes.get("args", "")
+            _args = _attributes.get("args") or ""
             # tk widget parent autocompletion
             if issubclass(_class, (TK.Widget, TK.Tk)) \
                                 and not _args.startswith("tk_parent"):
@@ -1219,7 +1215,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             # keep a copy aboard
             self._register_object_by_id(_widget, _attributes.get("id"))
             # keep a copy for specific post-implementations
-            self.WIDGET=_widget
+            self.WIDGET = _widget
             # set widget as class member
             self._set_class_member(_attributes.get("name"), _widget)
             # configure widget
@@ -1230,19 +1226,17 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             del _class, _args, self.TK_CONFIG
             # loop on XML element children - build tk child widgets
             _build_ok = self._loop_on_children(
-                xml_element, _widget,
-                accept = tools.choose(
-                    self.DTD.get(xml_tag),
-                    self.DTD.get("widget"),
-                )
+                xml_element,
+                _widget,
+                accept=self.DTD.get(xml_tag) or self.DTD.get("widget"),
             )
             # widget init() procedure
             _init = _attributes.get("init")
             if callable(_init):
                 kw.update(
-                    widget = _widget,
-                    parent = tk_parent,
-                    xml_attributes = _attributes,
+                    widget=_widget,
+                    parent=tk_parent,
+                    xml_attributes=_attributes,
                 )
                 _init(**kw)
             # end if
@@ -1255,9 +1249,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                     "Tkinter '{classname}' object is *NOT* "
                     "insertable into {obj_type} object."
                 ).format(
-                    classname =
-                        xml_element.get("class", self.WIDGET_CLASS),
-                    obj_type = repr(tk_parent)
+                    classname=xml_element.get("class") or self.WIDGET_CLASS,
+                    obj_type=repr(tk_parent)
                 )
             )
             return False
@@ -1283,7 +1276,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             # new support:
             # now TK and ttk are embedded in predefined classnames;
             _cname = _cname.strip(".").split(".")
-            _module = tools.choose_str(xml_element.get("module"))
+            _module = xml_element.get("module") or ""
             if len(_cname) > 1:
                 _module = _cname[0] + "."
             # end if
@@ -1309,7 +1302,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # param controls
         if self._is_unparsed(attribute):
             # parsed attribute inits
-            attribute.value=tools.choose_str(
+            attribute.value = tools.choose_str(
                 attribute.value,
                 kw.get("default"),
             )
@@ -1390,7 +1383,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             # end if
         # end for
         # update keywords (filtered attributes)
-        kw["xml_attrs"]=_attributes
+        kw["xml_attrs"] = _attributes
         # return parsed XML attributes
         return self._parse_xml_attributes(xml_element, tk_parent, **kw)
     # end def
@@ -1402,16 +1395,15 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             no return value (void);
         """
         # window state inits
-        _wstate = tools.choose_str(attrs.get("visibility"))
-        _resizable = tools.choose_str(attrs.get("resizable"))
+        _wstate = attrs.get("visibility") or ""
+        _resizable = attrs.get("resizable") or ""
         # set transient window
         widget.transient(attrs.get("transient"))
         # set window's title
         widget.title(attrs.get("title"))
         # set window's min size
         widget.minsize(
-            width = attrs.get("minwidth"),
-            height = attrs.get("minheight"),
+            width=attrs.get("minwidth"), height=attrs.get("minheight")
         )
         # set window's max size
         _maxwidth = attrs.get("maxwidth")
@@ -1419,8 +1411,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         widget.maxsize(width=_maxwidth, height=_maxheight)
         # set resizable window
         widget.resizable(
-            width = (_resizable in ("yes", "width")),
-            height = (_resizable in ("yes", "height")),
+            width=(_resizable in ("yes", "width")),
+            height=(_resizable in ("yes", "height")),
         )
         # set window state
         if _wstate == "maximized" and _resizable == "yes" \
@@ -1436,6 +1428,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             widget.deiconify()
         # end if
     # end def
+
 
     # -----------------------  XML attributes parsing  -----------------
 
