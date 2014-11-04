@@ -16,7 +16,9 @@
 
 ### $ 2014-11-04 RS $
 
-* in ``:
+* ;
+
+* fixed some minor bugs;
 
 * trying to comply with PEP8 everywhere in project;
 

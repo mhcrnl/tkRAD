@@ -28,6 +28,7 @@ from ..core import i18n
 from ..core import path
 from ..core import tools
 
+
 class RADApplication:
     r"""
         Rapid Application Development (RAD) base application class for
@@ -35,6 +36,7 @@ class RADApplication:
         feel free to subclass it in order to meet your needs;
     """
 
+    # class constant defs
     APP = {
         "name": _("My Application"),
         "version": _("0.1a"),
@@ -43,19 +45,17 @@ class RADApplication:
         "author": _("my name <email@domain.org>"),
         "copyright": _("(c) YEAR author name."),
         "license": _("""
-            This program is free software: you can redistribute it
-            and/or modify it under the terms of the GNU General
-            Public License as published by the Free Software
-            Foundation, either version 3 of the License, or (at your
-            option) any later version.
-            This program is distributed in the hope that it will be
-            useful, but WITHOUT ANY WARRANTY; without even the
-            implied warranty of MERCHANTABILITY or FITNESS FOR A
-            PARTICULAR PURPOSE. See the GNU General Public License
-            for more details.
-            You should have received a copy of the GNU General Public
-            License along with this program.
-            If not, see: http://www.gnu.org/licenses/
+This program is free software: you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details.
+You should have received a copy of the GNU General Public License along
+with this program.
+If not, see: http://www.gnu.org/licenses/
         """),
         "license_url": _("http://www.gnu.org/licenses/"),
     } # end of APP
@@ -75,6 +75,7 @@ class RADApplication:
         "app_file": "app.rc",
         "app_dir": "^/etc",
     } # end of RC_OPTIONS
+
 
     def __init__ (self, **kw):
         r"""
@@ -109,7 +110,7 @@ class RADApplication:
                     kw.get("app_root_dir"),
                     path.get_app_root_dir(),
                 ),
-                *kw.get("check_dirs", self.DIRECTORIES)
+                *(kw.get("check_dirs") or self.DIRECTORIES)
             )
         # end if
     # end def
@@ -154,12 +155,12 @@ class RADApplication:
         # own code in subclasses /!\
         # inits
         i18n.install(
-            lc_dir = tools.choose_str(
+            lc_dir=tools.choose_str(
                 kw.get("lc_dir"),
                 self.options["app"].get("lc_dir"),
                 "^/locale",
             ),
-            lc_lang = tools.choose_str(
+            lc_lang=tools.choose_str(
                 kw.get("lc_lang"),
                 self.options["app"].get("lc_lang"),
             ),
@@ -177,8 +178,8 @@ class RADApplication:
         # feel free to put here your
         # own code in subclasses /!\
         # member inits
-        self._set_run_mode(tools.choose_str(kw.get("run_mode"), "GUI"))
-        self.__kw=kw
+        self._set_run_mode(kw.get("run_mode") or "GUI")
+        self.__kw = kw
     # end def
 
 
@@ -194,7 +195,7 @@ class RADApplication:
         # lib imports
         from ..core import options as OPT
         # init user options
-        self.user_options=OPT.get_option_manager()
+        self.user_options = OPT.get_option_manager()
         self.user_options.set_config_dir(
             tools.choose_str(
                 kw.get("rc_dir"),
@@ -210,7 +211,7 @@ class RADApplication:
             )
         )
         # get a private option manager for this class /!\
-        self.options=OPT.OptionManager()
+        self.options = OPT.OptionManager()
         self.options.set_config_dir(
             tools.choose_str(
                 kw.get("app_rc_dir"),
@@ -275,17 +276,16 @@ class RADApplication:
         # lib imports
         from ..core import services as SM
         # member inits
-        self.services=SM.get_service_manager()
+        self.services = SM.get_service_manager()
         # will raise KeyError if service name already registered
         self.services.register_service(
-            tools.choose_str(kw.get("app_service"), "app"),
-            self
+            kw.get("app_service") or "app", self
         )
         # force service name to be this class /!\
         self.services.register_service(
             "application",
             self,
-            silent_mode = True,
+            silent_mode=True,
         )
     # end def
 
@@ -303,18 +303,18 @@ class RADApplication:
         import argparse as AP
         # sys.argv[] argument parser
         _parser = AP.ArgumentParser(
-            description = _(
+            description=_(
                 "{classname} class console argument parser."
             ).format(classname=self.__class__.__name__)
         )
         # init CLI arguments
         _parser.add_argument(
             "-m", "--run-mode",
-            nargs = 1,
-            default = ["gui"],
-            type = str,
-            choices = ["gui", "GUI", "cli", "CLI"],
-            help = _(
+            nargs=1,
+            default=["gui"],
+            type=str,
+            choices=["gui", "GUI", "cli", "CLI"],
+            help=_(
                 "determines whether application should run "
                 "in Graphical User Interface mode (GUI) or "
                 "in Command-Line Interface mode (CLI - console)."
@@ -325,7 +325,7 @@ class RADApplication:
             _parser.print_help()
         # end if
         # parse sys.argv[] arguments
-        self.sys_argv=_parser.parse_args()
+        self.sys_argv = _parser.parse_args()
         # member inits
         self._set_run_mode(
             tools.choose_str(
@@ -366,7 +366,7 @@ class RADApplication:
         if mode != "CLI":
             mode = "GUI"
         # end if
-        self.__run_mode=mode
+        self.__run_mode = mode
     # end def
 
 
@@ -402,7 +402,7 @@ class RADApplication:
         # own code in subclasses /!\
         # lib imports
         from ..xml import rad_xml_mainwindow as MW
-        self.mainwindow=MW.RADXMLMainWindow(**kw)
+        self.mainwindow = MW.RADXMLMainWindow(**kw)
         try:
             if kw.get("xml_menu"):
                 self.mainwindow.topmenu.xml_build(kw.get("xml_menu"))
@@ -416,35 +416,35 @@ class RADApplication:
                     r"""
                     <tkwidget>
                         <frame
-                            layout = "pack"
-                            resizable = "yes"
+                            layout="pack"
+                            resizable="yes"
                         />
                         <label
-                            text = "this should better work with:"
-                            layout = "pack"
+                            text="this should better work with:"
+                            layout="pack"
                         />
                         <label
-                            text = "{path}"
-                            fg = "red"
-                            layout = "pack"
+                            text="{path}"
+                            fg="red"
+                            layout="pack"
                         />
                         <label
-                            text = "/!\ don't forget to create missing directories /!\"
-                            layout = "pack"
+                            text="/!\ don't forget to create missing directories /!\"
+                            layout="pack"
                         />
                         <button
-                            text = "Quit"
-                            command = "@quit"
-                            layout = "pack"
+                            text="Quit"
+                            command="@quit"
+                            layout="pack"
                         />
                         <frame
-                            layout = "pack"
-                            resizable = "yes"
+                            layout="pack"
+                            resizable="yes"
                         />
                     </tkwidget>
                     """
                     .format(
-                        path = self.mainwindow.mainframe.get_xml_path()
+                        path=self.mainwindow.mainframe.get_xml_path()
                     )
                 )
                 self.mainwindow.run()
