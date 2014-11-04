@@ -30,6 +30,7 @@ from ..core import tools
 from ..core import path
 from . import rad_xml_widget_base as RB
 
+
 class RADXMLWidget (RB.RADXMLWidgetBase):
     r"""
         generic XML to tkinter widget builder;
@@ -66,15 +67,19 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         "common": {
             "id": None,
         },
+
         "button": {
             "underline": None,
         },
+
         "checkbutton": {
             "underline": None,
         },
+
         "label": {
             "underline": None,
         },
+
         "listbox": {
             #~ "name": None,
             "class": None,
@@ -86,9 +91,11 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             "layout_options": None, # pack_opts|grid_opts|place_opts
             "resizable": "no",      # can be: no|yes|width|height
         },
+
         "menubutton": {
             "underline": None,
         },
+
         "optionmenu": {
             #~ "name": None,
             "listvariable": None,
@@ -99,30 +106,39 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             "layout_options": None, # pack_opts|grid_opts|place_opts
             "resizable": "no",      # can be: no|yes|width|height
         },
+
         "radiobutton": {
             "underline": None,
         },
+
         "tkwidget": {
         },
+
         "ttkbutton": {
             "underline": None,
         },
+
         "ttkcheckbutton": {
             "underline": None,
         },
+
         "ttklabel": {
             "underline": None,
         },
+
         "ttkmenubutton": {
             "underline": None,
         },
+
         "ttkradiobutton": {
             "underline": None,
         },
+
         "ttktab": {
             "sticky": "all",
             "underline": -1,
         },
+
         "widget": {
             #~ "name": None,
             "class": None,
@@ -132,6 +148,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             "layout_options": None, # pack_opts|grid_opts|place_opts
             "resizable": "no",      # can be: no|yes|width|height
         },
+
         "include": {
             #~ "name": None,
             "src": None,
@@ -139,24 +156,29 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             "xml_filename": None,
             "xml_file_ext": None,
         },
+
         "module": {
             "from": None,
             "import": None,
             "as": None,
         },
+
         "configure": {
             "widget": None,
         },
+
         "layout": {
             "widget": None,
             "layout": "pack",       # can be: pack|grid|place
             "layout_options": None, # pack_opts|grid_opts|place_opts
             "resizable": "no",      # can be: no|yes|width|height
         },
+
         "event": {
             "signal": None,
             "slot": None,
         },
+
         "tkevent": {
             "widget": None,
             "bind": "bind", # can be: bind|bind_class|bind_all
@@ -235,6 +257,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
         # do *NOT* define "filename" here
         "file_ext": ".xml",
     } # end of XML_RC
+
 
     # ------------------  XML elements building  -----------------------
 
@@ -352,8 +375,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             )
             # set inclusion widget
             _widget = RADXMLWidget(
-                tk_owner = tk_parent,
-                slot_owner = self.slot_owner,
+                tk_owner=tk_parent,
+                slot_owner=self.slot_owner,
                 **_attributes
             )
             # ensure there won't be any unexpected inclusion /!\
@@ -432,7 +455,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                 xml_tag, xml_element, tk_parent
             )
             # class constructor args
-            _args = str(_attributes.get("args", ""))
+            _args = _attributes.get("args") or ""
             if not _args.startswith("tk_parent"):
                 _args = "tk_parent, " + _args
             # end if
@@ -487,9 +510,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                     "Tkinter '{classname}' object is *NOT* "
                     "insertable into {obj_type} object."
                 ).format(
-                    classname =
-                        xml_element.get("class", self.WIDGET_CLASS),
-                    obj_type = repr(tk_parent)
+                    classname=xml_element.get("class") or self.WIDGET_CLASS,
+                    obj_type=repr(tk_parent)
                 )
             )
             return False
@@ -618,9 +640,8 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                     "Tkinter '{classname}' object is *NOT* "
                     "insertable into {obj_type} object."
                 ).format(
-                    classname =
-                        xml_element.get("class", self.WIDGET_CLASS),
-                    obj_type = repr(tk_parent)
+                    classname=xml_element.get("class") or self.WIDGET_CLASS,
+                    obj_type=repr(tk_parent)
                 )
             )
             return False
@@ -756,19 +777,16 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                 xml_tag, xml_element, tk_parent
             )
             # retrieve tkinter widget
-            _widget = tools.choose(
-                _attributes.get("widget"),
-                tk_parent,
-            )
+            _widget = _attributes.get("widget") or tk_parent
             # init bindings
-            _bind = tools.choose_str(_attributes.get("bind"))
-            _seq = tools.choose_str(_attributes.get("seq"))
-            _add = tools.choose_str(_attributes.get("add"))
+            _bind = _attributes.get("bind") or ""
+            _seq = _attributes.get("seq") or ""
+            _add = _attributes.get("add") or ""
             _slot = _attributes.get("slot")
             _method = getattr(_widget, _bind)
             # special case
             if _bind == "bind_class":
-                _class = tools.choose_str(_attributes.get("class"))
+                _class = _attributes.get("class") or ""
                 # bind event
                 _method(_class, _seq, _slot, _add)
             else:
