@@ -30,6 +30,7 @@ from ..core import options as OPT
 from ..core import services as SM
 from ..core import tools
 
+
 class RADWidgetBase:
     r"""
         Base class to integrate into tkinter composite subclasses;
@@ -42,8 +43,7 @@ class RADWidgetBase:
             # end class MyFrameWidget
     """
 
-    STICKY_ALL = TK.N + TK.S + TK.E + TK.W
-
+    # class constant defs
     GRID_OPTIONS = {
         "padx": 0,
         "pady": 0,
@@ -64,10 +64,13 @@ class RADWidgetBase:
         "file_ext": "widget_file_ext",
     } # end of RC_OPTIONS
 
+    STICKY_ALL = TK.NW + TK.SE
+
     TK_ATTRS = (
         # put here tkinter attrs for filtering @kw attrs
         # tk.Widget.__init__(self, master, **self._only_tk(kw))
     ) # end of TK_ATTRS
+
 
     def __init__ (self, tk_owner=None, slot_owner=None, **kw):
         r"""
@@ -82,12 +85,12 @@ class RADWidgetBase:
         """
         # member inits
         self._init_instance_members(**kw)
-        self.tk_owner=tk_owner
-        self.slot_owner=tools.choose(slot_owner, tk_owner)
-        self.app=SM.ask_for("app", silent_mode=True)
-        self.events=EV.get_event_manager()
-        self.options=OPT.get_option_manager(**kw)
-        self.services=SM.get_service_manager()
+        self.tk_owner = tk_owner
+        self.slot_owner = tools.choose(slot_owner, tk_owner)
+        self.app = SM.ask_for("app", silent_mode=True)
+        self.events = EV.get_event_manager()
+        self.options = OPT.get_option_manager(**kw)
+        self.services = SM.get_service_manager()
         # redefs - if keys do not already exist
         _classname = self.classname().lower()
         self.RC_OPTIONS.setdefault("section", _classname)
@@ -134,7 +137,7 @@ class RADWidgetBase:
         if hasattr(self, "tk") and hasattr(self, "configure"):
             _attrs = set(self.configure().keys()) & set(kw.keys())
             for _key in _attrs:
-                _dict[_key]=kw.get(_key)
+                _dict[_key] = kw.get(_key)
             # end for
         # end if
         return _dict
