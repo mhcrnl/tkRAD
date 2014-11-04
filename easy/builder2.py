@@ -31,7 +31,7 @@ import xml.etree.ElementTree as ET
 import Tkinter as TK
 import tkMessageBox as MB
 
-# simple widget building function
+
 def build (xml, master=None, **kw):
     r"""
         easy widget building function;
@@ -87,6 +87,7 @@ def normalize_id (arg):
     # unsupported
     return ""
 # end def
+
 
 class Builder (TK.Frame):
     r"""
@@ -167,21 +168,22 @@ class Builder (TK.Frame):
             no return value (void);
         """
         # member inits
-        self.__autorun=False
+        self.__autorun = False
         # set autorun session if needed
         if not master:
             # reset master for testing session
             master = TK.Tk()
             # set flag on
-            self.__autorun=True
+            self.__autorun = True
         # end if
         # super class inits
         TK.Frame.__init__(self, master, **kw)
         # member inits
-        self.master=master
-        self.xml_tree=None
-        self.objects=dict()
+        self.master = master
+        self.xml_tree = None
+        self.objects = dict()
     # end def
+
 
     # --------------------- protected method defs ----------------------
 
@@ -280,19 +282,18 @@ class Builder (TK.Frame):
             no return value (void);
         """
         # internal XML tree init
-        self.xml_tree=None
+        self.xml_tree = None
         # reset object instance (oi) counter
-        self.OI_COUNT=1
+        self.OI_COUNT = 1
         # arg must be XML source code or file path
         if is_pstr(arg):
             # got XML tag?
             if re.search(r"<.*?>", arg):
                 # XML source code
-                self.xml_tree=\
-                    ET.ElementTree(element=ET.fromstring(arg))
+                self.xml_tree = ET.ElementTree(element=ET.fromstring(arg))
             else:
                 # file path
-                self.xml_tree=ET.parse(arg)
+                self.xml_tree = ET.parse(arg)
             # end if
         # unsupported type
         else:
@@ -308,7 +309,7 @@ class Builder (TK.Frame):
             no return value (void);
         """
         # XML parsed attribute inits
-        attrs["command"]=eval(value)
+        attrs["command"] = eval(value)
     # end def
 
 
@@ -320,7 +321,7 @@ class Builder (TK.Frame):
             no return value (void);
         """
         # XML parsed attribute inits
-        attrs["id"]=self._get_correct_id(value)
+        attrs["id"] = self._get_correct_id(value)
     # end def
 
 
@@ -360,17 +361,18 @@ class Builder (TK.Frame):
             registers newly created objects along their XML id name;
             no return value (void);
         """
-        self.objects[self._get_correct_id(attr_id)]=built_object
+        self.objects[self._get_correct_id(attr_id)] = built_object
     # end def
+
 
     # --------------------- public method defs ----------------------
 
     def build (self, arg, **kw):
         r"""
-            tries to build tkinter widgets from a char string or
-            from a file path;
-            will pop-up a message box with a traceback message
-            if any exception raises;
+            tries to build tkinter widgets from a char string or from a
+            file path;
+            will pop-up a message box with a traceback message if any
+            exception raises;
             returns 'self' as a widget container of all built-in
             tkinter widgets for further use in your own program;
         """
@@ -378,7 +380,7 @@ class Builder (TK.Frame):
             # param controls - arg must be XML string or file path
             self._init_xml_tree(arg)
             # layout options init
-            self.layout_options=kw.get(
+            self.layout_options = kw.get(
                 "layout_options", self.PACK_OPTIONS
             )
             # build XML element as tkinter widget
@@ -388,8 +390,7 @@ class Builder (TK.Frame):
             # need an autorun testing session?
             if self.__autorun:
                 # run testing session
-                self.winfo_toplevel()\
-                    .protocol("WM_DELETE_WINDOW", self.quit)
+                self.winfo_toplevel().protocol("WM_DELETE_WINDOW", self.quit)
                 self.mainloop()
                 self.winfo_toplevel().withdraw()
                 self.destroy()
@@ -414,10 +415,10 @@ class Builder (TK.Frame):
     def get_object_by_id (self, attr_id):
         r"""
             tries to retrieve the object created through its definition
-            into an XML element declared with id='@attr_id' param
-            while dynamically generated;
-            returns the concerned object if 'id' matches @attr_id param,
-            returns None otherwise;
+            into an XML element declared with id='@attr_id' param while
+            dynamically generated;
+            returns the concerned object if 'id' matches @attr_id
+            param, returns None otherwise;
         """
         return self.objects.get(normalize_id(attr_id))
     # end def
@@ -443,10 +444,11 @@ class Builder (TK.Frame):
             sets specific w.pack() options for widget building;
             no return value (void);
         """
-        self.PACK_OPTIONS=kw
+        self.PACK_OPTIONS = kw
     # end def
 
 # end class Builder
+
 
 # testing this STANDALONE module
 if __name__ == "__main__":
