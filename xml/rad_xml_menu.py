@@ -29,6 +29,7 @@ from tkinter import ttk
 from ..core import tools
 from . import rad_xml_widget_base as XW
 
+
 class RADXMLMenu (XW.RADXMLWidgetBase):
     r"""
         generic XML to tkinter menu builder;
@@ -155,6 +156,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         "file_ext": ".xml",
     } # end of XML_RC
 
+
     # ------------------  XML elements building  -----------------------
 
     def _build_element_checkbutton (self, xml_tag, xml_element, tk_parent):
@@ -229,7 +231,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         # prepare child options
         _coptions = self._init_coptions(xml_element, tk_parent)
         # make some operations on child options
-        _coptions["menu"]=_new_menu
+        _coptions["menu"] = _new_menu
         # set menu item
         tk_parent.add_cascade(**_coptions)
         # free useless memory right now /!\
@@ -307,7 +309,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         # configure menu
         _new_menu.configure(**_moptions.flatten())
         # attach new menu to parent widget
-        tk_parent["menu"]=_new_menu
+        tk_parent["menu"] = _new_menu
         # free useless memory right now /!\
         del _attrs, _moptions
         # loop on XML element children
@@ -441,6 +443,7 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
         )
     # end def
 
+
     # -----------------------  XML attributes parsing  -----------------
 
     def _parse_attr_accelerator (self, attribute, **kw):
@@ -470,15 +473,15 @@ class RADXMLMenu (XW.RADXMLWidgetBase):
                     _detail = _detail.lower()
                 # end if
                 # recompose
-                _chunks[-1]=_detail
+                _chunks[-1] = _detail
                 _acc = "-".join(_chunks)
             # end if
             # set for keyboard event binding
-            self.TK_ACCEL="<" + _acc + ">"
+            self.TK_ACCEL = "<" + _acc + ">"
             # parsed attribute inits
             # caution: do *NOT* set attribute.value=_acc (faulty) /!\
             # caution: *NO* self._tk_config(attribute) by here /!\
-            attribute.parsed=True
+            attribute.parsed = True
         # end if
     # end def
 
