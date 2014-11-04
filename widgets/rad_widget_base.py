@@ -44,6 +44,8 @@ class RADWidgetBase:
     """
 
     # class constant defs
+    STICKY_ALL = TK.NW + TK.SE      # do *NOT* reorder alphabetically
+
     GRID_OPTIONS = {
         "padx": 0,
         "pady": 0,
@@ -63,8 +65,6 @@ class RADWidgetBase:
         "filename": "widget_filename",
         "file_ext": "widget_file_ext",
     } # end of RC_OPTIONS
-
-    STICKY_ALL = TK.NW + TK.SE
 
     TK_ATTRS = (
         # put here tkinter attrs for filtering @kw attrs
@@ -86,7 +86,7 @@ class RADWidgetBase:
         # member inits
         self._init_instance_members(**kw)
         self.tk_owner = tk_owner
-        self.slot_owner = tools.choose(slot_owner, tk_owner)
+        self.slot_owner = slot_owner or tk_owner
         self.app = SM.ask_for("app", silent_mode=True)
         self.events = EV.get_event_manager()
         self.options = OPT.get_option_manager(**kw)
@@ -97,7 +97,7 @@ class RADWidgetBase:
         # add rc options section [classname] for this class name
         self.options.set_sections(self.RC_OPTIONS["section"])
         # widget setup
-        if self.is_tk_parent(tk_owner):
+        if self.is_tk_parent(tk_owner) and not kw.get("subclassed"):
             self.init_widget(**kw)
         # end if
     # end def
