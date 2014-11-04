@@ -23,17 +23,14 @@
 """
 
 # set i18n support by default
-
 from .core import i18n
 
 i18n.install()
 
 # restrict to daily use classes
-
 from .widgets.rad_application import RADApplication
-
 from .widgets.rad_mainwindow import RADMainWindow
-
 from .xml.rad_xml_mainwindow import RADXMLMainWindow
-
+from .widgets.rad_window import RADWindow
+from .xml.rad_xml_window import RADXMLWindow
 from .xml.rad_xml_frame import RADXMLFrame

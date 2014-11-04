@@ -52,7 +52,6 @@ class RADWindowBase (RW.RADWidgetBase):
 
     # class constant defs
     WINDOW_ID = "mainwindow"
-    WINDOW_ID_STATE = format("{}_state", WINDOW_ID)
 
 
     def __init__ (self, tk_owner=None, slot_owner=None, **kw):
@@ -60,15 +59,15 @@ class RADWindowBase (RW.RADWidgetBase):
             class constructor - main inits
             no return value (void);
         """
-        # super class inits
         try:
+            # member inits
+            self.WINDOW_ID_STATE = "{}_state".format(self.WINDOW_ID)
             # override keyword arguments
-            kw.update(
-                tk_owner=tk_owner,
-                slot_owner=slot_owner,
-                subclassed=True
+            kw.update(subclassed=True)
+            # super class inits
+            RW.RADWidgetBase.__init__(
+                self, tk_owner=tk_owner, slot_owner=slot_owner, **kw
             )
-            RW.RADWidgetBase.__init__(self, **kw)
             self._init__main(**kw)
             self.init_widget(**kw)
             self.statusbar.notify(_("All inits done. OK."))
@@ -262,7 +261,7 @@ class RADWindowBase (RW.RADWidgetBase):
             tools.choose_str(
                 kw.get("title"),
                 _app_title,
-                _("Main Window"),
+                _(self.WINDOW_ID),
                 "Main Window",
             )
         )
@@ -307,7 +306,7 @@ class RADWindowBase (RW.RADWidgetBase):
         # param controls - unsupported
         if state not in self.STATE:
             raise ValueError(
-                _("main window's state should be one of {slist}.")
+                _("window's state should be one of {slist}.")
                 .format(slist=str(tuple(self.STATE.keys())))
             )
             # reset value
@@ -316,7 +315,7 @@ class RADWindowBase (RW.RADWidgetBase):
         # member inits
         self.__window_state = state
         # update rc options
-        self.options["geometry"]["mainwindow_state"] = str(state)
+        self.options["geometry"][self.WINDOW_ID_STATE] = str(state)
     # end def
 
 
@@ -366,11 +365,13 @@ class RADWindowBase (RW.RADWidgetBase):
                 _(
                     "Some very important task is pending by now. "
                     "Please wait for completion and then retry."
-                )
+                ),
+                parent=self,
             )
         elif MB.askokcancel(
             _("Quit app?"),
-            _("Are you sure you want to quit this application?")
+            _("Are you sure you want to quit this application?"),
+            parent=self,
         ):
             # hook method
             self.on_quit_app(*args, **kw)
@@ -402,7 +403,7 @@ class RADWindowBase (RW.RADWidgetBase):
             self._set_state("maximized")
         else:
             self._set_state("normal")
-            self.options["geometry"]["mainwindow"] = str(self.geometry())
+            self.options["geometry"][self.WINDOW_ID] = str(self.geometry())
         # end if
     # end def
 

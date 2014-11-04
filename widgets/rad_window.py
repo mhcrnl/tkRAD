@@ -27,10 +27,10 @@ import tkinter as TK
 from . import rad_window_base as WB
 
 
-class RADMainWindow (WB.RADWindowBase, TK.Tk):
+class RADWindow (WB.RADWindowBase, TK.Toplevel):
     r"""
-        Lightweight MainWindow class for people not using tkinter XML
-        widget building on a mainframe;
+        Lightweight Toplevel Window class for people not using tkinter
+        XML widget building on a mainframe;
         supports all RADWidgetBase app-wide services by default;
         supports on-board self.statusbar widget by default;
         supports on-board self.mainframe widget container by default;
@@ -48,16 +48,69 @@ class RADMainWindow (WB.RADWindowBase, TK.Tk):
     """
 
     # class constant defs
-    WINDOW_ID = "mainwindow"
+    CONFIG = {
+        # for subclass widget pre-configuration
+    } # end of CONFIG
 
-    def __init__ (self, **kw):
+    WINDOW_ID = "window"
+
+
+    def __init__ (self, master=None, **kw):
         r"""
             class constructor - main inits
             no return value (void);
         """
+        # default values
+        self.CONFIG = self.CONFIG.copy()
+        self.CONFIG.update(kw)
         # superclass inits
-        TK.Tk.__init__(self)
-        WB.RADWindowBase.__init__(self, tk_owner=None, **kw)
+        TK.Toplevel.__init__(self)
+        self.configure(**self._only_tk(self.CONFIG))
+        # hide ugly orphan Tk() window
+        if TK._default_root and not self.is_tk_parent(master):
+            TK._default_root.withdraw()
+        # end if
+        WB.RADWindowBase.__init__(self, master, **self.CONFIG)
     # end def
 
-# end class RADMainWindow
+
+    def _init_events (self, **kw):
+        r"""
+            protected method def;
+            this could be overridden in subclass;
+            no return value (void);
+        """
+        # super inits
+        super()._init_events(**kw)
+        # bind events
+        self.events.connect_dict(
+            {
+                "close": self._slot_close_window,
+                "Close": self._slot_close_window,
+            }
+        )
+    # end def
+
+
+    def _init_wm_protocols (self, **kw):
+        r"""
+            protected method def;
+            this could be overridden in subclass;
+            no return value (void);
+        """
+        # capture window manager's events handling
+        self.protocol("WM_DELETE_WINDOW", self._slot_close_window)
+    # end def
+
+
+    def _slot_close_window (self, *args, **kw):
+        r"""
+            protected method def;
+            this should be overridden in subclass;
+            no return value (void);
+        """
+        # put here your own window closing procedure
+        self._slot_quit_app()
+    # end def
+
+# end class RADWindow

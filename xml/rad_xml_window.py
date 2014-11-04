@@ -24,14 +24,14 @@
 
 # lib imports
 from ..core import tools
-from ..widgets import rad_mainwindow as MW
+from ..widgets import rad_window as RW
 from . import rad_xml_frame as XF
 
 
-class RADXMLMainWindow (MW.RADMainWindow):
+class RADXMLWindow (RW.RADWindow):
     r"""
-        general purpose tkRAD Main Window class implementing tkinter
-        XML widget building;
+        general purpose tkRAD Toplevel Window class implementing
+        tkinter XML widget building;
     """
 
     def _init_mainframe (self, **kw):
@@ -50,4 +50,4 @@ class RADXMLMainWindow (MW.RADMainWindow):
         self.mainframe.quit_app = self._slot_quit_app
     # end def
 
-# end class RADXMLMainWindow
+# end class RADXMLWindow
