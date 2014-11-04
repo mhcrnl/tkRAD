@@ -26,6 +26,7 @@
 from tkinter import ttk
 from . import rad_widget_base as RW
 
+
 class RADFrame (RW.RADWidgetBase, ttk.Frame):
     r"""
         generic Frame + RADWidgetBase subclass;
@@ -33,13 +34,15 @@ class RADFrame (RW.RADWidgetBase, ttk.Frame):
         acts as a Frame widget container;
     """
 
+    # class constant defs
     CONFIG = {
         # for subclass widget pre-configuration
     } # end of CONFIG
 
+
     def __init__ (self, master=None, **kw):
         # default values
-        self.CONFIG=self.CONFIG.copy()
+        self.CONFIG = self.CONFIG.copy()
         self.CONFIG.update(kw)
         # super inits
         ttk.Frame.__init__(self, master)
