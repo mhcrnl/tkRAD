@@ -31,7 +31,9 @@ from . import rad_widget_base as RW
 from ..xml import rad_xml_frame as XF
 from ..core import tools
 
+
 # ===========================   CLASS DEF   ============================
+
 
 class RADDialog (RW.RADWidgetBase, TK.Toplevel):
     r"""
@@ -50,15 +52,9 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
             TK.Toplevel.__init__(self)
             RW.RADWidgetBase.__init__(self, tk_owner=None, **kw)
             # mandatory inits
-            self.tk_owner=tools.choose(
-                kw.get("tk_owner"),
-                master,
-            )
+            self.tk_owner = kw.get("tk_owner") or master
             self.cast_parent(self.tk_owner)
-            self.slot_owner=tools.choose(
-                kw.get("slot_owner"),
-                self,
-            )
+            self.slot_owner = kw.get("slot_owner") or self
             # method hooks
             self._init__main(**kw)
         except:
@@ -185,7 +181,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
             no return value (void);
         """
         # member inits
-        self.STATE={
+        self.STATE = {
             "hidden": self.hide,
             "minimized": self.minimize,
             "normal": self.show,
@@ -261,9 +257,9 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
             state = "normal"
         # end if
         # member inits
-        self.__window_state=state
+        self.__window_state = state
         # update rc options
-        self.options["geometry"]["dialog_state"]=str(state)
+        self.options["geometry"]["dialog_state"] = str(state)
     # end def
 
 
@@ -289,8 +285,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
             this could be overridden in subclass;
             no return value (void);
         """
-        self.options["geometry"]\
-                            [self.classname()]=self.winfo_geometry()
+        self.options["geometry"][self.classname()] = self.winfo_geometry()
     # end def
 
 
@@ -299,7 +294,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
             slot method for event signal "DialogPendingTaskOff";
             no return value (void);
         """
-        self.__pending_task=False
+        self.__pending_task = False
     # end def
 
 
@@ -308,7 +303,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
             slot method for event signal "DialogPendingTaskOn";
             no return value (void);
         """
-        self.__pending_task=True
+        self.__pending_task = True
     # end def
 
 
@@ -324,7 +319,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
                     "Some important tasks are still running.\n"
                     "Should I try to cancel them?"
                 ),
-                parent = self,
+                parent=self,
             )
             if _response == MB.YES:
                 self._slot_button_cancel()
@@ -426,25 +421,23 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         _xml = """
             <tkwidget>
                 <ttklabel
-                    text = "{text}"
-                    foreground = "red"
-                    layout = "pack"
-                    layout_options = "pady=10"
-                    resizable = "yes"
-                    wraplength = "10cm"
+                    text="{text}"
+                    foreground="red"
+                    layout="pack"
+                    layout_options="pady=10"
+                    resizable="yes"
+                    wraplength="10cm"
                 />
                 <ttkbutton
-                    text = "_OK"
-                    command = "._slot_button_cancel"
-                    layout = "pack"
+                    text="_OK"
+                    command="._slot_button_cancel"
+                    layout="pack"
                 />
             </tkwidget>
         """.format(
-            text =  "_Please, use "
-                    "RADDialog(master, xml=xml_code) "
-                    "or RADDialog(master, "
-                    "filename=xml_filepath_or_filename) "
-                    "to build your own dialog GUI."
+            text="_Please, use RADDialog(master, xml=xml_code) "
+            "or RADDialog(master, filename=xml_filepath_or_filename) "
+            "to build your own dialog GUI."
         )
         _contents = tools.choose_str(
             kw.get("xml"), kw.get("filename"), _xml,
@@ -492,12 +485,12 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
                 _w.grid_forget()
                 _w.place_forget()
             # end for
-            self.container=contents
+            self.container = contents
             self.container.grid(
-                in_ = self,
-                row = 0, column=0,
-                padx = pad_x, pady=pad_y,
-                sticky = self.STICKY_ALL,
+                in_=self,
+                row=0, column=0,
+                padx=pad_x, pady=pad_y,
+                sticky=self.STICKY_ALL,
             )
         # end if
     # end def
@@ -508,7 +501,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
             sets this dialog window in modal mode or not;
             no return value (void);
         """
-        self.__modal=tools.choose_type(
+        self.__modal = tools.choose_type(
             bool, value, kw.get("modal"), True
         )
     # end def
@@ -584,6 +577,7 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
 
 # end class RADDialog
 
+
 # ===========================   CLASS DEF   ============================
 
 class RADButtonsDialog (RADDialog):
@@ -610,7 +604,7 @@ class RADButtonsDialog (RADDialog):
         """
         # inits
         _slot = self.BUTTON_SLOT.format(
-            button_name = tools.normalize_id(name).lower()
+            button_name=tools.normalize_id(name).lower()
         )
         if raise_error:
             return getattr(self.slot_owner, _slot)
@@ -655,7 +649,7 @@ class RADButtonsDialog (RADDialog):
         """
         # member inits
         super()._init_members(**kw)
-        self.__buttons=None
+        self.__buttons = None
     # end def
 
 
@@ -881,19 +875,18 @@ class RADButtonsDialog (RADDialog):
         _xml = """
             <tkwidget>
                 <ttklabel
-                    text = "{text}"
-                    foreground = "red"
-                    layout = "pack"
-                    resizable = "yes"
-                    wraplength = "10cm"
+                    text="{text}"
+                    foreground="red"
+                    layout="pack"
+                    resizable="yes"
+                    wraplength="10cm"
                 />
             </tkwidget>
         """.format(
-            text =  "_Please, use "
-                    "RADButtonsDialog(master, xml=xml_code) "
-                    "or RADButtonsDialog(master, "
-                    "filename=xml_filepath_or_filename) "
-                    "to build your own dialog GUI."
+            text="_Please, use RADButtonsDialog(master, xml=xml_code) "
+                "or RADButtonsDialog(master, "
+                "filename=xml_filepath_or_filename) "
+                "to build your own dialog GUI."
         )
         _contents = tools.choose_str(
                 kw.get("xml"), kw.get("filename"), _xml,
@@ -916,14 +909,14 @@ class RADButtonsDialog (RADDialog):
             ("OK", "Cancel"),
         )
         # update members
-        self.__buttons=_buttons
-        self.buttonbar=TK.ttk.Frame(self)
+        self.__buttons = _buttons
+        self.buttonbar = TK.ttk.Frame(self)
         # loop on buttons list
         for _button in _buttons:
             TK.ttk.Button(
                 self.buttonbar,
-                text = _(_button),
-                command = self._get_slot(_button),
+                text=_(_button),
+                command=self._get_slot(_button),
             ).pack(side=TK.LEFT, padx=5)
         # end for
         # buttonbar layout
