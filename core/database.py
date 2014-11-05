@@ -61,6 +61,8 @@ class Database:
         # mandatory inits
         self.auto_commit = bool(kw.get("auto_commit", True))
         self.db_path = kw.get("db_path") or self.DEFAULT_PATH
+        self.connection = None
+        self.cursor = None
         # hook_method
         self.init_members(**kw)
         # hook method
@@ -253,6 +255,7 @@ class Database:
         """
             hook method to be reimplemented in subclass;
         """
+        # put your own code here
         pass
     # end def
 
@@ -261,9 +264,8 @@ class Database:
         """
             hook method to be reimplemented in subclass;
         """
-        # member inits
-        self.connection = None
-        self.cursor = None
+        # put your own code here
+        pass
     # end def
 
 
@@ -311,7 +313,10 @@ class Database:
         """
         # open database
         self.connection = DB.connect(
-            self.db_path or kw.get("db_path") or self.DEFAULT_PATH
+            # comply with tkRAD path support
+            P.normalize(
+                self.db_path or kw.get("db_path") or self.DEFAULT_PATH
+            )
         )
         # set row factory with default sqlite3.Row (recommended)
         self.row_factory = DB.Row

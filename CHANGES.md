@@ -16,7 +16,9 @@
 
 ### $ 2014-11-05 RS $
 
-* embedding new modules in `tkRAD.core`:
+* now documenting all of this;
+
+* embedded new modules in `tkRAD.core`:
 
     * `core.async`: asynchronous tasks with atomic lockers, automatic
     re-scheduling and many other features;
