@@ -22,6 +22,9 @@
     If not, see: http://www.gnu.org/licenses/
 """
 
+# ========================= STANDALONE MODULE ==========================
+
+
 # lib imports
 import tkinter as TK
 
