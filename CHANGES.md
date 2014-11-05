@@ -14,6 +14,17 @@
 ## CHANGELOG
 
 
+### $ 2014-11-05 RS $
+
+* embedding new modules in `tkRAD.core`:
+
+    * `core.async`: asynchronous tasks with atomic lockers, automatic
+    re-scheduling and many other features;
+
+    * `core.database`: an SQLite3 lightweight database layer to make DB
+    management easier;
+
+
 ### $ 2014-11-04 RS $
 
 * waiting for some good tests before considering **tkRAD v1.6 - PEPs

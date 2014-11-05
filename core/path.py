@@ -64,7 +64,7 @@ def normalize (path, raise_error=False):
     # end if
     # force to empty string
     return ""
-#end def
+# end def
 
 
 def set_app_root_dir (path):
