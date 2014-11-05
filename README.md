@@ -239,7 +239,7 @@ Please refer to the "Easy tests with tkRAD.easy.builder" page:
 https://github.com/tarball69/tkRAD/wiki/en%3Aeasy_builder
 
 
-## History: THE LITTLE STORY
+## History: the little story
 
 For the little story, the very first public release of `tkRAD` was
 entirely written with an ASUS 1001PX **NETBOOK**(!) computer, under
