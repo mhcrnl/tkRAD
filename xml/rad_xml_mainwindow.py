@@ -23,7 +23,6 @@
 """
 
 # lib imports
-from ..core import tools
 from ..widgets import rad_mainwindow as MW
 from . import rad_xml_frame as XF
 
