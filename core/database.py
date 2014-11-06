@@ -280,6 +280,14 @@ class Database:
     # end def
 
 
+    def is_open (self):
+        """
+            determines if database is currently opened or not;
+        """
+        return bool(self.connection and self.cursor)
+    # end def
+
+
     @property
     def last_row_id (self):
         """
