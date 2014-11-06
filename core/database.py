@@ -64,6 +64,16 @@ class Database:
         self.connection = None
         self.cursor = None
         # hook_method
+        self._start(**kw)
+    # end def
+
+
+    def _start (self, **kw):
+        """
+            protected method def;
+            hook method to be reimplemented in subclass, if necessary;
+        """
+        # hook_method
         self.init_members(**kw)
         # hook method
         self.open_database(**kw)
@@ -88,7 +98,8 @@ class Database:
             # close database
             self.connection.close()
             # reset members
-            self.init_members()
+            self.connection = None
+            self.cursor = None
         # no pending connection
         else:
             # throw exception
