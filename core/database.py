@@ -46,7 +46,7 @@ def get_database (**kw):
 
 class Database:
     """
-        SQLite3 database layer;
+        SQLite database layer;
     """
 
     # class constant defs
