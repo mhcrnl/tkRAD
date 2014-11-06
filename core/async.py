@@ -109,8 +109,9 @@ class AsyncTask:
     # end def
 
 
-    def lock_all (self):
+    def lock_all (self, *args, **kw):
         """
+            event handler;
             locks all registered callbacks;
         """
         self.lock(*self.tid.keys())
