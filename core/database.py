@@ -228,6 +228,18 @@ class Database:
     # end def
 
 
+    def get_all (self, table_name, limit=100):
+        """
+            retrieves all fields in a recordset of max. @limit rows
+            for table @table_name;
+        """
+        self.sql_query(
+            "select * from '{}' limit {}".format(table_name, limit)
+        )
+        return self.fetch(self.ALL)
+    # end def
+
+
     def get_column_names (self):
         """
             retrieves field names of the last SQL query, if any;
@@ -247,18 +259,6 @@ class Database:
             row_id
         )
         return self.fetch()
-    # end def
-
-
-    def get_all (self, table_name, limit=100):
-        """
-            retrieves all fields in a recordset of max. @limit rows
-            for table @table_name;
-        """
-        self.sql_query(
-            "select * from '{}' limit {}".format(table_name, limit)
-        )
-        return self.fetch(self.ALL)
     # end def
 
 
