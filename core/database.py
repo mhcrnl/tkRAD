@@ -244,7 +244,16 @@ class Database:
         """
             retrieves field names of the last SQL query, if any;
         """
-        return tuple(c[0] for c in self.cursor.description)
+        # enabled?
+        if self.cursor:
+            return tuple(c[0] for c in self.cursor.description or "")
+        else:
+            # throw exception
+            raise DatabaseError(
+                "could not get column names: "
+                "no pending cursor by now (DB not open?)."
+            )
+        # end if
     # end def
 
 
