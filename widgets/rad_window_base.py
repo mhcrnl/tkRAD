@@ -368,11 +368,8 @@ class RADWindowBase (RW.RADWidgetBase):
                 ),
                 parent=self,
             )
-        elif MB.askokcancel(
-            _("Quit app?"),
-            _("Are you sure you want to quit this application?"),
-            parent=self,
-        ):
+        # hook method
+        elif self.confirm_quit(*args, **kw):
             # hook method
             self.on_quit_app(*args, **kw)
             # really quit app
@@ -405,6 +402,20 @@ class RADWindowBase (RW.RADWidgetBase):
             self._set_state("normal")
             self.options["geometry"][self.WINDOW_ID] = str(self.geometry())
         # end if
+    # end def
+
+
+    def confirm_quit (self, *args, **kw):
+        """
+            hook method to be reimplemented in subclass;
+            put here user confirmation dialog for quitting app;
+        """
+        # user confirmation dialog
+        return MB.askokcancel(
+            _("Quit app?"),
+            _("Are you sure you want to quit this application?"),
+            parent=self,
+        )
     # end def
 
 

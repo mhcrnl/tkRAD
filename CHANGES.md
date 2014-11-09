@@ -14,6 +14,15 @@
 ## CHANGELOG
 
 
+### $ 2014-11-09 RS $
+
+
+* in `RADWindowBase`:
+
+    * added new `confirm_quit()` hook method: now user confirmation
+    dialog before quitting is customizable;
+
+
 ### $ 2014-11-05 RS $
 
 * now documenting all of this;
