@@ -1103,7 +1103,7 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
                                 ).strip(";")
                             )
                         ),
-                    )
+                    ).flatten()
                     # got attrs?
                     if tools.is_pdict(_attrs):
                         for _element in _elements:

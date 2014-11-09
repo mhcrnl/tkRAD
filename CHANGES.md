@@ -16,6 +16,9 @@
 
 ### $ 2014-11-09 RS $
 
+* in `RADXMLWidget`:
+
+    * in `_build_element_ttkstyle()`: fixed attributes parsing bug;
 
 * in `RADWindowBase`:
 
