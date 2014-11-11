@@ -98,6 +98,33 @@ class EventManager:
     # end def
 
 
+    def _on_widget_destroy (self, widget):
+        """
+            protected method def;
+            for internal use only;
+        """
+        # browse all connections
+        for _signal, _slots in self.connections.copy().items():
+            # init slots to be disconnected
+            _dslots = set()
+            # browse slots
+            for _slot in _slots:
+                # slot is widget related?
+                if _slot is widget or \
+                        (hasattr(_slot, "__self__") and \
+                        _slot.__self__ is widget):
+                    # slot to be disconnected
+                    _dslots.add(_slot)
+                # end if
+            # end for
+            # disconnect all detected slots
+            if _dslots:
+                self.disconnect(_signal, *_dslots)
+            # end if
+        # end for
+    # end def
+
+
     def connect (self, signal, *slots):
         r"""
             connects signal name to multiple callback slots;

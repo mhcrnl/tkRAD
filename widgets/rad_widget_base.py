@@ -72,6 +72,17 @@ class RADWidgetBase:
     ) # end of TK_ATTRS
 
 
+    def __del__ (self):
+        """
+            class destructor;
+        """
+        # unregister from events
+        self.events._on_widget_destroy(self)
+        # unregister from services
+        self.services._on_widget_destroy(self)
+    # end def
+
+
     def __init__ (self, tk_owner=None, slot_owner=None, **kw):
         r"""
             implements RAD ready-to-use services:
@@ -191,6 +202,18 @@ class RADWidgetBase:
             returns object's classname;
         """
         return str(self.__class__.__name__)
+    # end def
+
+
+    def destroy (self, *args, **kw):
+        """
+            event handler; manages with tkRAD services unregistering
+            before destroying tkinter.Widget part of the subclass;
+        """
+        # class destructor
+        self.__del__()
+        # super class inits
+        super().destroy()
     # end def
 
 

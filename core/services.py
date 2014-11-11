@@ -81,6 +81,24 @@ class ServiceManager:
     # end def
 
 
+    def _on_widget_destroy (self, widget):
+        """
+            protected method def;
+            for internal use only;
+        """
+        # browse all services
+        for _name, _service in self.services.copy().items():
+            # service is widget related?
+            if _service is widget or \
+                    (hasattr(_service, "__self__") and \
+                    _service.__self__ is widget):
+                # delete service (internally)
+                self.services.pop(_name, None)
+            # end if
+        # end for
+    # end def
+
+
     def clear_all (self):
         r"""
             resets service manager to a new dict() object;

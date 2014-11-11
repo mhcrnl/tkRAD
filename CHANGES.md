@@ -14,6 +14,29 @@
 ## CHANGELOG
 
 
+### $ 2014-11-11 RS $
+
+* released **tkRAD v1.6.3 - Afterlife Events**;
+
+* in `RADWidgetBase`:
+
+    * added support for automatic tkRAD services unregistering when a
+    subclass is `w.destroy()`-ed;
+
+    * this means `self.events` are automagically disconnected for the
+    dying widget;
+
+    * this also means `self.services` are automagically deleted for the
+    dying widget;
+
+    * now, unexpected 'afterlife events' are definitely fixed;
+
+* in `core.events` and `core.services`:
+
+    * added protected method `self._on_widget_destroy()` to manage
+    internally widget tkRAD services unregistering;
+
+
 ### $ 2014-11-09 RS $
 
 * released **tkRAD v1.6.2 - Flat Style**;
