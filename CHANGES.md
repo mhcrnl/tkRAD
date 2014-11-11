@@ -16,9 +16,13 @@
 
 ### $ 2014-11-09 RS $
 
+* released **tkRAD v1.6.2 - Flat Style**;
+
 * in `RADXMLWidget`:
 
     * in `_build_element_ttkstyle()`: fixed attributes parsing bug;
+
+* released **tkRAD v1.6.1 - Captain Hook**;
 
 * in `RADWindowBase`:
 
