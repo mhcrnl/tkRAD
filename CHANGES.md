@@ -14,6 +14,13 @@
 ## CHANGELOG
 
 
+### $ 2014-11-18 RS $
+
+* in `RADXMLWidgetBase`:
+
+    * added `tkRAD.command.support` to new `_parse_attr_postcommand()`;
+
+
 ### $ 2014-11-11 RS $
 
 * released **tkRAD v1.6.3 - Afterlife Events**;

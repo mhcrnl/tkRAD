@@ -354,6 +354,16 @@ class RADXMLWidgetBase (RX.RADXMLBase):
     # end def
 
 
+    def _parse_attr_postcommand (self, attribute, **kw):
+        r"""
+            command attribute;
+            no return value (void);
+        """
+        # parsed attribute inits
+        self._tkRAD_command_support(attribute, **kw)
+    # end def
+
+
     def _parse_attr_relief (self, attribute, **kw):
         r"""
             relief attribute;
