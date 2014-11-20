@@ -14,6 +14,14 @@
 ## CHANGELOG
 
 
+### $ 2014-11-20 RS $
+
+* in `tkRAD.widgets.rad_dialog`:
+
+    * entirely reviewed `RADButtonsDialog` class, simplified code with
+    respect of compatibility constraints;
+
+
 ### $ 2014-11-18 RS $
 
 * in `RADXMLWidgetBase`:

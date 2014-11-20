@@ -580,21 +580,18 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
 
 # ===========================   CLASS DEF   ============================
 
+
 class RADButtonsDialog (RADDialog):
     r"""
         RADDialog subclass implementing a buttonbar;
     """
 
-    # current list of supported buttons
-    BUTTONS = (
-        "Abandon", "Abort", "Apply", "Cancel", "Delete", "Ignore",
-        "No", "OK", "Ok", "Rename", "Replace", "Reply", "Reset",
-        "Retry", "Save", "SaveAs", "Send", "Submit", "Validate",
-        "Verify", "Yes",
-    ) # end of BUTTONS
+    # set your own list in subclass
+    BUTTONS = ("OK", "Cancel")
 
     # button's slot template string
     BUTTON_SLOT = "_slot_button_{button_name}"
+
 
     def _get_slot (self, name, raise_error=True):
         r"""
@@ -641,84 +638,6 @@ class RADButtonsDialog (RADDialog):
     # end def
 
 
-    def _init_members (self, **kw):
-        r"""
-            protected method def;
-            this could be overridden in subclass;
-            no return value (void);
-        """
-        # member inits
-        super()._init_members(**kw)
-        self.__buttons = None
-    # end def
-
-
-    def _slot_button_abandon (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_abort (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_apply (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_delete (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_ignore (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_no (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
     def _slot_button_ok (self, tk_event=None, *args, **kw):
         r"""
             protected method def;
@@ -732,138 +651,6 @@ class RADButtonsDialog (RADDialog):
             # quit dialog
             self._slot_quit_dialog()
         # end if
-    # end def
-
-
-    def _slot_button_rename (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_replace (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_reply (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_reset (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_retry (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_save (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_saveas (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_send (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_submit (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_validate (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_verify (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
-    # end def
-
-
-    def _slot_button_yes (self, tk_event=None, *args, **kw):
-        r"""
-            dialog button slot method;
-            this *MUST* be overridden in subclass;
-            no return value (void);
-        """
-        # put your own code in subclass
-        pass
     # end def
 
 
@@ -894,7 +681,7 @@ class RADButtonsDialog (RADDialog):
         # set contents
         self.set_contents(_contents, **kw)
         # set buttonbar
-        self.set_buttons(*kw.get("buttons", list()), **kw)
+        self.set_buttons(**kw)
     # end def
 
 
@@ -905,11 +692,11 @@ class RADButtonsDialog (RADDialog):
         # param inits
         _buttons = tools.choose(
             args,
-            self.__buttons,
+            kw.get("buttons"),
+            self.BUTTONS,
             ("OK", "Cancel"),
         )
         # update members
-        self.__buttons = _buttons
         self.buttonbar = TK.ttk.Frame(self)
         # loop on buttons list
         for _button in _buttons:
