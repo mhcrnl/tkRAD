@@ -311,27 +311,17 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
         r"""
             makes some controls before quitting this dialog window;
         """
-        # got some pending operations?
-        if self.get_pending_task():
-            _response = MB.askquestion(
-                _("Please confirm"),
-                _(
-                    "Some important tasks are still running.\n"
-                    "Should I try to cancel them?"
-                ),
-                parent=self,
-            )
-            if _response == MB.YES:
-                self._slot_button_cancel()
+        # got some pending operations? (hook method)
+        if not self.verify_pending_task():
+            # dialog in modal mode?
+            if self.is_modal():
+                # destroy this dialog window
+                self.destroy()
+            # all is OK?
+            else:
+                # keep it simply hidden
+                self.hide()
             # end if
-        # dialog in modal mode?
-        elif self.is_modal():
-            # destroy this dialog window
-            self.destroy()
-        # all is OK?
-        else:
-            # keep it simply hidden
-            self.hide()
         # end if
     # end def
 
@@ -571,8 +561,37 @@ class RADDialog (RW.RADWidgetBase, TK.Toplevel):
             returns True on success, False otherwise;
         """
         # put here your own code in subclass
-        # succeeded
-        return True
+        return not self.verify_pending_task()
+    # end def
+
+
+    def verify_pending_task (self):
+        """
+            hook method to be reimplemented in subclass;
+            must return True if task is still pending;
+            must return False when all is clear;
+        """
+        # got pending task?
+        if self.get_pending_task():
+            # get user confirmation
+            _response = MB.askquestion(
+                _("Please confirm"),
+                _(
+                    "Some important tasks are still running.\n"
+                    "Should I try to cancel them?"
+                ),
+                parent=self,
+            )
+            # asked for cancellation?
+            if _response == MB.YES:
+                # try to cancel dialog
+                return self._slot_button_cancel()
+            # end if
+            # task is still pending
+            return True
+        # end if
+        # no pending task
+        return False
     # end def
 
 # end class RADDialog
