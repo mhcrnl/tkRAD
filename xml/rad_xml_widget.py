@@ -1939,6 +1939,16 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
     # end def
 
 
+    def _parse_attr_fieldbackground (self, attribute, **kw):
+        r"""
+            color attribute;
+            no return value (void);
+        """
+        # parsed attribute inits
+        self._tkRAD_color_support(attribute, **kw)
+    # end def
+
+
     def _parse_attr_format (self, attribute, **kw):
         r"""
             sprintf() format e.g. '%02.3f';

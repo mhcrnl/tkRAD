@@ -14,6 +14,14 @@
 ## CHANGELOG
 
 
+### $ 2014-12-10 RS $
+
+* in `RADXMLWidget`:
+
+    * added new `_parse_attr_fieldbackground()` embedding
+    `tkRAD.color.support`;
+
+
 ### $ 2014-12-06 RS $
 
 * released **tkRAD v1.6.4 - Dialog Discuss**;
