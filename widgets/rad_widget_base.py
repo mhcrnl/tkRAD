@@ -44,7 +44,7 @@ class RADWidgetBase:
     """
 
     # class constant defs
-    STICKY_ALL = TK.NW + TK.SE      # do *NOT* reorder alphabetically
+    STICKY_ALL = TK.NW + TK.SE
 
     GRID_OPTIONS = {
         "padx": 0,
@@ -66,14 +66,9 @@ class RADWidgetBase:
         "file_ext": "widget_file_ext",
     } # end of RC_OPTIONS
 
-    TK_ATTRS = (
-        # put here tkinter attrs for filtering @kw attrs
-        # tk.Widget.__init__(self, master, **self._only_tk(kw))
-    ) # end of TK_ATTRS
-
 
     def __del__ (self):
-        """
+        r"""
             class destructor;
         """
         # unregister from events
@@ -103,8 +98,7 @@ class RADWidgetBase:
         self.options = OPT.get_option_manager(**kw)
         self.services = SM.get_service_manager()
         # redefs - if keys do not already exist
-        _classname = self.classname().lower()
-        self.RC_OPTIONS.setdefault("section", _classname)
+        self.RC_OPTIONS.setdefault("section", self.classname().lower())
         # add rc options section [classname] for this class name
         self.options.set_sections(self.RC_OPTIONS["section"])
         # widget setup
@@ -206,7 +200,7 @@ class RADWidgetBase:
 
 
     def destroy (self, *args, **kw):
-        """
+        r"""
             event handler; manages with tkRAD services unregistering
             before destroying tkinter.Widget part of the subclass;
         """
@@ -214,6 +208,42 @@ class RADWidgetBase:
         self.__del__()
         # super class inits
         super().destroy()
+    # end def
+
+
+    def enable (self, state=True):
+        r"""
+            enables/disables current widget along with @state value;
+            if @state is None, keeps widget state unchanged;
+        """
+        # change state
+        self.enable_widget(self, state)
+    # end def
+
+
+    def enable_widget (self, tkwidget, state=True):
+        r"""
+            enables/disables @tkwidget along with @state boolean value;
+            if @state is None, keeps @tkwidget state unchanged;
+        """
+        # all is okay?
+        if state is not None and hasattr(tkwidget, "configure"):
+            # change state
+            tkwidget.configure(
+                state=TK.NORMAL if state else TK.DISABLED
+            )
+        # end if
+    # end def
+
+
+    def enabled (self):
+        r"""
+            returns True if current widget is enabled i.e. different
+            from TK.DISABLED state (including 'readonly' for ttk
+            widgets);
+            returns False otherwise;
+        """
+        return self.widget_enabled(self)
     # end def
 
 
@@ -255,6 +285,16 @@ class RADWidgetBase:
             returns True on success, False otherwise;
         """
         return isinstance(widget, TK.Widget)
+    # end def
+
+
+    def widget_enabled (self, tkwidget):
+        r"""
+            returns True if @tkwidget is enabled i.e. different from
+            TK.DISABLED state (including 'readonly' for ttk widgets);
+            returns False otherwise;
+        """
+        return bool(tkwidget.cget("state") != TK.DISABLED)
     # end def
 
 # end class RADWidgetBase

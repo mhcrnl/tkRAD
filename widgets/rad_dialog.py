@@ -27,6 +27,7 @@ import re
 import traceback
 import tkinter as TK
 import tkinter.messagebox as MB
+from tkinter import ttk
 from . import rad_widget_base as RW
 from ..xml import rad_xml_frame as XF
 from ..core import tools
@@ -605,6 +606,9 @@ class RADButtonsDialog (RADDialog):
         RADDialog subclass implementing a buttonbar;
     """
 
+    # CAUTION:
+    # do *NOT* set i18n _("button_name") translations here
+    # as set_buttons() method supports i18n by itself
     # set your own list in subclass
     BUTTONS = ("OK", "Cancel")
 
@@ -657,6 +661,19 @@ class RADButtonsDialog (RADDialog):
     # end def
 
 
+    def _init_members (self, **kw):
+        r"""
+            protected method def;
+            this could be overridden in subclass;
+            no return value (void);
+        """
+        # super class inits
+        super()._init_members(**kw)
+        # member inits
+        self.WBUTTONS = dict()
+    # end def
+
+
     def _slot_button_ok (self, tk_event=None, *args, **kw):
         r"""
             protected method def;
@@ -670,6 +687,36 @@ class RADButtonsDialog (RADDialog):
             # quit dialog
             self._slot_quit_dialog()
         # end if
+    # end def
+
+
+    def disable_button (self, button_name, state=True):
+        r"""
+            disables/enables button matching @button_name along with
+            @state boolean value;
+            @button_name must be the same button name as declared in
+            self.BUTTONS (case-sensitive);
+            does nothing if @button_name has no associated button
+            widget;
+        """
+        # invert state
+        if state is not None:
+            self.enable_button(button_name, not state)
+        # end if
+    # end def
+
+
+    def enable_button (self, button_name, state=True):
+        r"""
+            enables/disables button matching @button_name along with
+            @state boolean value;
+            @button_name must be the same button name as declared in
+            self.BUTTONS (case-sensitive);
+            does nothing if @button_name has no associated button
+            widget;
+        """
+        # change state
+        self.enable_widget(self.WBUTTONS.get(button_name), state)
     # end def
 
 
@@ -716,14 +763,17 @@ class RADButtonsDialog (RADDialog):
             ("OK", "Cancel"),
         )
         # update members
-        self.buttonbar = TK.ttk.Frame(self)
+        self.buttonbar = ttk.Frame(self)
         # loop on buttons list
         for _button in _buttons:
-            TK.ttk.Button(
+            _w = ttk.Button(
                 self.buttonbar,
-                text=_(_button),
+                text=_(_button),                        # i18n support
                 command=self._get_slot(_button),
-            ).pack(side=TK.LEFT, padx=5)
+            )
+            _w.pack(side=TK.LEFT, padx=5)
+            # register button
+            self.WBUTTONS[_button] = _w
         # end for
         # buttonbar layout
         self.buttonbar.grid(row=1, column=0, padx=pad_x, pady=pad_y)

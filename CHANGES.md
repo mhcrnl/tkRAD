@@ -14,6 +14,29 @@
 ## CHANGELOG
 
 
+### $ 2015-01-16 RS $
+
+* in `RADWidgetBase`:
+
+    * added new `enable()`, `enable_widget()`, `enabled()` and
+    `widget_enabled()` methods;
+
+* in `RADButtonsDialog`:
+
+    * added button automatic registering in `set_buttons()` method:
+
+        * now any buttonbar's newly created button widget is stored
+        into `self.WBUTTONS` dictionary;
+
+        * button names are the same as declared into `self.BUTTONS`
+        name list (case-sensitive);
+
+        * one may access buttonbar's button widget through
+        `self.WBUTTONS[button_name]` in his code;
+
+    * added new `disable_button()`, `enable_button()` methods;
+
+
 ### $ 2014-12-10 RS $
 
 * in `RADXMLWidget`:
