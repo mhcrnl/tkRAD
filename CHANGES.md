@@ -14,6 +14,14 @@
 ## CHANGELOG
 
 
+### $ 2015-01-18 RS $
+
+* in `RADWidgetBase`:
+
+    * added new `get_rc_section()` method: now users may access to
+    default official RC section name of a given class in use;
+
+
 ### $ 2015-01-16 RS $
 
 * in `RADWidgetBase`:

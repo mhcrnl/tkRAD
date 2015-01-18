@@ -97,10 +97,13 @@ class RADWidgetBase:
         self.events = EV.get_event_manager()
         self.options = OPT.get_option_manager(**kw)
         self.services = SM.get_service_manager()
-        # redefs - if keys do not already exist
-        self.RC_OPTIONS.setdefault("section", self.classname().lower())
-        # add rc options section [classname] for this class name
-        self.options.set_sections(self.RC_OPTIONS["section"])
+        # add rc options section e.g. [classname] for this class
+        self.options.set_sections(
+            # redef - if key does not already exist
+            self.RC_OPTIONS.setdefault(
+                "section", self.get_rc_section()
+            )
+        )
         # widget setup
         if self.is_tk_parent(tk_owner) and not kw.get("subclassed"):
             self.init_widget(**kw)
@@ -247,13 +250,24 @@ class RADWidgetBase:
     # end def
 
 
+    def get_rc_section (self):
+        r"""
+            hook method to be reimplemented in subclass;
+            returns RC section name for the current class;
+            by default, returns current class name;
+        """
+        # put your own code in subclass
+        return self.classname()
+    # end def
+
+
     def init_widget (self, **kw):
         r"""
             virtual method to be implemented in subclass;
             use this method to make your own widget setup
             straight right after __init__() without bothering
             with class constructors, e.g.:
-                class MyClass (RADWidgetBase):
+                class MyClass (RADWidgetBase, TK.Frame):
                     # don't bother with __init__()
                     # all services are ready to use!
                     def init_widget (self, **kw):
