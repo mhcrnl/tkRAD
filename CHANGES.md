@@ -14,6 +14,29 @@
 ## CHANGELOG
 
 
+### $ 2015-01-27 RS $
+
+* in `tkRAD.core.i18n`:
+
+    * added new `dump_pot_file()` function:
+
+        * now users may directly obtain a POT translation template file
+        in `^/locale/template.pot` when calling `import tkRAD` and then
+        `tkRAD.i18n.dump_pot_file()` e.g. just before quitting their
+        app;
+
+        * each `_("text to translate")` or each `_(my_var)` entry in
+        user's program is now automatically tracked, in order to be
+        later dumped into the POT file, on user's demand;
+
+        * caution: this technique does *NOT* guarantee a *FULL*
+        translation template file. As each `_(...)` request may occur
+        during runtime, only executed requests will be automatically
+        registered. For more acute search and retrieval on overall
+        project entries, one may consider using `xgettext` tools or
+        something alike;
+
+
 ### $ 2015-01-18 RS $
 
 * in `RADWidgetBase`:

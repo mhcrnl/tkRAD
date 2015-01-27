@@ -42,21 +42,55 @@ __translations_table = dict()
 # i18n support switcher
 __switch_off = False
 
+# i18n POT file entries
+__pot_entries = set()
+
 
 def _ (text):
     r"""
         tries to retrieve a locale translation along setup;
         returns translated text on success, original text otherwise;
     """
+    # switch off translations?
     if __switch_off:
+        # keep text unchanged
         return text
     # end if
+    # register request for POT file
+    __pot_entries.add(text)
+    # try to get translation
     return tools.choose_str(__translations_table.get(text), text)
 # end def
 
 
 # set overall scope function
 __builtins__["_"] = _
+
+
+def dump_pot_file ():
+    r"""
+        dumps all registered entries into a POT file;
+    """
+    # inits
+    _fpath = path.normalize(
+        OP.join(get_translations_dir(), "template.pot")
+    )
+    _tpl = 'msgid ""\n"{msgid}"\nmsgstr ""\n""\n'
+    # open POT file for dumping
+    with open(_fpath, "w") as _pot_file:
+        # write data
+        _pot_file.write(
+            "\n".join(
+                map(
+                    lambda s:_tpl.format(
+                        msgid=s.replace("\n", '\\n"\n"')
+                    ),
+                    sorted(__pot_entries)
+                )
+            )
+        )
+    # end with
+# end def
 
 
 def get_translations_dir ():
