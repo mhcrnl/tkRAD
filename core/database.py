@@ -234,7 +234,7 @@ class Database:
             for table @table_name;
         """
         self.sql_query(
-            "select * from '{}' limit {}".format(table_name, limit)
+            "SELECT * FROM '{}' LIMIT {}".format(table_name, limit)
         )
         return self.fetch(self.ALL)
     # end def
@@ -263,7 +263,7 @@ class Database:
             with @row_id row identifier;
         """
         self.sql_query(
-            "select * from '{}' where ROWID = ? limit 1"
+            "SELECT * FROM '{}' WHERE ROWID = ? LIMIT 1"
             .format(table_name),
             row_id
         )
