@@ -14,6 +14,18 @@
 ## CHANGELOG
 
 
+### $ 2015-02-15 RS $
+
+* in `tkRAD.core.database`:
+
+    * added new `dump_data()` and `dump_data_formatter()` utility
+    methods: fancier output look'n'feel and stream output ability e.g.
+    sys.stdout or file output, for better data dump logging;
+
+    * improved `dump_tables` utility method: now using iteration on
+    `dump_data()` method for more efficiency;
+
+
 ### $ 2015-01-27 RS $
 
 * in `tkRAD.core.i18n`:

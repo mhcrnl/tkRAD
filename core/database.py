@@ -166,30 +166,108 @@ class Database:
     # end def
 
 
-    def dump_tables (self, *args, limit=100):
+    def dump_data (self, table_or_view, limit=100, formatter=None, output=None):
+        """
+            dumps all data from @table_or_view to stdout (CLI);
+            @formatter callback function / method must be of
+            callback(table_or_view, rows) signature;
+            debug utility - could be reimplemented in subclass to meet
+            your needs;
+        """
+        # param inits
+        if not callable(formatter):
+            # reset to callable
+            formatter = self.dump_data_formatter
+        # end if
+        # dump data from table (or view)
+        print(
+            "\nDumping data from '{tov}' limited to max. {lim} rows\n"
+            .format(tov=table_or_view, lim=limit),
+            file=output,
+        )
+        # get all records along with @limit
+        _rows = self.get_all(table_or_view, limit)
+        # got a recordset?
+        if _rows:
+            # show formatted table or view
+            print(formatter(table_or_view, _rows), file=output)
+        else:
+            print("This table/view is *EMPTY*.", file=output)
+        # end if
+    # end def
+
+
+    def dump_data_formatter (self, table_or_view, rows):
+        """
+            generic data formatter for self.dump_data() method;
+        """
+        # line inits
+        _line_sep = lambda width: "+-{}-+\n".format("-" * width)
+        _line_start = "| "
+        _line_end = " |"
+        _get_line = lambda data, align="": (
+            "{s}{d}{e}\n".format(
+                s=_line_start,
+                d=_field_sep.join(
+                    [
+                        "{{v:{a}{w}}}"
+                        .format(a=align, w=_widths[_i])
+                        .format(v=_v)
+                        for _i, _v in enumerate(data)
+                    ]
+                ),
+                e=_line_end
+            )
+        )
+        # field inits
+        _field_sep = " | "
+        _fields = self.get_column_names()
+        _widths = [len(_f) for _f in _fields]
+        # first pass - evaluating column widths
+        for _row in rows:
+            for _index, _field in enumerate(_row):
+                _widths[_index] = (
+                    max(_widths[_index], len(str(_field)))
+                )
+            # end for
+        # end for
+        # evaluate line's total width
+        _line_width = int(
+            sum(_widths) + len(_field_sep) * (len(_fields) - 1)
+        )
+        # build table/view headers
+        _fstring = _line_sep(_line_width)
+        # table/view name
+        _fstring += (
+            "{s}{{t:^{w}}}{e}\n"
+            .format(s=_line_start, w=_line_width, e=_line_end)
+            .format(t=table_or_view)
+        )
+        _fstring += _line_sep(_line_width)
+        # field names
+        _fstring += _get_line(_fields, align="^")
+        _fstring += _line_sep(_line_width)
+        # secund pass - formatting rows
+        for _row in rows:
+            # field values
+            _fstring += _get_line(_row)
+            _fstring += _line_sep(_line_width)
+        # end for
+        # return formatted string
+        return _fstring
+    # end def
+
+
+    def dump_tables (self, *args, limit=100, formatter=None, output=None):
         """
             dumps listed tables/views to stdout (CLI);
-            debug utility - should be reimplemented in subclass to
-            meet your real needs;
+            debug utility - could be reimplemented in subclass to meet
+            your needs;
         """
-        # browse table list
-        for _table in args:
-            # dump table
-            print("\nTable/View: '{}'".format(_table))
-            # get all records along with @limit
-            _rows = self.get_all(_table, limit)
-            # got a recordset?
-            if _rows:
-                # show description
-                print("Columns:", self.get_column_names())
-                # dump rows
-                print("Rows:")
-                for _idx, _row in enumerate(_rows):
-                    print("{:03d}:".format(_idx + 1), tuple(_row))
-                # end for
-            else:
-                print("This table/view is *empty*.")
-            # end if
+        # browse table or view list
+        for _table_or_view in args:
+            # dump table or view data
+            self.dump_data(_table_or_view, limit, formatter, output)
         # end for
     # end def
 
