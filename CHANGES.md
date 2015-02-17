@@ -14,6 +14,11 @@
 ## CHANGELOG
 
 
+### $ 2015-02-17 RS $
+
+* released **tkRAD v1.6.5 - Florilège**;
+
+
 ### $ 2015-02-15 RS $
 
 * in `tkRAD.core.database`:
