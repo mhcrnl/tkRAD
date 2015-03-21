@@ -140,7 +140,7 @@ class EventManager:
         # signal do have a set of slots
         if isinstance(_slots, set):
             # slots must be unique for each signal
-            _slots.update(set(slots))
+            _slots.update(slots)
             # update signal set of slots
             self.connections[signal] = set(filter(callable, _slots))
             # operation succeeded
@@ -202,7 +202,7 @@ class EventManager:
         # signal do exist and has a set of slots
         if _slots and isinstance(_slots, set):
             # remove eventual existing slots
-            _slots.difference_update(set(slots))
+            _slots.difference_update(slots)
             # update signal set of slots
             self.connections[signal] = set(filter(callable, _slots))
             # operation succeeded
@@ -215,27 +215,37 @@ class EventManager:
 
     def disconnect_all (self, *signals):
         r"""
-            disconnects all callback slots from each signal listed;
+            disconnects all callback slots from each listed signal;
             implicitly removes each useless signal from hashtable;
+            having no listed @signals implies really disconnecting
+            *ALL* everywhere in current application (use with caution);
             examples:
+                self.events.disconnect_all()
                 self.events.disconnect_all("signal_1")
                 self.events.disconnect_all("signal_2", "signal_3", ...)
                 args = ("signal_5", "signal_6", "signal_7")
                 self.events.disconnect_all(*args)
             no return value (void);
         """
-        # browse signals list
-        for _signal in set(signals):
-            # signal is no longer useful
-            self.connections.pop(_signal, None)
-        # end for
+        # need to actually disconnect ALL, everywhere in app?
+        if not signals:
+            # simply clear dict
+            self.connections.clear()
+        # listed signals
+        else:
+            # browse list
+            for _signal in set(signals):
+                # signal is no longer useful
+                self.connections.pop(_signal, None)
+            # end for
+        # end if
     # end def
 
 
     def raise_event (self, signal, *args, **kw):
         r"""
             calls all slots attached to the given signal name
-            with eventual arguments and keywords;
+            with eventual extra arguments and keywords;
             examples:
             self.events.raise_event("ButtonOKClicked")
             self.events.raise_event("ButtonOKClicked", event_object)
@@ -253,7 +263,7 @@ class EventManager:
             # browse the set
             for _slot in _slots:
                 # call each slot one by one
-                # with arguments and keywords
+                # with optional arguments and keywords
                 _slot(*args, **kw)
             # end for
             # operation succeeded

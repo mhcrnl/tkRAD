@@ -14,6 +14,26 @@
 ## CHANGELOG
 
 
+### $ 2015-03-21 RS $
+
+* in `tkRAD.core`:
+
+    * improved code into `events` module: now `.disconnect_all()`
+    method call with no listed signals will actually allow to
+    disconnect *ALL* signals/slots **EVERYWHERE** in the application
+    (so please, use with caution);
+
+    * fully improved code into `async` module: now atomic callbacks are
+    able to lock themselves even inside their own pending atomic call,
+    with no data loss (multiple locking levels on lockers);
+
+    * yet in `async` module: releasing a locker or stopping a pending
+    thread for a given callback with `.release(callback)` and/or
+    `.stop(callback)` method calls will now also remove strong
+    references to this callback, allowing objects to be better garbage
+    collected that way;
+
+
 ### $ 2015-02-17 RS $
 
 * released **tkRAD v1.6.5 - Florilège**;
