@@ -14,6 +14,14 @@
 ## CHANGELOG
 
 
+### $ 2015-04-01 RS $
+
+* in `tkRAD.core.async`:
+
+    * removed WeakRef dictionaries, not enough reliable under
+    asynchronous management; previous features are still available;
+
+
 ### $ 2015-03-21 RS $
 
 * in `tkRAD.core`:

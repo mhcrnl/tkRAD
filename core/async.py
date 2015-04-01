@@ -26,7 +26,6 @@
 
 
 # lib imports
-from weakref import WeakKeyDictionary
 import tkinter as TK
 
 
@@ -61,9 +60,9 @@ class AsyncTask:
             class constructor
         """
         # thread-ids dictionary inits
-        self.tid = WeakKeyDictionary()
+        self.tid = dict()
         # atomic lockers inits
-        self.lockers = WeakKeyDictionary()
+        self.lockers = dict()
         # tkinter default root object
         self.root = TK._default_root
     # end def
