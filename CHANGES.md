@@ -5,13 +5,27 @@
 
 | Initials | Contributor | GitHub membership | Cool project | Current role | Previous role |
 |:--------:|:------------|:-----------------:|:------------:|:------------:|:-------------:|
-| CW | Cyril Walle | **[GrosSacASac] (https://github.com/GrosSacASac)** | **[WebSpree] (https://github.com/GrosSacASac/WebSpree)** | **education counselor** | - |
-| DA | Dale Athanasias | **[daleathan] (https://github.com/daleathan)** | **[widget-tour-py3] (https://github.com/daleathan/widget-tour-py3)** | **wiki contributor** | - |
-| RS | Raphaël Seban | **[tarball69] (https://github.com/tarball69)** | **[tkRAD] (https://github.com/tarball69/tkRAD/wiki)** | **developer** | author |
+| CW | Cyril Walle | **[GrosSacASac](https://github.com/GrosSacASac)** | **[WebSpree](https://github.com/GrosSacASac/WebSpree)** | **education counselor** | - |
+| DA | Dale Athanasias | **[daleathan](https://github.com/daleathan)** | **[widget-tour-py3](https://github.com/daleathan/widget-tour-py3)** | **wiki contributor** | - |
+| RS | Raphaël Seban | **[tarball69](https://github.com/tarball69)** | **[tkRAD](https://github.com/tarball69/tkRAD/wiki)** | **developer** | author |
+| - | - | **[zertrin](https://github.com/zertrin)** | **[duplicity-backup](https://github.com/zertrin/duplicity-backup)** | **bug reporter** | - |
 |  | who's next? |  |  |  |  |
 
 
 ## CHANGELOG
+
+
+### $ 2015-07-17 RS $
+
+* in `tkRAD.xml.rad_xml_widget`:
+
+    * fixed bug in `_parse_attr_from_()` method: XML attribute `from_`
+    is *NOT* internally supported into tkinter/ttk widgets (Spinbox,
+    Scale, ttk.Scale) *i.e.* replaced by a `from` internal attribute,
+    with no trailing underscore;
+
+    * [bug report #12](https://github.com/tarball69/tkRAD/issues/12) by
+    [zertrin](https://github.com/zertrin);
 
 
 ### $ 2015-04-01 RS $

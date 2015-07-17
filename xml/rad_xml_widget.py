@@ -1996,6 +1996,10 @@ class RADXMLWidget (RB.RADXMLWidgetBase):
             no return value (void);
         """
         # parsed attribute inits
+        # $ 2015-07-17 (RS) $
+        # tkinter does *NOT* manage 'from_' attribute internally
+        # must use 'from' attribute instead
+        attribute.name = "from"
         self._tkRAD_float_support(attribute, **kw)
     # end def
 
