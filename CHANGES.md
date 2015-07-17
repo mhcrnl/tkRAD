@@ -17,6 +17,8 @@
 
 ### $ 2015-07-17 RS $
 
+* released **tkRAD v1.6.6 - Core and Spin**;
+
 * in `tkRAD.xml.rad_xml_widget`:
 
     * fixed bug in `_parse_attr_from_()` method: XML attribute `from_`
