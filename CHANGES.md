@@ -20,7 +20,7 @@
 * in `tkRAD.xml.rad_xml_widget`:
 
     * fixed bug in `_parse_attr_from_()` method: XML attribute `from_`
-    is *NOT* internally supported into tkinter/ttk widgets (Spinbox,
+    is *NOT* internally supported by tkinter/ttk widgets (Spinbox,
     Scale, ttk.Scale) *i.e.* replaced by a `from` internal attribute,
     with no trailing underscore;
 
